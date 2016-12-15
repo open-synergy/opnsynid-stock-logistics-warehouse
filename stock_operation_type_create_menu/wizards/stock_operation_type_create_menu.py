@@ -145,6 +145,7 @@ class StockOperationTypeCreateMenu(models.TransientModel):
         self._create_menu(
             picking_type, window_action_id)
 
+
 VIEW_TYPES = [
     ('tree', 'Tree'),
     ('form', 'Form'),
