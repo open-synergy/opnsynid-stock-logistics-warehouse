@@ -9,6 +9,7 @@
                 <form string="Create Menu Operation Type">
                     <group>
                         <field name="menu_name"/>
+                        <field domain="[('type', '=', 'search')]" name="search_view_id"/>
                         <field name="sequence"/>
                     </group>
                     <group string="Views">
