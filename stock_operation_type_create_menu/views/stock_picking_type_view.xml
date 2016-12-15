@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <record id="stock_picking_type_view_form" model="ir.ui.view">
+            <field name="name">Picking Type Create Menu</field>
+            <field name="model">stock.picking.type</field>
+            <field name="inherit_id" ref="stock.view_picking_type_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group[2]" position="after">
+                    <separator string="Custom Menu"/>
+                    <group>
+                        <field name="window_action_id"/>
+                        <field name="menu_id"/>
+                    </group>
+                </xpath>
+                <xpath expr="//form/sheet/group[3]" position="before">
+                    <button 
+                        name="%(stock_operation_type_create_menu_action)d"
+                        type="action" 
+                        string="Create Menu"
+                        attrs="{'invisible': [('window_action_id', '!=', False), ('menu_id', '!=', False)]}"
+                    /> 
+                    <button 
+                        name="button_reset_menu"
+                        type="object"
+                        string="Reset Menu"
+                        attrs="{'invisible': [('window_action_id', '=', False), ('menu_id', '=', False)]}"
+                    />
+                </xpath>
+            </field>
+       </record>
+    </data>
+</openerp>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="stock_operation_type_create_menu_view_form" model="ir.ui.view">
+            <field name="name">Stock Operation Type Create Menu Form</field>
+            <field name="model">stock.operation_type_create_menu</field>
+            <field name="arch" type="xml">
+                <form string="Create Menu Operation Type">
+                    <group>
+                        <field name="menu_name"/>
+                        <field name="sequence"/>
+                    </group>
+                    <group string="Views">
+                        <field colspan="2" name="view_ids" nolabel="1">
+                            <form string="Views">
+                                <group>
+                                    <field colspan="4" name="sequence"/>
+                                    <field name="view_mode"/>
+                                    <field domain="[('type', '=', view_mode)]" name="view_id"/>
+                                </group>
+                            </form>
+                            <tree string="Views">
+                                <field name="sequence"/>
+                                <field name="view_mode"/>
+                                <field name="view_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button string="Create Menu" name="button_create_menu" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+           </field>
+        </record>
+
+        <record id="stock_operation_type_create_menu_action" model="ir.actions.act_window">
+            <field name="name">Create Menu</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.operation_type_create_menu</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="stock_operation_type_create_menu_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>
