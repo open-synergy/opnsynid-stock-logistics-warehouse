@@ -9,8 +9,8 @@ class TestCreateResetMenu(TestBaseTypeCreateMenu):
     def test_create_reset_menu(self):
         # Check menu_id & window_action_id
         # Condition :
-            # - If menu_id or window_action_id == True
-            # - Reset Menu
+            # If menu_id or window_action_id == True
+            # Reset Menu
         if self.picking_type.menu_id.id or\
                 self.picking_type.window_action_id:
 
@@ -18,8 +18,7 @@ class TestCreateResetMenu(TestBaseTypeCreateMenu):
             self.picking_type.button_reset_menu()
 
         # Check menu_id & window_action_id
-        # Condition :
-            # - menu_id or window_action_id == False
+        # Condition : menu_id or window_action_id == False
         self.assertEqual(
             False,
             self.picking_type.menu_id.id
@@ -39,8 +38,7 @@ class TestCreateResetMenu(TestBaseTypeCreateMenu):
         new.button_create_menu()
 
         # Check menu_id & window_action_id
-        # Condition :
-            # - menu_id or window_action_id == False
+        # Condition : menu_id or window_action_id == False
         result_menu_id = False
         result_window_action_id = False
 
