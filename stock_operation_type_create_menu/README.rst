@@ -20,7 +20,7 @@ To install this module, you need to:
 2.  Add the path to this repository in your configuration (addons-path)
 3.  Update the module list
 4.  Go to menu *Setting -> Modules -> Local Modules*
-5.  Search For *Stock Operation Type Create Menu*
+5.  Search For *Create Menu for Stock Operation Type*
 6.  Install the module
 
 Usage

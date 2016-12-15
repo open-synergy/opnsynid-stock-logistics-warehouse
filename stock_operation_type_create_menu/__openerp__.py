@@ -2,7 +2,7 @@
 # Copyright 2016 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
-    "name": "Stock Operation Type Create Menu",
+    "name": "Create Menu for Stock Operation Type",
     "version": "8.0.2.1.1",
     "summary": "Create Menu for Operation Type",
     "category": "Stock Management",
