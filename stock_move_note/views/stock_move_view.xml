@@ -17,6 +17,51 @@
             </field>
         </record>
    
+        <record id="stock_move_view_tree" model="ir.ui.view">
+            <field name="name">Stock Move Note Tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="note"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_move_view_form_2" model="ir.ui.view">
+            <field name="name">Stock Move Note Form 2</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='quants_grp']" position="before">
+                    <group name="note_grp" string="Notes" colspan="4">
+                        <field name="note" placeholder="Notes..." nolabel="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_move_view_tree_2" model="ir.ui.view">
+            <field name="name">Stock Move Note Tree 2</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.stock_move_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="note"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_move_view_tree_3" model="ir.ui.view">
+            <field name="name">Stock Move Note Tree 3</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="note"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>
 
