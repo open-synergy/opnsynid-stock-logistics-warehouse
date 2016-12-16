@@ -10,6 +10,5 @@ class StockWarehouse(models.Model):
 
     menu_id = fields.Many2one(
         string="Menu",
-        comodel_name="ir.ui.menu",
-        readonly=True
+        comodel_name="ir.ui.menu"
     )

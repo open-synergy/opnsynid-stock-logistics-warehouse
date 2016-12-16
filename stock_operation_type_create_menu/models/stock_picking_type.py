@@ -10,14 +10,12 @@ class StockPickingType(models.Model):
 
     window_action_id = fields.Many2one(
         string="Window Action",
-        comodel_name="ir.actions.act_window",
-        readonly=True
+        comodel_name="ir.actions.act_window"
     )
 
     menu_id = fields.Many2one(
         string="Menu",
-        comodel_name="ir.ui.menu",
-        readonly=True
+        comodel_name="ir.ui.menu"
     )
 
     @api.multi
