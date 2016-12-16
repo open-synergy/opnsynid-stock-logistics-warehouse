@@ -13,6 +13,7 @@
     "depends": ["stock"],
     "data": [
         "views/stock_operation_type_create_menu.xml",
-        "views/stock_picking_type_view.xml"
+        "views/stock_picking_type_view.xml",
+        "views/stock_warehouse.xml"
     ],
 }
