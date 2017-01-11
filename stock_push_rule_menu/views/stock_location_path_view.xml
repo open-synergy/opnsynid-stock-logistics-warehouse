@@ -27,6 +27,17 @@
             </field>
         </record>
 
+        <record id="stock_location_path_view_tree" model="ir.ui.view">
+            <field name="name">Stock Location Path Tree</field>
+            <field name="model">stock.location.path</field>
+            <field name="inherit_id" ref="stock.stock_location_path_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="route_id"/>
+                </xpath>
+            </field>
+        </record>
+
         <record id="stock_location_path_action" model="ir.actions.act_window">
             <field name="name">Push Rules</field>
             <field name="res_model">stock.location.path</field>
