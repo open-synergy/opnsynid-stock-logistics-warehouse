@@ -34,6 +34,19 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="route_id"/>
+                    <field name="active"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_location_path_view_form" model="ir.ui.view">
+            <field name="name">Stock Location Path Form</field>
+            <field name="model">stock.location.path</field>
+            <field name="inherit_id" ref="stock.stock_location_path_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='location_dest_id']" position="after">
+                    <field name="route_id"/>
+                    <field name="active"/>
                 </xpath>
             </field>
         </record>
