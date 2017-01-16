@@ -100,8 +100,8 @@ Usage
 
 #. Create stock picking manually. Make sure it has:
     * Destination warehouse's **Inter-Warehouse Out** picking type
-    * Any Source warehouse's *internal location for source location
-    * Destination warehouse's **Transit Push** location for destination location    
+    * Any Source warehouse's **internal location** for source location
+    * Destination warehouse's **Transit Push** location for destination location
 #. Mark as to do
 #. Odoo will create stock picking with **Inter-Warehouse In** type that belong to destination warehouse
 #. Process and transfer Inter-Warehouse Out

@@ -24,3 +24,11 @@ class StockWarehouse(models.Model):
         string="Transit Push Location",
         comodel_name="stock.location"
     )
+    inter_warehouse_pull_route_id = fields.Many2one(
+        string="Inter-Warehouse Pull Route",
+        comodel_name="stock.location.route"
+    )
+    inter_warehouse_push_route_id = fields.Many2one(
+        string="Inter-Warehouse Push Route",
+        comodel_name="stock.location.route"
+    )
