@@ -12,4 +12,4 @@
 # sale-workflow https://github.com/OCA/sale-workflow
 #
 # To provide both the URL and a branch, use:
-# sale-workflow https://github.com/OCA/sale-workflow branchname
+stock-logistics-transport https://github.com/OCA/stock-logistics-transport 8.0
