@@ -8,7 +8,10 @@
     "author": "OpenSynergy Indonesia",
     "website": "https://opensynergy-indonesia.com",
     "category": "Stock Management",
-    "depends": ["stock_route_transit"],
+    "depends": [
+        "stock_route_transit",
+        "stock_operation_type_location"
+    ],
     "data": [
         "views/stock_warehouse_view.xml"
     ],

@@ -11,17 +11,119 @@
             <field name="inherit_id" ref="stock.view_warehouse"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook/page[2]//field[@name='wh_output_stock_loc_id']" position="after">
-                    <field name="transit_pull_loc_id"/>
-                    <field name="transit_push_loc_id"/>
+                        <label for="transit_pull_loc_id"/>
+                        <div>
+                            <field name="transit_pull_loc_id"/>
+                            <button name="button_auto_create"
+                                type="object"
+                                string="(create)"
+                                class="oe_link"
+                                context="{'button_type': 'transit_pull'}"
+                                attrs="{'invisible': [('transit_pull_loc_id', '!=', False)]}"
+                            />
+                            <button name="button_reset"
+                                type="object"
+                                string="(reset)"
+                                class="oe_link"
+                                context="{'button_type': 'transit_pull'}"
+                                attrs="{'invisible': [('transit_pull_loc_id', '=', False)]}"
+                            />
+                        </div>
+                        <label for="transit_push_loc_id"/>
+                        <div>
+                            <field name="transit_push_loc_id"/>
+                            <button name="button_auto_create"
+                                type="object"
+                                string="(create)"
+                                class="oe_link"
+                                context="{'button_type': 'transit_push'}"
+                                attrs="{'invisible': [('transit_push_loc_id', '!=', False)]}"
+                            />
+                            <button name="button_reset"
+                                type="object"
+                                string="(reset)"
+                                class="oe_link"
+                                context="{'button_type': 'transit_push'}"
+                                attrs="{'invisible': [('transit_push_loc_id', '=', False)]}"
+                            />
+                        </div>
                 </xpath>
                 <xpath expr="//notebook/page[2]//field[@name='out_type_id']" position="after">
-                    <field name="interwarehouse_in_type_id"/>
-                    <field name="interwarehouse_out_type_id"/>
+                        <label for="interwarehouse_in_type_id"/>
+                        <div>
+                            <field name="interwarehouse_in_type_id"/>
+                            <button name="button_auto_create"
+                                type="object"
+                                string="(create)"
+                                class="oe_link"
+                                context="{'button_type': 'type_interwarehouse_in'}"
+                                attrs="{'invisible': [('interwarehouse_in_type_id', '!=', False)]}"
+                            />
+                            <button name="button_reset"
+                                type="object"
+                                string="(reset)"
+                                class="oe_link"
+                                context="{'button_type': 'type_interwarehouse_in'}"
+                                attrs="{'invisible': [('interwarehouse_in_type_id', '=', False)]}"
+                            />
+                        </div>
+                        <label for="interwarehouse_out_type_id"/>
+                        <div>
+                            <field name="interwarehouse_out_type_id"/>
+                            <button name="button_auto_create"
+                                type="object"
+                                string="(create)"
+                                class="oe_link"
+                                context="{'button_type': 'type_interwarehouse_out'}"
+                                attrs="{'invisible': [('interwarehouse_out_type_id', '!=', False)]}"
+                            />
+                            <button name="button_reset"
+                                type="object"
+                                string="(reset)"
+                                class="oe_link"
+                                context="{'button_type': 'type_interwarehouse_out'}"
+                                attrs="{'invisible': [('interwarehouse_out_type_id', '=', False)]}"
+                            />
+                        </div>
                 </xpath>
                 <xpath expr="//notebook/page[2]/group/group[last()]" position="after">
                     <group string="Routes">
-                        <field name="inter_warehouse_pull_route_id"/>
-                        <field name="inter_warehouse_push_route_id"/>
+                        <label for="inter_warehouse_pull_route_id"/>
+                        <div>
+                            <field name="inter_warehouse_pull_route_id"/>
+                            <button name="button_auto_create"
+                                type="object"
+                                string="(create)"
+                                class="oe_link"
+                                context="{'button_type': 'route_interwarehouse_pull'}"
+                                attrs="{'invisible': [('inter_warehouse_pull_route_id', '!=', False)]}"
+                            />
+                            <button name="button_reset"
+                                type="object"
+                                string="(reset)"
+                                class="oe_link"
+                                context="{'button_type': 'route_interwarehouse_pull'}"
+                                attrs="{'invisible': [('inter_warehouse_pull_route_id', '=', False)]}"
+                            />
+                        </div>
+                        <label for="inter_warehouse_push_route_id"/>
+                        <div>
+                            <field name="inter_warehouse_push_route_id"/>
+                            <button name="button_auto_create"
+                                type="object"
+                                string="(create)"
+                                class="oe_link"
+                                context="{'button_type': 'route_interwarehouse_push'}"
+                                attrs="{'invisible': [('inter_warehouse_push_route_id', '!=', False)]}"
+                            />
+                            <button name="button_reset"
+                                type="object"
+                                string="(reset)"
+                                class="oe_link"
+                                context="{'button_type': 'route_interwarehouse_push'}"
+                                attrs="{'invisible': [('inter_warehouse_push_route_id', '=', False)]}"
+                            />
+                        </div>
                     </group>
                 </xpath>
             </field>
