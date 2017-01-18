@@ -34,42 +34,15 @@ class StockWarehouse(models.Model):
         comodel_name="stock.location.route"
     )
 
-    @api.model
-    def get_parent_location(self):
+    @api.multi
+    def _create_location_pull(self):
+        self.ensure_one()
         obj_stock_location = self.env['stock.location']
-        physical_location =\
-            self.env.ref('stock.stock_location_locations')
-
-        criteria = [
-            ('name', '=', self.code),
-            ('location_id', '=', physical_location.id)
-        ]
-
-        parent_location = obj_stock_location.search(criteria)
-        return parent_location
-
-    @api.model
-    def get_stock_location(self):
-        obj_stock_location = self.env['stock.location']
-        parent_location = self.get_parent_location()
-
-        criteria = [
-            ('name', '=', 'Stock'),
-            ('location_id', '=', parent_location.id)
-        ]
-
-        stock_location = obj_stock_location.search(criteria)
-        return stock_location
-
-    @api.model
-    def create_location_pull(self, company_id):
-        obj_stock_location = self.env['stock.location']
-        parent_location = self.get_parent_location()
+        parent_location = self.view_location_id
 
         vals = {
             'name': 'Transit Pull',
             'location_id': parent_location.id,
-            'company_id': company_id,
             'usage': 'transit',
             'active': True
 
@@ -77,15 +50,15 @@ class StockWarehouse(models.Model):
         location = obj_stock_location.create(vals)
         return location
 
-    @api.model
-    def create_location_push(self, company_id):
+    @api.multi
+    def _create_location_push(self):
+        self.ensure_one()
         obj_stock_location = self.env['stock.location']
-        parent_location = self.get_parent_location()
+        parent_location = self.view_location_id
 
         vals = {
             'name': 'Transit Push',
             'location_id': parent_location.id,
-            'company_id': company_id,
             'usage': 'transit',
             'active': True
 
@@ -93,8 +66,9 @@ class StockWarehouse(models.Model):
         location = obj_stock_location.create(vals)
         return location
 
-    @api.model
-    def create_type_interwarehouse_in(self):
+    @api.multi
+    def _create_type_interwarehouse_in(self):
+        self.ensure_one()
         obj_stock_picking_type = self.env['stock.picking.type']
         obj_ir_sequence = self.env['ir.sequence']
 
@@ -104,7 +78,7 @@ class StockWarehouse(models.Model):
             'padding': 6
         })
 
-        location_dest_id = self.get_stock_location()
+        location_dest_id = self.lot_stock_id
 
         vals = {
             'name': 'Inter-Warehouse In',
@@ -117,8 +91,9 @@ class StockWarehouse(models.Model):
         picking_type = obj_stock_picking_type.create(vals)
         return picking_type
 
-    @api.model
-    def create_type_interwarehouse_out(self):
+    @api.multi
+    def _create_type_interwarehouse_out(self):
+        self.ensure_one()
         obj_stock_picking_type = self.env['stock.picking.type']
         obj_ir_sequence = self.env['ir.sequence']
 
@@ -128,7 +103,7 @@ class StockWarehouse(models.Model):
             'padding': 6
         })
 
-        location_id = self.get_stock_location()
+        location_id = self.lot_stock_id
 
         vals = {
             'name': 'Inter-Warehouse Out',
@@ -141,10 +116,11 @@ class StockWarehouse(models.Model):
         picking_type = obj_stock_picking_type.create(vals)
         return picking_type
 
-    @api.model
-    def create_route_interwarehouse_push(self):
+    @api.multi
+    def _create_route_interwarehouse_push(self):
+        self.ensure_one()
         obj_stock_location_route = self.env['stock.location.route']
-        location_id = self.get_stock_location()
+        location_id = self.lot_stock_id
 
         if self.transit_push_loc_id:
             if self.interwarehouse_in_type_id.id:
@@ -172,8 +148,9 @@ class StockWarehouse(models.Model):
             raise UserError(
                 _('Transit Push Location Not Found'))
 
-    @api.model
-    def create_route_interwarehouse_pull(self):
+    @api.multi
+    def _create_route_interwarehouse_pull(self):
+        self.ensure_one()
         obj_stock_location_route = self.env['stock.location.route']
 
         if self.transit_pull_loc_id:
@@ -203,102 +180,38 @@ class StockWarehouse(models.Model):
 
     @api.multi
     def button_auto_create(self):
-        company_id = self._context.get(
-            'company_id', self.env.user.company_id.id)
+        self.ensure_one()
         button_type = self._context.get('button_type', False)
 
         if button_type == 'transit_pull':
             if not self.transit_pull_loc_id:
-                location = self.create_location_pull(company_id)
+                location = self._create_location_pull()
                 self.transit_pull_loc_id = location.id
 
         if button_type == 'transit_push':
             if not self.transit_push_loc_id:
-                location = self.create_location_push(company_id)
+                location = self._create_location_push()
                 self.transit_push_loc_id = location.id
 
         if button_type == 'type_interwarehouse_in':
             if not self.interwarehouse_in_type_id:
-                picking_type = self.create_type_interwarehouse_in()
+                picking_type = self._create_type_interwarehouse_in()
                 self.interwarehouse_in_type_id = picking_type.id
 
         if button_type == 'type_interwarehouse_out':
             if not self.interwarehouse_out_type_id:
-                picking_type = self.create_type_interwarehouse_out()
+                picking_type = self._create_type_interwarehouse_out()
                 self.interwarehouse_out_type_id = picking_type.id
 
         if button_type == 'route_interwarehouse_pull':
             if not self.inter_warehouse_pull_route_id:
-                route = self.create_route_interwarehouse_pull()
+                route = self._create_route_interwarehouse_pull()
                 if route:
                     self.inter_warehouse_pull_route_id = route.id
 
         if button_type == 'route_interwarehouse_push':
             if not self.inter_warehouse_push_route_id:
-                route = self.create_route_interwarehouse_push()
+                route = self._create_route_interwarehouse_push()
                 if route:
                     self.inter_warehouse_push_route_id = route.id
         return True
-
-    @api.multi
-    def button_reset(self):
-        obj_stock_location = self.env['stock.location']
-        obj_stock_picking_type = self.env['stock.picking.type']
-        obj_stock_location_route = self.env['stock.location.route']
-        button_type = self._context.get('button_type', False)
-
-        if button_type == 'transit_pull':
-            if self.transit_pull_loc_id:
-                transit_pull_loc_id = self.transit_pull_loc_id.id
-                self.transit_pull_loc_id = False
-                criteria = [
-                    ('id', '=', transit_pull_loc_id)
-                ]
-                obj_stock_location.search(criteria).unlink()
-
-        if button_type == 'transit_push':
-            if self.transit_push_loc_id:
-                transit_push_loc_id = self.transit_push_loc_id.id
-                self.transit_push_loc_id = False
-                criteria = [
-                    ('id', '=', transit_push_loc_id)
-                ]
-                obj_stock_location.search(criteria).unlink()
-
-        if button_type == 'type_interwarehouse_in':
-            if self.interwarehouse_in_type_id:
-                interwarehouse_in_type_id = self.interwarehouse_in_type_id.id
-                self.interwarehouse_in_type_id = False
-                criteria = [
-                    ('id', '=', interwarehouse_in_type_id)
-                ]
-                obj_stock_picking_type.search(criteria).unlink()
-
-        if button_type == 'type_interwarehouse_out':
-            if self.interwarehouse_out_type_id:
-                interwarehouse_out_type_id = self.interwarehouse_out_type_id.id
-                self.interwarehouse_out_type_id = False
-                criteria = [
-                    ('id', '=', interwarehouse_out_type_id)
-                ]
-                obj_stock_picking_type.search(criteria).unlink()
-
-        if button_type == 'route_interwarehouse_pull':
-            if self.inter_warehouse_pull_route_id:
-                inter_warehouse_pull_route_id =\
-                    self.inter_warehouse_pull_route_id.id
-                self.inter_warehouse_pull_route_id = False
-                criteria = [
-                    ('id', '=', inter_warehouse_pull_route_id)
-                ]
-                obj_stock_location_route.search(criteria).unlink()
-
-        if button_type == 'route_interwarehouse_push':
-            if self.inter_warehouse_push_route_id:
-                inter_warehouse_push_route_id =\
-                    self.inter_warehouse_push_route_id.id
-                self.inter_warehouse_push_route_id = False
-                criteria = [
-                    ('id', '=', inter_warehouse_push_route_id)
-                ]
-                obj_stock_location_route.search(criteria).unlink()
