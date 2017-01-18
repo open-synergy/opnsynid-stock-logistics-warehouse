@@ -21,13 +21,6 @@
                                 context="{'button_type': 'transit_pull'}"
                                 attrs="{'invisible': [('transit_pull_loc_id', '!=', False)]}"
                             />
-                            <button name="button_reset"
-                                type="object"
-                                string="(reset)"
-                                class="oe_link"
-                                context="{'button_type': 'transit_pull'}"
-                                attrs="{'invisible': [('transit_pull_loc_id', '=', False)]}"
-                            />
                         </div>
                         <label for="transit_push_loc_id"/>
                         <div>
@@ -38,13 +31,6 @@
                                 class="oe_link"
                                 context="{'button_type': 'transit_push'}"
                                 attrs="{'invisible': [('transit_push_loc_id', '!=', False)]}"
-                            />
-                            <button name="button_reset"
-                                type="object"
-                                string="(reset)"
-                                class="oe_link"
-                                context="{'button_type': 'transit_push'}"
-                                attrs="{'invisible': [('transit_push_loc_id', '=', False)]}"
                             />
                         </div>
                 </xpath>
@@ -59,13 +45,6 @@
                                 context="{'button_type': 'type_interwarehouse_in'}"
                                 attrs="{'invisible': [('interwarehouse_in_type_id', '!=', False)]}"
                             />
-                            <button name="button_reset"
-                                type="object"
-                                string="(reset)"
-                                class="oe_link"
-                                context="{'button_type': 'type_interwarehouse_in'}"
-                                attrs="{'invisible': [('interwarehouse_in_type_id', '=', False)]}"
-                            />
                         </div>
                         <label for="interwarehouse_out_type_id"/>
                         <div>
@@ -76,13 +55,6 @@
                                 class="oe_link"
                                 context="{'button_type': 'type_interwarehouse_out'}"
                                 attrs="{'invisible': [('interwarehouse_out_type_id', '!=', False)]}"
-                            />
-                            <button name="button_reset"
-                                type="object"
-                                string="(reset)"
-                                class="oe_link"
-                                context="{'button_type': 'type_interwarehouse_out'}"
-                                attrs="{'invisible': [('interwarehouse_out_type_id', '=', False)]}"
                             />
                         </div>
                 </xpath>
@@ -98,13 +70,6 @@
                                 context="{'button_type': 'route_interwarehouse_pull'}"
                                 attrs="{'invisible': [('inter_warehouse_pull_route_id', '!=', False)]}"
                             />
-                            <button name="button_reset"
-                                type="object"
-                                string="(reset)"
-                                class="oe_link"
-                                context="{'button_type': 'route_interwarehouse_pull'}"
-                                attrs="{'invisible': [('inter_warehouse_pull_route_id', '=', False)]}"
-                            />
                         </div>
                         <label for="inter_warehouse_push_route_id"/>
                         <div>
@@ -115,13 +80,6 @@
                                 class="oe_link"
                                 context="{'button_type': 'route_interwarehouse_push'}"
                                 attrs="{'invisible': [('inter_warehouse_push_route_id', '!=', False)]}"
-                            />
-                            <button name="button_reset"
-                                type="object"
-                                string="(reset)"
-                                class="oe_link"
-                                context="{'button_type': 'route_interwarehouse_push'}"
-                                attrs="{'invisible': [('inter_warehouse_push_route_id', '=', False)]}"
                             />
                         </div>
                     </group>
