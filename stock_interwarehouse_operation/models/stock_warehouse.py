@@ -152,6 +152,7 @@ class StockWarehouse(models.Model):
     def _create_route_interwarehouse_pull(self):
         self.ensure_one()
         obj_stock_location_route = self.env['stock.location.route']
+        location_id = self.lot_stock_id
 
         if self.transit_pull_loc_id:
             if self.interwarehouse_out_type_id.id:
@@ -166,7 +167,8 @@ class StockWarehouse(models.Model):
                         'name': code + ': Transit Pull < ' + code + ': Stock',
                         'location_id': self.transit_pull_loc_id.id,
                         'action': 'move',
-                        'picking_type_id': self.interwarehouse_out_type_id.id
+                        'picking_type_id': self.interwarehouse_out_type_id.id,
+                        'location_src_id': location_id.id
                     })]
                 }
                 route = obj_stock_location_route.create(vals)
