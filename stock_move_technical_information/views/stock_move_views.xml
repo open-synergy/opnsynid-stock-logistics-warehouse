@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+    <data>
+        <record id="stock_move_view_form" model="ir.ui.view">
+            <field name="name">Stock Move Note Form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='quants_grp']" position="after">
+                    <group name="grp_chain" string="Chaining Information" colspan="4" col="2" groups="base.group_system">
+                        <field name="move_dest_id"/>
+                        <field name="move_orig_ids"/>
+                    </group>
+                    <group name="grp_split" string="Split Information" colspan="4" col="2" groups="base.group_system">
+                        <field name="split_from"/>
+                        <field name="backorder_id"/>
+                    </group>
+                    <group name="grp_return" string="Return Information" colspan="4" col="2" groups="base.group_system">
+                        <field name="origin_returned_move_id"/>
+                        <field name="returned_move_ids"/>
+                    </group>
+                    <group name="grp_procurement" string="Procurement Information" colspan="4" col="2" groups="base.group_system">
+                        <field name="procurement_id"/>
+                        <field name="group_id"/>
+                        <field name="rule_id"/>
+                        <field name="push_rule_id"/>
+                        <field name="propagate"/>
+                        <field name="route_ids"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_move_view_form_2" model="ir.ui.view">
+            <field name="name">Stock Move Note Form 2</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='moved_quants_grp']" position="after">
+                    <group name="grp_chain" string="Chaining Information" colspan="4" col="2" groups="base.group_system">
+                        <field name="move_dest_id"/>
+                        <field name="move_orig_ids"/>
+                    </group>
+                    <group name="grp_split" string="Split Information" colspan="4" col="2" groups="base.group_system">
+                        <field name="split_from"/>
+                        <field name="backorder_id"/>
+                    </group>
+                    <group name="grp_return" string="Return Information" colspan="4" col="2" groups="base.group_system">
+                        <field name="origin_returned_move_id"/>
+                        <field name="returned_move_ids"/>
+                    </group>
+                    <group name="grp_procurement" string="Procurement Information" colspan="4" col="2" groups="base.group_system">
+                        <field name="procurement_id"/>
+                        <field name="group_id"/>
+                        <field name="rule_id"/>
+                        <field name="push_rule_id"/>
+                        <field name="propagate"/>
+                        <field name="route_ids"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
+
