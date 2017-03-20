@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="stock_generate_stock_move_account_entry_view_form" model="ir.ui.view">
+            <field name="name">Generate Stock Move Accounting Entry</field>
+            <field name="model">stock.generate_stock_move_account_entry</field>
+            <field name="arch" type="xml">
+                <form>
+                    <footer>
+                        <button name="action_generate" string="Generate" type="object" class="oe_highlight"/>
+                        Or
+                        <button special="cancel" string="_Cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="stock_generate_stock_move_account_entry_action" model="ir.actions.act_window">
+            <field name="name">Generate Stock Move Accounting Entry</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.generate_stock_move_account_entry</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="stock_generate_stock_move_account_entry_view_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+        <record id="stock_generate_stock_move_account_entry_values" model="ir.values">
+            <field name="model_id" ref="stock.model_stock_move" />
+            <field name="name">Generate Stock Move Accounting Entry</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('stock_generate_stock_move_account_entry_action'))" />
+            <field name="key">action</field>
+            <field name="model">stock.move</field>
+        </record>
+        
+    </data>
+</openerp>
