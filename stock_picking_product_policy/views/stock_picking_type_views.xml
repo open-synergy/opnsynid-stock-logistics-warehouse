@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="stock_picking_type_view_form" model="ir.ui.view">
+    <field name="name">Stock Picking Type Form</field>
+    <field name="model">stock.picking.type</field>
+    <field name="inherit_id" ref="stock.view_picking_type_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[last()]" position="after">
+            <group name="grp_product_policy" colspan="4" col="2" string="Product Policy">
+                <field name="limit_product_selection"/>
+                <label for="allowed_product_categ_ids" colspan="2"/>
+                <field name="allowed_product_categ_ids" nolabel="1" colspan="2"/>
+                <label for="allowed_product_ids"  colspan="2"/>
+                <field name="allowed_product_ids" nolabel="1" colspan="2"/>
+                <label for="all_allowed_product_ids" colspan="2"/>
+                <field name="all_allowed_product_ids" nolabel="1" colspan="2"/>
+            </group>
+        </xpath>
+    </field>
+</record>
+</data>
+</openerp>
