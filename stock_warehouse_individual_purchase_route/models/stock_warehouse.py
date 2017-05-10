@@ -30,7 +30,7 @@ class StockWarehouse(models.Model):
     def _prepare_buy_route(self):
         self.ensure_one()
         return {
-            "name": "Buy: %s" % self.name,
+            "name": "%s: Buy" % self.name,
             "product_categ_selectable": True,
             "product_selectable": False,
             "sequence": 10,
