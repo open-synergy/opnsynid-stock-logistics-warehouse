@@ -1,91 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- © 2017 OpenSynergy Indonesia
+<!-- Copyright 2017 OpenSynergy Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
 
 <openerp>
-    <data>
+<data>
 
-        <record id="stock_warehouse_view_form" model="ir.ui.view">
-            <field name="name">Form - Stock Warehouse Interwarehouse</field>
-            <field name="model">stock.warehouse</field>
-            <field name="inherit_id" ref="stock.view_warehouse"/>
-            <field name="arch" type="xml">
-                <xpath expr="//notebook/page[2]//field[@name='wh_output_stock_loc_id']" position="after">
-                        <label for="transit_pull_loc_id"/>
-                        <div>
-                            <field name="transit_pull_loc_id"/>
-                            <button name="button_auto_create"
-                                type="object"
-                                string="(create)"
-                                class="oe_link"
-                                context="{'button_type': 'transit_pull'}"
-                                attrs="{'invisible': [('transit_pull_loc_id', '!=', False)]}"
-                            />
-                        </div>
-                        <label for="transit_push_loc_id"/>
-                        <div>
-                            <field name="transit_push_loc_id"/>
-                            <button name="button_auto_create"
-                                type="object"
-                                string="(create)"
-                                class="oe_link"
-                                context="{'button_type': 'transit_push'}"
-                                attrs="{'invisible': [('transit_push_loc_id', '!=', False)]}"
-                            />
-                        </div>
-                </xpath>
-                <xpath expr="//notebook/page[2]//field[@name='out_type_id']" position="after">
-                        <label for="interwarehouse_in_type_id"/>
-                        <div>
-                            <field name="interwarehouse_in_type_id"/>
-                            <button name="button_auto_create"
-                                type="object"
-                                string="(create)"
-                                class="oe_link"
-                                context="{'button_type': 'type_interwarehouse_in'}"
-                                attrs="{'invisible': [('interwarehouse_in_type_id', '!=', False)]}"
-                            />
-                        </div>
-                        <label for="interwarehouse_out_type_id"/>
-                        <div>
-                            <field name="interwarehouse_out_type_id"/>
-                            <button name="button_auto_create"
-                                type="object"
-                                string="(create)"
-                                class="oe_link"
-                                context="{'button_type': 'type_interwarehouse_out'}"
-                                attrs="{'invisible': [('interwarehouse_out_type_id', '!=', False)]}"
-                            />
-                        </div>
-                </xpath>
-                <xpath expr="//notebook/page[2]/group/group[last()]" position="after">
-                    <group string="Routes">
-                        <label for="inter_warehouse_pull_route_id"/>
-                        <div>
-                            <field name="inter_warehouse_pull_route_id"/>
-                            <button name="button_auto_create"
-                                type="object"
-                                string="(create)"
-                                class="oe_link"
-                                context="{'button_type': 'route_interwarehouse_pull'}"
-                                attrs="{'invisible': [('inter_warehouse_pull_route_id', '!=', False)]}"
-                            />
-                        </div>
-                        <label for="inter_warehouse_push_route_id"/>
-                        <div>
-                            <field name="inter_warehouse_push_route_id"/>
-                            <button name="button_auto_create"
-                                type="object"
-                                string="(create)"
-                                class="oe_link"
-                                context="{'button_type': 'route_interwarehouse_push'}"
-                                attrs="{'invisible': [('inter_warehouse_push_route_id', '!=', False)]}"
-                            />
-                        </div>
-                    </group>
-                </xpath>
-            </field>
-        </record>
+<record id="stock_warehouse_view_form" model="ir.ui.view">
+    <field name="name">Form - Stock Warehouse Interwarehouse</field>
+    <field name="model">stock.warehouse</field>
+    <field name="inherit_id" ref="stock.view_warehouse"/>
+    <field name="arch" type="xml">
+        <xpath expr="//notebook/page[2]//field[@name='wh_output_stock_loc_id']" position="after">
+                <label for="transit_pull_loc_id"/>
+                <div>
+                    <field name="transit_pull_loc_id"/>
+                    <button name="button_auto_create"
+                        type="object"
+                        string="(create)"
+                        class="oe_link"
+                        context="{'button_type': 'transit_pull'}"
+                        attrs="{'invisible': [('transit_pull_loc_id', '!=', False)]}"
+                    />
+                </div>
+                <label for="transit_push_loc_id"/>
+                <div>
+                    <field name="transit_push_loc_id"/>
+                    <button name="button_auto_create"
+                        type="object"
+                        string="(create)"
+                        class="oe_link"
+                        context="{'button_type': 'transit_push'}"
+                        attrs="{'invisible': [('transit_push_loc_id', '!=', False)]}"
+                    />
+                </div>
+        </xpath>
+        <xpath expr="//notebook/page[2]//field[@name='out_type_id']" position="after">
+                <label for="interwarehouse_in_type_id"/>
+                <div>
+                    <field name="interwarehouse_in_type_id"/>
+                    <button name="button_auto_create"
+                        type="object"
+                        string="(create)"
+                        class="oe_link"
+                        context="{'button_type': 'type_interwarehouse_in'}"
+                        attrs="{'invisible': [('interwarehouse_in_type_id', '!=', False)]}"
+                    />
+                </div>
+                <label for="interwarehouse_out_type_id"/>
+                <div>
+                    <field name="interwarehouse_out_type_id"/>
+                    <button name="button_auto_create"
+                        type="object"
+                        string="(create)"
+                        class="oe_link"
+                        context="{'button_type': 'type_interwarehouse_out'}"
+                        attrs="{'invisible': [('interwarehouse_out_type_id', '!=', False)]}"
+                    />
+                </div>
+        </xpath>
+    </field>
+</record>
    
-    </data>
+<record id="stock_warehouse_view_form_2" model="ir.ui.view">
+    <field name="name">Form - Stock Warehouse Interwarehouse</field>
+    <field name="model">stock.warehouse</field>
+    <field name="inherit_id" ref="stock_warehouse_technical_information.stock_warehouse_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='grp_route']" position="inside">
+            <label for="inter_warehouse_pull_route_id"/>
+            <div>
+                <field name="inter_warehouse_pull_route_id"/>
+                <button name="button_auto_create"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    context="{'button_type': 'route_interwarehouse_pull'}"
+                    attrs="{'invisible': [('inter_warehouse_pull_route_id', '!=', False)]}"
+                />
+            </div>
+            <label for="inter_warehouse_push_route_id"/>
+            <div>
+                <field name="inter_warehouse_push_route_id"/>
+                <button name="button_auto_create"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    context="{'button_type': 'route_interwarehouse_push'}"
+                    attrs="{'invisible': [('inter_warehouse_push_route_id', '!=', False)]}"
+                />
+            </div>
+        </xpath>
+    </field>
+</record>
+</data>
 </openerp>
