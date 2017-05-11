@@ -217,3 +217,34 @@ class StockWarehouse(models.Model):
                 if route:
                     self.inter_warehouse_push_route_id = route.id
         return True
+
+    @api.model
+    def _create_resupply_routes(
+            self, warehouse, supplier_warehouses,
+            default_resupply_wh):
+        super(StockWarehouse, self)._create_resupply_routes(
+            warehouse, supplier_warehouses, default_resupply_wh)
+
+        for wh in supplier_warehouses:
+            if not wh.transit_pull_loc_id.id \
+                    or not warehouse.interwarehouse_in_type_id:
+                continue
+
+            obj_rule = self.env["procurement.rule"]
+            criteria = [
+                ("route_id", "in", warehouse.resupply_route_ids.ids),
+                ("warehouse_id", "=", wh.id),
+            ]
+            rules = obj_rule.search(criteria)
+            if len(rules) > 0:
+                rules.unlink()
+            criteria = [
+                ("route_id", "in", warehouse.resupply_route_ids.ids),
+                ("warehouse_id", "=", warehouse.id),
+            ]
+            rules = obj_rule.search(criteria)
+            if len(rules) > 0:
+                rules.write({
+                    "picking_type_id": warehouse.interwarehouse_in_type_id.id,
+                    "location_src_id": wh.transit_pull_loc_id.id,
+                })

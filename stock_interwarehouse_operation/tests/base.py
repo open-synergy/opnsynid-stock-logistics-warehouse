@@ -7,6 +7,7 @@ from openerp.exceptions import Warning as UserError
 
 
 class BaseInterwarehouseOperation(TransactionCase):
+
     def setUp(self):
         super(BaseInterwarehouseOperation, self).setUp()
         # Data
