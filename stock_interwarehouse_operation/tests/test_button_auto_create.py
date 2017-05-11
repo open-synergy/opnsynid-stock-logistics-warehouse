@@ -6,6 +6,7 @@ from .base import BaseInterwarehouseOperation
 
 
 class TestButtonAutoCreate(BaseInterwarehouseOperation):
+
     def test_button_auto_create(self):
         # Case 1 : Check Error Route Inter-Warehouse Pull 1
         self.create_route_interwarehouse_pull_error_1()
