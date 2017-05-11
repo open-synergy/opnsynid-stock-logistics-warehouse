@@ -30,16 +30,19 @@ class StockPickingType(models.Model):
         string="Valuation Account",
         selection=ACC_SELECTION,
         required=True,
+        default="default",
     )
 
     acc_source = fields.Selection(
         string="Source Account",
         selection=ACC_SELECTION,
         required=True,
+        default="default",
     )
 
     acc_destination = fields.Selection(
         string="Destination Account",
         selection=ACC_SELECTION,
         required=True,
+        default="default",
     )
