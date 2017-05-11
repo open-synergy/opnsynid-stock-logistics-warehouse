@@ -95,3 +95,10 @@ class StockWarehouse(models.Model):
     def button_create_waste_type(self):
         for wh in self:
             wh._create_waste_type()
+
+    @api.model
+    def create(self, values):
+        new_wh = super(StockWarehouse, self).create(values)
+        new_wh._create_waste_loc()
+        new_wh._create_waste_type()
+        return new_wh
