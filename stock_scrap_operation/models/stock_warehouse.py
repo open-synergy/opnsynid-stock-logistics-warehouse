@@ -76,7 +76,7 @@ class StockWarehouse(models.Model):
         obj_loc = self.env["stock.location"]
         scrap_loc = obj_loc.create(
             self._prepare_scrap_location())
-        self.scrap_loc_id = scrap_loc.id
+        return scrap_loc
 
     @api.multi
     def _create_scrap_type(self):
@@ -84,21 +84,25 @@ class StockWarehouse(models.Model):
         obj_type = self.env["stock.picking.type"]
         scrap_type = obj_type.create(
             self._prepare_scrap_type())
-        self.scrap_type_id = scrap_type.id
+        return scrap_type
 
     @api.multi
     def button_create_scrap_loc(self):
         for wh in self:
-            wh._create_scrap_loc()
+            scrap_loc = wh._create_scrap_loc()
+            wh.scrap_loc_id = scrap_loc.id
 
     @api.multi
     def button_create_scrap_type(self):
         for wh in self:
-            wh._create_scrap_type()
+            scrap_type = wh._create_scrap_type()
+            wh.scrap_type_id = scrap_type.id
 
     @api.model
     def create(self, values):
         new_wh = super(StockWarehouse, self).create(values)
-        new_wh._create_scrap_loc()
-        new_wh._create_scrap_type()
+        scrap_loc = new_wh._create_scrap_loc()
+        self.scrap_loc_id = scrap_loc.id
+        scrap_type = new_wh._create_scrap_type()
+        self.scrap_type_id = scrap_type.id
         return new_wh
