@@ -76,7 +76,7 @@ class StockWarehouse(models.Model):
         obj_loc = self.env["stock.location"]
         waste_loc = obj_loc.create(
             self._prepare_waste_location())
-        self.waste_loc_id = waste_loc.id
+        return waste_loc
 
     @api.multi
     def _create_waste_type(self):
@@ -84,21 +84,25 @@ class StockWarehouse(models.Model):
         obj_type = self.env["stock.picking.type"]
         waste_type = obj_type.create(
             self._prepare_waste_type())
-        self.waste_type_id = waste_type.id
+        return waste_type
 
     @api.multi
     def button_create_waste_loc(self):
         for wh in self:
-            wh._create_waste_loc()
+            waste_loc = wh._create_waste_loc()
+            self.waste_loc_id = waste_loc.id
 
     @api.multi
     def button_create_waste_type(self):
         for wh in self:
-            wh._create_waste_type()
+            waste_type = wh._create_waste_type()
+            self.waste_type_id = waste_type.id
 
     @api.model
     def create(self, values):
         new_wh = super(StockWarehouse, self).create(values)
-        new_wh._create_waste_loc()
-        new_wh._create_waste_type()
+        waste_loc = new_wh._create_waste_loc()
+        self.waste_loc_id = waste_loc.id
+        waste_type = new_wh._create_waste_type()
+        self.waste_type_id = waste_type.id
         return new_wh
