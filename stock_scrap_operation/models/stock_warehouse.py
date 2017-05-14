@@ -102,7 +102,7 @@ class StockWarehouse(models.Model):
     def create(self, values):
         new_wh = super(StockWarehouse, self).create(values)
         scrap_loc = new_wh._create_scrap_loc()
-        self.scrap_loc_id = scrap_loc.id
+        new_wh.scrap_loc_id = scrap_loc.id
         scrap_type = new_wh._create_scrap_type()
-        self.scrap_type_id = scrap_type.id
+        new_wh.scrap_type_id = scrap_type.id
         return new_wh
