@@ -102,7 +102,7 @@ class StockWarehouse(models.Model):
     def create(self, values):
         new_wh = super(StockWarehouse, self).create(values)
         waste_loc = new_wh._create_waste_loc()
-        self.waste_loc_id = waste_loc.id
+        new_wh.waste_loc_id = waste_loc.id
         waste_type = new_wh._create_waste_type()
-        self.waste_type_id = waste_type.id
+        new_wh.waste_type_id = waste_type.id
         return new_wh
