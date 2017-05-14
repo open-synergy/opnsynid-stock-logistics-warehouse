@@ -102,7 +102,7 @@ class StockWarehouse(models.Model):
     def create(self, values):
         new_wh = super(StockWarehouse, self).create(values)
         consume_loc = new_wh._create_consume_loc()
-        self.consume_loc_id = consume_loc.id
+        new_wh.consume_loc_id = consume_loc.id
         consume_type = new_wh._create_consume_type()
-        self.consume_type_id = consume_type.id
+        new_wh.consume_type_id = consume_type.id
         return new_wh
