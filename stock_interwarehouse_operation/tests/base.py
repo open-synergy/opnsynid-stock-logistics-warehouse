@@ -13,6 +13,7 @@ class BaseInterwarehouseOperation(TransactionCase):
         # Data
         self.warehouse =\
             self.env.ref('stock.warehouse0')
+        self.obj_wh = self.env["stock.warehouse"]
 
     def create_route_interwarehouse_pull_error_1(self):
         # Check Create Route Interwarehouse Pull
@@ -110,3 +111,49 @@ class BaseInterwarehouseOperation(TransactionCase):
         ).button_reset()
 
         return val
+
+    def create_wh(self, values):
+        wh = self.obj_wh.create(values)
+        self.assertIsNotNone(wh.interwarehouse_in_type_id)
+        self._check_type_in(wh)
+        self.assertIsNotNone(wh.interwarehouse_out_type_id)
+        self._check_type_out(wh)
+        self.assertIsNotNone(wh.transit_pull_loc_id)
+        self.assertIsNotNone(wh.transit_push_loc_id)
+        self.assertIsNotNone(wh.inter_warehouse_pull_route_id)
+        self.assertIsNotNone(wh.inter_warehouse_push_route_id)
+        return wh
+
+    def edit_wh(self, wh, values):
+        wh.write(values)
+        self._check_type_in(wh)
+        self._check_type_out(wh)
+        return wh
+
+    def _check_type_in(self, wh):
+        if wh.reception_steps in ["one_step", "transit_one_step"]:
+            self.assertEqual(
+                wh.interwarehouse_in_type_id.default_location_dest_id,
+                wh.lot_stock_id)
+        else:
+            self.assertEqual(
+                wh.interwarehouse_in_type_id.default_location_dest_id,
+                wh.wh_input_stock_loc_id)
+        for supply_wh in wh.resupply_wh_ids:
+            swh_out = supply_wh.interwarehouse_out_type_id
+            self.assertIn(
+                supply_wh.transit_pull_loc_id.id,
+                wh.interwarehouse_in_type_id.allowed_location_ids.ids)
+            self.assertIn(
+                wh.transit_push_loc_id.id,
+                swh_out.allowed_dest_location_ids.ids)
+
+    def _check_type_out(self, wh):
+        if wh.delivery_steps in ["ship_only", "ship_transit"]:
+            self.assertEqual(
+                wh.interwarehouse_out_type_id.default_location_src_id,
+                wh.lot_stock_id)
+        else:
+            self.assertEqual(
+                wh.interwarehouse_out_type_id.default_location_src_id,
+                wh.wh_output_stock_loc_id)
