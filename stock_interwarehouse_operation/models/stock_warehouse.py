@@ -3,6 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp import models, fields, api
+from openerp.tools.translate import _
+from openerp.exceptions import Warning as UserError
 
 
 class StockWarehouse(models.Model):
@@ -108,7 +110,8 @@ class StockWarehouse(models.Model):
     @api.multi
     def _prepare_interwarehouse_in_type(self):
         self.ensure_one()
-        location_dest = self.lot_stock_id
+        location_dest = self._get_push_route_dest_location()[
+            self.reception_steps]
         sequence = self._create_interwarehouse_in_sequence()
         return {
             "name": "Inter-Warehouse In",
@@ -130,10 +133,10 @@ class StockWarehouse(models.Model):
     @api.multi
     def _prepare_interwarehouse_out_type(self):
         self.ensure_one()
-        location_src = self.lot_stock_id
+        location_src = self._get_pull_route_src_location()[self.delivery_steps]
         sequence = self._create_interwarehouse_out_sequence()
         return {
-            "name": "Inter-Warehouse In",
+            "name": "Inter-Warehouse Out",
             "warehouse_id": self.id,
             "sequence_id": sequence.id,
             "code": "outgoing",
@@ -146,33 +149,56 @@ class StockWarehouse(models.Model):
         self.ensure_one()
         obj_type = self.env["stock.picking.type"]
         picking_type = obj_type.create(
-            self._prepare_interwarehouse_in_type())
+            self._prepare_interwarehouse_out_type())
         return picking_type
 
     @api.multi
-    def _prepare_route_interwarehouse_push(self):
+    def _get_push_route_dest_location(self):
         self.ensure_one()
-        code = self.code
-        location = self.lot_stock_id
+        return {
+            "one_step": self.lot_stock_id,
+            "two_steps": self.wh_input_stock_loc_id,
+            "three_steps": self.wh_input_stock_loc_id,
+            "transit_one_step": self.lot_stock_id,
+            "transit_two_steps": self.wh_input_stock_loc_id,
+            "transit_three_steps": self.wh_input_stock_loc_id,
+        }
+
+    @api.multi
+    def _prepare_push_rule(self, step=False):
+        self.ensure_one()
+        result = []
+        if not step:
+            step = self.reception_steps
+        location = self._get_push_route_dest_location().get(step, False)
+        if not location:
+            raise UserError(_("No location"))
         transit_loc = self.transit_push_loc_id and \
             self.transit_push_loc_id or \
             self._create_location_pull()
         in_type = self.interwarehouse_in_type_id and \
             self.interwarehouse_in_type_id or \
             self._create_type_interwarehouse_in()
+        result.append((0, 0, {
+            "name": self.code + ": Transit Push > " + self.code + ": Stock",
+            "location_from_id": transit_loc.id,
+            "location_dest_id": location.id,
+            "picking_type_id": in_type.id,
+            "auto": "manual",
+        }))
+        return result
+
+    @api.multi
+    def _prepare_route_interwarehouse_push(self):
+        self.ensure_one()
         return {
-            "name": self.code + ":Inter-Warehouse Push",
+            "name": self.name + ": Inter-Warehouse Push",
             "product_categ_selectable": True,
             "product_selectable": False,
             "warehouse_selectable": False,
             "sale_selectable": False,
-            "push_ids": [(0, 0, {
-                "name": code + ": Transit Push > " + code + ": Stock",
-                "location_from_id": transit_loc.id,
-                "location_dest_id": location.id,
-                "picking_type_id": in_type.id,
-                "auto": "manual",
-            })]}
+            "push_ids": self._prepare_push_rule(),
+        }
 
     @api.multi
     def _create_route_interwarehouse_push(self):
@@ -183,29 +209,52 @@ class StockWarehouse(models.Model):
         return route
 
     @api.multi
-    def _prepare_route_interwarehouse_pull(self):
+    def _get_pull_route_src_location(self):
         self.ensure_one()
-        code = self.code
-        location = self.lot_stock_id
+        return {
+            "ship_only": self.lot_stock_id,
+            "pick_ship": self.wh_output_stock_loc_id,
+            "pick_pack_ship": self.wh_output_stock_loc_id,
+            "ship_transit": self.lot_stock_id,
+            "pick_ship_transit": self.wh_output_stock_loc_id,
+            "pick_pack_ship_transit": self.wh_output_stock_loc_id,
+        }
+
+    @api.multi
+    def _prepare_pull_rule(self, step=False):
+        self.ensure_one()
+        if not step:
+            step = self.delivery_steps
+        location = self._get_pull_route_src_location().get(step, False)
+        result = []
+        if not location:
+            raise UserError(_("No location"))
         transit_loc = self.transit_pull_loc_id and \
             self.transit_pull_loc_id or \
             self._create_location_pull()
         out_type = self.interwarehouse_out_type_id and \
             self.interwarehouse_out_type_id or \
             self._create_type_interwarehouse_out()
+        result.append((0, 0, {
+            "name": self.code + ": Transit Pull < " + self.code + ": Stock",
+            "location_id": transit_loc.id,
+            "action": "move",
+            "picking_type_id": out_type.id,
+            "location_src_id": location.id,
+        }))
+        return result
+
+    @api.multi
+    def _prepare_route_interwarehouse_pull(self):
+        self.ensure_one()
         return {
-            "name": self.code + ":Inter-Warehouse Push",
+            "name": self.name + ": Inter-Warehouse Pull",
             "product_categ_selectable": True,
             "product_selectable": False,
             "warehouse_selectable": False,
             "sale_selectable": False,
-            "pull_ids": [(0, 0, {
-                "name": code + ": Transit Pull < " + code + ": Stock",
-                "location_id": transit_loc.id,
-                "action": "move",
-                "picking_type_id": out_type.id,
-                "location_src_id": location.id
-            })]}
+            "pull_ids": self._prepare_pull_rule(),
+        }
 
     @api.multi
     def _create_route_interwarehouse_pull(self):
@@ -283,3 +332,119 @@ class StockWarehouse(models.Model):
                     "picking_type_id": warehouse.interwarehouse_in_type_id.id,
                     "location_src_id": wh.transit_pull_loc_id.id,
                 })
+
+    @api.model
+    def create_sequences_and_picking_types(self, warehouse):
+        super(StockWarehouse, self).\
+            create_sequences_and_picking_types(warehouse)
+        transit_pull_loc = warehouse._create_location_pull()
+        transit_push_loc = warehouse._create_location_push()
+        warehouse.write({
+            "transit_pull_loc_id": transit_pull_loc.id,
+            "transit_push_loc_id": transit_push_loc.id,
+        })
+        transit_in_type = warehouse._create_type_interwarehouse_in()
+        transit_out_type = warehouse._create_type_interwarehouse_out()
+        warehouse.write({
+            "interwarehouse_in_type_id": transit_in_type.id,
+            "interwarehouse_out_type_id": transit_out_type.id,
+        })
+
+    @api.multi
+    def create_routes(self, warehouse):
+        result = super(StockWarehouse, self).create_routes(warehouse)
+        pull_route = warehouse._create_route_interwarehouse_pull()
+        push_route = warehouse._create_route_interwarehouse_push()
+        result.update({
+            "inter_warehouse_pull_route_id": pull_route.id,
+            "inter_warehouse_push_route_id": push_route.id,
+        })
+        return result
+
+    @api.multi
+    def change_route(
+            self, warehouse, new_reception_step=False,
+            new_delivery_step=False):
+        super(StockWarehouse, self).change_route(
+            warehouse, new_reception_step=new_reception_step,
+            new_delivery_step=new_delivery_step)
+        warehouse.inter_warehouse_pull_route_id.pull_ids.unlink()
+        warehouse.inter_warehouse_pull_route_id.write({
+            "pull_ids": self._prepare_pull_rule(new_delivery_step),
+        })
+        warehouse.inter_warehouse_push_route_id.push_ids.unlink()
+        warehouse.inter_warehouse_push_route_id.write({
+            "push_ids": self._prepare_push_rule(new_reception_step),
+        })
+        if new_reception_step:
+            location_dest = self._get_push_route_dest_location()[
+                new_reception_step]
+            res_in = {
+                "default_location_dest_id": location_dest.id,
+                "allowed_dest_location_ids": [(6, 0, [location_dest.id])],
+            }
+            warehouse.interwarehouse_in_type_id.write(res_in)
+        if new_delivery_step:
+            location_src = self._get_pull_route_src_location()[
+                new_delivery_step]
+            res_out = {
+                "default_location_src_id": location_src.id,
+                "allowed_location_ids": [(6, 0, [location_src.id])],
+            }
+            warehouse.interwarehouse_out_type_id.write(res_out)
+        return True
+
+    @api.model
+    def create(self, values):
+        new_wh = super(StockWarehouse, self).create(values)
+        obj_wh = self.env["stock.warehouse"]
+        if values.get("resupply_wh_ids"):
+            for cmd in values.get("resupply_wh_ids"):
+                if cmd[0] == 6:
+                    new_ids = set(cmd[2])
+                    for add_wh in obj_wh.browse(new_ids):
+                        add_wh.interwarehouse_out_type_id.write({
+                            "allowed_dest_location_ids":
+                                [(4, new_wh.transit_push_loc_id.id)],
+                        })
+                        new_wh.interwarehouse_in_type_id.write({
+                            "allowed_location_ids":
+                                [(4, add_wh.transit_pull_loc_id.id)],
+                        })
+        return new_wh
+
+    @api.multi
+    def write(self, values):
+        obj_wh = self.env["stock.warehouse"]
+        for warehouse in self:
+            if values.get("resupply_wh_ids"):
+                for cmd in values.get("resupply_wh_ids"):
+                    if cmd[0] == 6:
+                        new_ids = set(cmd[2])
+                        old_ids = set(warehouse.resupply_wh_ids.ids)
+                        to_remove_ids = old_ids - new_ids
+                        to_add_ids = new_ids - old_ids
+                        allowed_loc_ids = []
+                        wh_tpush_loc = warehouse.transit_push_loc_id
+                        for add_wh in obj_wh.browse(to_add_ids):
+                            allowed_loc_ids.append(
+                                add_wh.transit_pull_loc_id.id)
+                            add_wh.interwarehouse_out_type_id.write({
+                                "allowed_dest_location_ids":
+                                    [(4, wh_tpush_loc.id)],
+                            })
+                            warehouse.interwarehouse_in_type_id.write({
+                                "allowed_location_ids":
+                                    [(4, add_wh.transit_pull_loc_id.id)],
+                            })
+                        for old_wh in obj_wh.browse(to_remove_ids):
+                            if old_wh.interwarehouse_out_type_id:
+                                old_wh.interwarehouse_out_type_id.write({
+                                    "allowed_dest_location_ids":
+                                        [(3, wh_tpush_loc.id)],
+                                })
+                                warehouse.interwarehouse_in_type_id.write({
+                                    "allowed_location_ids":
+                                        [(3, old_wh.transit_pull_loc_id.id)],
+                                })
+        return super(StockWarehouse, self).write(values)
