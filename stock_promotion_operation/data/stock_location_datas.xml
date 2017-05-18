@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+<data>
+<record id="stock_location_supplier_promotion" model="stock.location">
+    <field name="name">Supplier Promotion</field>
+    <field name="location_id" ref="stock.stock_location_locations_partner"/>
+    <field name="usage">supplier</field>
+    <field name="company_id"></field>
+</record>
+
+<record id="stock_location_customer_promotion" model="stock.location">
+    <field name="name">Customer Promotion</field>
+    <field name="location_id" ref="stock.stock_location_locations_partner"/>
+    <field name="usage">customer</field>
+    <field name="company_id"></field>
+</record>
+</data>
+</openerp>
