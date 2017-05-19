@@ -193,9 +193,9 @@ class StockWarehouse(models.Model):
         self.ensure_one()
         return {
             "name": self.name + ": Inter-Warehouse Push",
-            "product_categ_selectable": True,
+            "product_categ_selectable": False,
             "product_selectable": False,
-            "warehouse_selectable": False,
+            "warehouse_selectable": True,
             "sale_selectable": False,
             "push_ids": self._prepare_push_rule(),
         }
@@ -249,9 +249,9 @@ class StockWarehouse(models.Model):
         self.ensure_one()
         return {
             "name": self.name + ": Inter-Warehouse Pull",
-            "product_categ_selectable": True,
+            "product_categ_selectable": False,
             "product_selectable": False,
-            "warehouse_selectable": False,
+            "warehouse_selectable": True,
             "sale_selectable": False,
             "pull_ids": self._prepare_pull_rule(),
         }
@@ -398,53 +398,84 @@ class StockWarehouse(models.Model):
     def create(self, values):
         new_wh = super(StockWarehouse, self).create(values)
         obj_wh = self.env["stock.warehouse"]
-        if values.get("resupply_wh_ids"):
-            for cmd in values.get("resupply_wh_ids"):
-                if cmd[0] == 6:
-                    new_ids = set(cmd[2])
-                    for add_wh in obj_wh.browse(new_ids):
-                        add_wh.interwarehouse_out_type_id.write({
-                            "allowed_dest_location_ids":
-                                [(4, new_wh.transit_push_loc_id.id)],
-                        })
-                        new_wh.interwarehouse_in_type_id.write({
-                            "allowed_location_ids":
-                                [(4, add_wh.transit_pull_loc_id.id)],
-                        })
+        new_wh_push_route = new_wh.inter_warehouse_push_route_id
+        if not values.get("resupply_wh_ids", False):
+            return new_wh
+
+        for cmd in values.get("resupply_wh_ids"):
+            if cmd[0] != 6:
+                continue
+
+            new_ids = set(cmd[2])
+            for add_wh in obj_wh.browse(new_ids):
+                add_wh_pull_route = add_wh.inter_warehouse_pull_route_id
+                add_wh.interwarehouse_out_type_id.write({
+                    "allowed_dest_location_ids":
+                        [(4, new_wh.transit_push_loc_id.id)],
+                })
+                new_wh.interwarehouse_in_type_id.write({
+                    "allowed_location_ids":
+                        [(4, add_wh.transit_pull_loc_id.id)],
+                })
+                new_wh.write({
+                    "route_ids": [(4, add_wh_pull_route.id)],
+                })
+                add_wh.write({
+                    "route_ids": [(4, new_wh_push_route.id)],
+                })
         return new_wh
 
     @api.multi
     def write(self, values):
         obj_wh = self.env["stock.warehouse"]
         for warehouse in self:
-            if values.get("resupply_wh_ids"):
-                for cmd in values.get("resupply_wh_ids"):
-                    if cmd[0] == 6:
-                        new_ids = set(cmd[2])
-                        old_ids = set(warehouse.resupply_wh_ids.ids)
-                        to_remove_ids = old_ids - new_ids
-                        to_add_ids = new_ids - old_ids
-                        allowed_loc_ids = []
-                        wh_tpush_loc = warehouse.transit_push_loc_id
-                        for add_wh in obj_wh.browse(to_add_ids):
-                            allowed_loc_ids.append(
-                                add_wh.transit_pull_loc_id.id)
-                            add_wh.interwarehouse_out_type_id.write({
-                                "allowed_dest_location_ids":
-                                    [(4, wh_tpush_loc.id)],
-                            })
-                            warehouse.interwarehouse_in_type_id.write({
-                                "allowed_location_ids":
-                                    [(4, add_wh.transit_pull_loc_id.id)],
-                            })
-                        for old_wh in obj_wh.browse(to_remove_ids):
-                            if old_wh.interwarehouse_out_type_id:
-                                old_wh.interwarehouse_out_type_id.write({
-                                    "allowed_dest_location_ids":
-                                        [(3, wh_tpush_loc.id)],
-                                })
-                                warehouse.interwarehouse_in_type_id.write({
-                                    "allowed_location_ids":
-                                        [(3, old_wh.transit_pull_loc_id.id)],
-                                })
+            wh_push_route = warehouse.inter_warehouse_push_route_id
+            if not values.get("resupply_wh_ids", False):
+                continue
+
+            for cmd in values.get("resupply_wh_ids"):
+                if cmd[0] != 6:
+                    continue
+
+                new_ids = set(cmd[2])
+                old_ids = set(warehouse.resupply_wh_ids.ids)
+                to_remove_ids = old_ids - new_ids
+                to_add_ids = new_ids - old_ids
+                allowed_loc_ids = []
+                wh_tpush_loc = warehouse.transit_push_loc_id
+                for add_wh in obj_wh.browse(to_add_ids):
+                    add_wh_pull_route = add_wh.inter_warehouse_pull_route_id
+                    allowed_loc_ids.append(
+                        add_wh.transit_pull_loc_id.id)
+                    add_wh.interwarehouse_out_type_id.write({
+                        "allowed_dest_location_ids":
+                            [(4, wh_tpush_loc.id)],
+                    })
+                    warehouse.interwarehouse_in_type_id.write({
+                        "allowed_location_ids":
+                            [(4, add_wh.transit_pull_loc_id.id)],
+                    })
+                    warehouse.write({
+                        "route_ids": [(4, add_wh_pull_route.id)],
+                    })
+                    add_wh.write({
+                        "route_ids": [(4, wh_push_route.id)],
+                    })
+                for old_wh in obj_wh.browse(to_remove_ids):
+                    old_wh_pull_route = old_wh.inter_warehouse_pull_route_id
+                    if old_wh.interwarehouse_out_type_id:
+                        old_wh.interwarehouse_out_type_id.write({
+                            "allowed_dest_location_ids":
+                                [(3, wh_tpush_loc.id)],
+                        })
+                        warehouse.interwarehouse_in_type_id.write({
+                            "allowed_location_ids":
+                                [(3, old_wh.transit_pull_loc_id.id)],
+                        })
+                    warehouse.write({
+                        "route_ids": [(3, old_wh_pull_route.id)],
+                    })
+                    old_wh.write({
+                        "route_ids": [(3, wh_push_route.id)],
+                    })
         return super(StockWarehouse, self).write(values)
