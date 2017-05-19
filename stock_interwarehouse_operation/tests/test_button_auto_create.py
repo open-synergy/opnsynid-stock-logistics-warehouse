@@ -110,8 +110,17 @@ class TestButtonAutoCreate(BaseInterwarehouseOperation):
             "code": "X2",
         })
 
-        self.create_wh({
+        wh3 = self.create_wh({
             "name": "X WH 3",
             "code": "X3",
             "resupply_wh_ids": [(6, 0, [wh1.id, wh2.id])],
+        })
+
+        wh4 = self.create_wh({
+            "name": "X WH 4",
+            "code": "X4",
+        })
+
+        self.edit_wh(wh3, {
+            "resupply_wh_ids": [(6, 0, [wh4.id, wh2.id])],
         })

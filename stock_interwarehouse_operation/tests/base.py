@@ -122,13 +122,24 @@ class BaseInterwarehouseOperation(TransactionCase):
         self.assertIsNotNone(wh.transit_push_loc_id)
         self.assertIsNotNone(wh.inter_warehouse_pull_route_id)
         self.assertIsNotNone(wh.inter_warehouse_push_route_id)
+        self._check_wh_routes(wh)
         return wh
 
     def edit_wh(self, wh, values):
         wh.write(values)
         self._check_type_in(wh)
         self._check_type_out(wh)
+        self._check_wh_routes(wh)
         return wh
+
+    def _check_wh_routes(self, wh):
+        for supply_wh in wh.resupply_wh_ids:
+            self.assertIn(
+                supply_wh.inter_warehouse_pull_route_id.id,
+                wh.route_ids.ids)
+            self.assertIn(
+                wh.inter_warehouse_push_route_id.id,
+                supply_wh.route_ids.ids)
 
     def _check_type_in(self, wh):
         if wh.reception_steps in ["one_step", "transit_one_step"]:
