@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Promotion Operation",
-    "version": "8.0.1.0.3",
+    "version": "8.0.2.0.0",
     "author": "OpenSynergy Indonesia",
     "website": "https://opensynergy-indonesia.com",
     "category": "Stock Management",
@@ -12,6 +12,7 @@
         "stock_operation_type_location",
         "stock_route_transit",
         "stock_push_rule_picking_type",
+        "stock_pull_rule_picking_type",
     ],
     "data": [
         "data/stock_location_datas.xml",

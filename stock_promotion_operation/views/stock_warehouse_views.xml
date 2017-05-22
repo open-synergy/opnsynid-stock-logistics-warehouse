@@ -34,6 +34,36 @@
         </xpath>
     </field>
 </record>
+
+<record id="stock_warehouse_view_form_2" model="ir.ui.view">
+    <field name="name">Form - Stock Warehouse Interwarehouse</field>
+    <field name="model">stock.warehouse</field>
+    <field name="inherit_id" ref="stock_warehouse_technical_information.stock_warehouse_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='grp_route']" position="inside">
+            <label for="customer_promotion_route_id"/>
+            <div>
+                <field name="customer_promotion_route_id"/>
+                <button name="button_create_customer_promotion"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('customer_promotion_route_id', '!=', False)]}"
+                />
+            </div>
+            <label for="supplier_promotion_route_id"/>
+            <div>
+                <field name="supplier_promotion_route_id"/>
+                <button name="button_create_supplier_promotion"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('supplier_promotion_route_id', '!=', False)]}"
+                />
+            </div>
+        </xpath>
+    </field>
+</record>
    
 </data>
 </openerp>
