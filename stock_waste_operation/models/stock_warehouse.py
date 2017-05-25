@@ -36,7 +36,7 @@ class StockWarehouse(models.Model):
         self.ensure_one()
         data = {
             "name": self.code + " - Waste",
-            "prefix": self.code + "/SCR/",
+            "prefix": self.code + "/WST/",
             "padding": 6
         }
         return data
