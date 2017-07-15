@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+<data>
+
+<record id="stock_inventory_view_form" model="ir.ui.view">
+    <field name="name">Stock Inventory UoS Information</field>
+    <field name="model">stock.inventory</field>
+    <field name="inherit_id" ref="stock.view_inventory_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='line_ids']/tree/field[@name='product_qty']" position="after">
+            <field name="product_uos_id" groups="product.group_uos"/>
+            <field name="product_uos_qty" groups="product.group_uos"/>
+            <field name="product_uos_theoretical_qty" groups="product.group_uos"/>
+        </xpath>
+    </field>
+</record>
+   
+</data>
+</openerp>
