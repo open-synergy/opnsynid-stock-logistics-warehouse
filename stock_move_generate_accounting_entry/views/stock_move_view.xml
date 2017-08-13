@@ -5,12 +5,64 @@
 <openerp>
     <data>
         <record id="stock_move_view_form" model="ir.ui.view">
-            <field name="name">Stock Move Note Form</field>
+            <field name="name">Generate Accounting Entry From Stock Move</field>
             <field name="model">stock.move</field>
             <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="mode">primary</field>
+            <field name="priority" eval="100"/>
             <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="create">false</attribute>
+                    <attribute name="delete">false</attribute>
+                </xpath>
                 <xpath expr="//field[@name='state']" position="before">
-                    <button name="action_generate_account_entry" string="Generate Accounting Entry" type="object"/>
+                    <button name="action_generate_account_entry" string="Generate Accounting Entry" type="object" states="done" icon="gtk-execute"/>
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="price_unit"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_move_view_tree" model="ir.ui.view">
+            <field name="name">Generate Accounting Entry From Stock Move</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree"/>
+            <field name="mode">primary</field>
+            <field name="priority" eval="100"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="create">false</attribute>
+                    <attribute name="delete">false</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="price_unit"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_move_view_search" model="ir.ui.view">
+            <field name="name">Generate Accounting Entry From Stock Move</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_search"/>
+            <field name="mode">primary</field>
+            <field name="priority" eval="100"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='ready']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//filter[@name='future']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//filter[@name='done']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//filter[@icon='terp-go-today']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <filter name="filter_entry_ok" string="Accounting Entry Exists" domain="[('account_move_line_ids','!=',False)]"/>
+                    <filter name="filter_entry_not_ok" string="Accounting Entry Doesn't Exist" domain="[('account_move_line_ids','=',False)]"/>
                 </xpath>
             </field>
         </record>
@@ -21,6 +73,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" eval="False"/>
+            <field name="search_view_id" eval="stock_move_view_search"/>
             <field name="context">{}</field>
             <field name="domain">[('state','=','done'),('product_id.valuation','=','real_time'),'|','&amp;',('location_id.usage','=','internal'),('location_dest_id.usage','!=','internal'),'&amp;',('location_id.usage','!=','internal'),('location_dest_id.usage','=','internal')]</field>
         </record>
@@ -28,7 +81,7 @@
         <record id="stock_move_tree_action" model="ir.actions.act_window.view">
             <field name="sequence" eval="1"/>
             <field name="view_mode">tree</field>
-            <field name="view_id" ref="stock.view_move_tree"/>
+            <field name="view_id" ref="stock_move_view_tree"/>
             <field name="act_window_id" ref="stock_move_action"/>
         </record>
 

@@ -7,6 +7,8 @@
             <field name="model">stock.generate_stock_move_account_entry</field>
             <field name="arch" type="xml">
                 <form>
+                    Warning!<br/>
+                    This will delete existing accounting entry (if there's any), and recreate it
                     <footer>
                         <button name="action_generate" string="Generate" type="object" class="oe_highlight"/>
                         Or
@@ -17,7 +19,7 @@
         </record>
 
         <record id="stock_generate_stock_move_account_entry_action" model="ir.actions.act_window">
-            <field name="name">Generate Stock Move Accounting Entry</field>
+            <field name="name">Generate Accounting Entry From Stock Move</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">stock.generate_stock_move_account_entry</field>
             <field name="view_type">form</field>
