@@ -20,7 +20,6 @@ class StockMove(models.Model):
             if move.account_move_line_ids:
                 move.account_move_line_ids[0].move_id.unlink()
             move._generate_account_entry()
-            move.product_price_update_before_done()
 
     @api.multi
     def _generate_account_entry(self):
