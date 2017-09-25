@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+<record id="base_action_rule_1_data" model="base.action.rule">
+    <field name="name">Update Sale Order Product Policy</field>
+    <field name="model_id" ref="product.model_product_product"/>
+    <field name="kind">on_create_or_write</field>
+    <field name="act_user_id" ref="base.user_root"/>
+    <field name="server_action_ids" eval="[(6,0,[ref('action_server_1_data')])]"/>
+</record>
+
+<record id="base_action_rule_2_data" model="base.action.rule">
+    <field name="name">Update Sale Order Product Policy</field>
+    <field name="model_id" ref="product.model_product_template"/>
+    <field name="kind">on_create_or_write</field>
+    <field name="act_user_id" ref="base.user_root"/>
+    <field name="server_action_ids" eval="[(6,0,[ref('action_server_2_data')])]"/>
+</record>
+
+</data>
+</openerp>
