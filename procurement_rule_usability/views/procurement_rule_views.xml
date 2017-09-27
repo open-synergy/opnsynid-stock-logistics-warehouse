@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+    <data>
+
+        <record id="procurement_rule_view_tree" model="ir.ui.view">
+            <field name="name">Procurement Rule Tree</field>
+            <field name="model">procurement.rule</field>
+            <field name="inherit_id" ref="procurement.view_procurement_rule_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='action']" position="after">
+                    <field name="active"/>
+                </xpath>
+            </field>
+        </record>
+   
+    </data>
+</openerp>
+
