@@ -6,21 +6,21 @@
 <data>
 
 <record id="action_server_1_data" model="ir.actions.server">
-    <field name="name">Update Sale Order Product Policy</field>
+    <field name="name">Update Stock Picking Product Policy</field>
     <field name="model_id" ref="product.model_product_product"/>
     <field name="state">code</field>
     <field name="code">
 obj_type = env["stock.picking.type"]
-obj_type.search([])._compute_all_allowed_product_ids()</field>
+obj_type.sudo().search([])._compute_all_allowed_product_ids()</field>
 </record>
 
 <record id="action_server_2_data" model="ir.actions.server">
-    <field name="name">Update Sale Order Product Policy</field>
+    <field name="name">Update Stock Picking Product Policy</field>
     <field name="model_id" ref="product.model_product_template"/>
     <field name="state">code</field>
     <field name="code">
 obj_type = env["stock.picking.type"]
-obj_type.search([])._compute_all_allowed_product_ids()</field>
+obj_type.sudo().search([])._compute_all_allowed_product_ids()</field>
 </record>
 
 </data>

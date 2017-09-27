@@ -6,7 +6,7 @@
 <data>
 
 <record id="base_action_rule_1_data" model="base.action.rule">
-    <field name="name">Update Sale Order Product Policy</field>
+    <field name="name">Update Stock Picking Product Policy</field>
     <field name="model_id" ref="product.model_product_product"/>
     <field name="kind">on_create_or_write</field>
     <field name="act_user_id" ref="base.user_root"/>
@@ -14,7 +14,7 @@
 </record>
 
 <record id="base_action_rule_2_data" model="base.action.rule">
-    <field name="name">Update Sale Order Product Policy</field>
+    <field name="name">Update Stock Picking Product Policy</field>
     <field name="model_id" ref="product.model_product_template"/>
     <field name="kind">on_create_or_write</field>
     <field name="act_user_id" ref="base.user_root"/>
