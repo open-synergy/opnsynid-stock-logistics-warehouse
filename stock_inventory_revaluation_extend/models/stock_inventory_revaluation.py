@@ -92,11 +92,19 @@ class StockInventoryRevaluation(models.Model):
         return check
 
     @api.multi
+    def _check_generate_accounting_entry(self):
+        self.ensure_one()
+        return True
+
+    @api.multi
     def _generate_accounting_entry(self):
         self.ensure_one()
         timenow = time.strftime('%Y-%m-%d')
         move_data = self._prepare_move_data(timenow)
         move_line_obj = self.env['account.move.line']
+
+        if not self._check_generate_accounting_entry():
+            return True
 
         if not self._check_increase_decrease_account():
             raise UserError(_("Please add an Increase Account and "
