@@ -8,8 +8,9 @@ Stock Operation Type Create Menu
 
 This module adds a button to create menu according to Operation Type.
 Format menu will be: 
-    * <warehouse_name>
-        * <operation_type_name>
+
+--<warehouse_name>
+-----<operation_type_name>
 
 Installation
 ============
@@ -26,9 +27,10 @@ To install this module, you need to:
 Usage
 =====
 To use this module, you need to:
-    #. Go to menu *Warehouse -> Configuration -> Types of Operation
-    #. Select one record on the list or create a new record
-    #. On bottom of form, klik a button named *Create Menu*
+
+1. Go to menu *Warehouse -> Configuration -> Types of Operation*
+2. Select one record on the list or create a new record
+3. On bottom of form, klik a button named *Create Menu*
 
 Credits
 =======
