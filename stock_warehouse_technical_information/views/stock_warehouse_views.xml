@@ -9,6 +9,10 @@
         <field name="model">stock.warehouse</field>
         <field name="inherit_id" ref="stock.view_warehouse"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='wh_input_stock_loc_id']" position="before">
+                <field name="view_location_id"/>
+                <field name="lot_stock_id"/>
+            </xpath>
             <xpath expr="//notebook/page[2]/group/group[last()]" position="after">
                 <group name="grp_route" string="Routes">
                     <field name="crossdock_route_id"/>
