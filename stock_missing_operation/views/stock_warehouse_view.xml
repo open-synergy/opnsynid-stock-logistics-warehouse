@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+    <data>
+
+        <record id="stock_warehouse_view_form" model="ir.ui.view">
+            <field name="name">Missing Operation</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='wh_output_stock_loc_id']" position="before">
+                    <label for="missing_loc_id"/>
+                    <div>
+                        <field name="missing_loc_id"/>
+                        <button name="button_create_missing_loc"
+                            type="object"
+                            string="(create)"
+                            class="oe_link"
+                            attrs="{'invisible': [('missing_loc_id', '!=', False)]}"
+                        />
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='out_type_id']" position="after">
+                    <label for="missing_type_id"/>
+                    <div>
+                        <field name="missing_type_id"/>
+                        <button name="button_create_missing_type"
+                            type="object"
+                            string="(create)"
+                            class="oe_link"
+                            attrs="{'invisible': [('missing_type_id', '!=', False)]}"
+                        />
+                    </div>
+                </xpath>
+            </field>
+        </record>
+       
+    </data>
+</openerp>
