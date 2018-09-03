@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+    <data>
+
+        <record id="res_partner_view_form" model="ir.ui.view">
+            <field name="name">Partner - Add Donation Location</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="stock.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='property_stock_supplier']" position="after">
+                    <field name="property_stock_donation_in_id"/>
+                    <field name="property_stock_donation_out_id"/>
+                </xpath>
+            </field>
+        </record>
+       
+    </data>
+</openerp>
