@@ -26,3 +26,8 @@ class StockInventory(models.Model):
         return self.env["stock.location"].search(
             [("location_id", "child_of", location_ids.ids),
              ("usage", "in", ["internal", "transit"])]) + result
+
+    @api.multi
+    def action_force_done(self):
+        return super(StockInventory,
+                     self.with_context(bypass_lockdown=True)).action_done()
