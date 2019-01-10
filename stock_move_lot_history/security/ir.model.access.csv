@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_move_lot_in,stock.stock_move_lot_in all user,model_stock_stock_move_lot_in,,1,0,0,0
+access_stock_move_lot_out,stock.stock_move_lot_out all user,model_stock_stock_move_lot_out,,1,0,0,0
+access_stock_move_lot_history,stock.stock_move_lot_history all user,model_stock_stock_move_lot_history,,1,0,0,0
