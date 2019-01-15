@@ -5,3 +5,4 @@
 from . import stock_move_lot_in
 from . import stock_move_lot_out
 from . import stock_move_lot_history
+from . import stock_move_lot_cummulative
