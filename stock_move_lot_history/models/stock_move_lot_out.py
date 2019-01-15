@@ -81,6 +81,7 @@ class StockMoveLotOut(models.Model):
                         JOIN stock_move_lot_info AS e ON a.id = e.move_id
                         JOIN stock_location AS f ON a.location_id = f.id
                         JOIN stock_location AS g ON a.location_dest_id = g.id
+                        JOIN stock_production_lot AS h ON e.lot_id = h.id
                         WHERE   a.state = 'done' AND
                                 g.usage <> 'internal' AND
                                 f.usage = 'internal'
