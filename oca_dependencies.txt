@@ -16,3 +16,4 @@ stock-logistics-transport https://github.com/OCA/stock-logistics-transport 8.0
 stock-logistics-warehouse https://github.com/OCA/stock-logistics-warehouse.git 8.0
 product-attribute https://github.com/OCA/product-attribute.git 8.0
 opnsynid-stock-logistics-workflow https://github.com/open-synergy/opnsynid-stock-logistics-workflow.git 8.0
+opnsynid-server-tools https://github.com/open-synergy/opnsynid-server-tools.git 8.0
