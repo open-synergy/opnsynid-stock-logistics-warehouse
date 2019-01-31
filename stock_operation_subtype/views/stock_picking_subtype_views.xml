@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+<record id="stock_picking_subtype_view_tree" model="ir.ui.view">
+    <field name="name">stock.picking_subtype tree</field>
+    <field name="model">stock.picking_subtype</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+        </tree>
+    </field>
+</record>
+
+<record id="stock_picking_subtype_view_form" model="ir.ui.view">
+    <field name="name">stock.picking_subtype form</field>
+    <field name="model">stock.picking_subtype</field>
+    <field name="arch" type="xml">
+        <form>
+            <group name="top" colspan="4" col="2">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="active"/>
+            </group>
+            <notebook>
+                <page name="note" string="Note">
+                    <field name="note" nolabel="1"/>
+                </page>
+            </notebook>
+        </form>
+    </field>
+</record>
+
+<record id="stock_picking_subtype_action" model="ir.actions.act_window">
+    <field name="name">Operation Subtype</field>
+    <field name="res_model">stock.picking_subtype</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<menuitem
+    id="stock_picking_subtype_menu"
+    name="Operation Subtype"
+    parent="stock.menu_stock_configuration"
+    action="stock_picking_subtype_action"
+    sequence="1" />
+</data>
+</openerp>

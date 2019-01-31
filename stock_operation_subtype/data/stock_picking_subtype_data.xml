@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="good_receipt_subtype" model="stock.picking_subtype">
+    <field name="name">Good Receipt</field>
+    <field name="code">GR</field>
+</record>
+
+<record id="internal_transfer_subtype" model="stock.picking_subtype">
+    <field name="name">Internal Transfer</field>
+    <field name="code">INT</field>
+</record>
+
+<record id="pick_subtype" model="stock.picking_subtype">
+    <field name="name">Pick</field>
+    <field name="code">PICK</field>
+</record>
+
+<record id="pack_subtype" model="stock.picking_subtype">
+    <field name="name">Pack</field>
+    <field name="code">PACK</field>
+</record>
+
+<record id="delivery_order_subtype" model="stock.picking_subtype">
+    <field name="name">Delivery Order</field>
+    <field name="code">DO</field>
+</record>
+
+</data>
+</openerp>

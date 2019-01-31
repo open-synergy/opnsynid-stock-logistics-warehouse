@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_picking_subtype_all,stock.picking_subtype all user,model_stock_picking_subtype,,1,0,0,0
+access_stock_picking_subtype_employee,stock.picking_subtype employee,model_stock_picking_subtype,base.group_user,1,1,1,1
