@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_other_receipt_operation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_other_receipt_operation
+#: view:stock.warehouse:stock_other_receipt_operation.stock_warehouse_view_form
+#: view:stock.warehouse:stock_other_receipt_operation.stock_warehouse_view_form_2
+msgid "(create)"
+msgstr ""
+
+#. module: stock_other_receipt_operation
+#: code:addons/stock_other_receipt_operation/models/stock_warehouse.py:80
+#, python-format
+msgid "Other Receipt"
+msgstr ""
+
+#. module: stock_other_receipt_operation
+#: field:stock.warehouse,other_receipt_route_id:0
+msgid "Other Receipt Route"
+msgstr ""
+
+#. module: stock_other_receipt_operation
+#: field:stock.warehouse,other_receipt_type_id:0
+msgid "Other Receipt Type"
+msgstr ""
+
+#. module: stock_other_receipt_operation
+#: model:ir.model,name:stock_other_receipt_operation.model_stock_warehouse
+msgid "Warehouse"
+msgstr ""
+
