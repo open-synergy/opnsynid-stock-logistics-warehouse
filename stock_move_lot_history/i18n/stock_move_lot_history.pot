@@ -1,0 +1,164 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_move_lot_history
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_history,company_id:0
+#: field:stock.stock_move_lot_in,company_id:0
+#: field:stock.stock_move_lot_out,company_id:0
+msgid "Company"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_in,cost:0
+#: field:stock.stock_move_lot_out,product_cost:0
+msgid "Cost"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_cummulative,date:0
+#: field:stock.stock_move_lot_history,date:0
+#: field:stock.stock_move_lot_in,date:0
+#: field:stock.stock_move_lot_out,date:0
+msgid "Date"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_history,name:0
+#: field:stock.stock_move_lot_in,name:0
+#: field:stock.stock_move_lot_out,name:0
+msgid "Description"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_cummulative,display_name:0
+#: field:stock.stock_move_lot_history,display_name:0
+#: field:stock.stock_move_lot_in,display_name:0
+#: field:stock.stock_move_lot_out,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_cummulative,id:0
+#: field:stock.stock_move_lot_history,id:0
+#: field:stock.stock_move_lot_in,id:0
+#: field:stock.stock_move_lot_out,id:0
+msgid "ID"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_cummulative,__last_update:0
+#: field:stock.stock_move_lot_history,__last_update:0
+#: field:stock.stock_move_lot_in,__last_update:0
+#: field:stock.stock_move_lot_out,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_history,location_id:0
+#: field:stock.stock_move_lot_in,location_id:0
+#: field:stock.stock_move_lot_out,location_id:0
+msgid "Location"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_cummulative,lot_id:0
+msgid "Lot"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_history,move_id:0
+#: field:stock.stock_move_lot_in,move_id:0
+#: field:stock.stock_move_lot_out,move_id:0
+msgid "Move"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_cummulative,cummulative_qty:0
+msgid "Past Quantity"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_history,picking_id:0
+#: field:stock.stock_move_lot_in,picking_id:0
+#: field:stock.stock_move_lot_out,picking_id:0
+msgid "Picking"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_history,picking_type_id:0
+#: field:stock.stock_move_lot_in,picking_type_id:0
+#: field:stock.stock_move_lot_out,picking_type_id:0
+msgid "Picking Type"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_cummulative,product_id:0
+#: field:stock.stock_move_lot_history,product_id:0
+#: field:stock.stock_move_lot_in,product_id:0
+#: field:stock.stock_move_lot_out,product_id:0
+msgid "Product"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_history,product_qty:0
+#: field:stock.stock_move_lot_in,product_qty:0
+#: field:stock.stock_move_lot_out,product_qty:0
+msgid "Product Qty"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_history,product_uom_id:0
+#: field:stock.stock_move_lot_in,product_uom_id:0
+#: field:stock.stock_move_lot_out,product_uom_id:0
+msgid "Product UoM"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_cummulative,product_qty:0
+msgid "Quantity"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_history,lot_id:0
+#: field:stock.stock_move_lot_in,lot_id:0
+#: field:stock.stock_move_lot_out,lot_id:0
+msgid "Serial Number"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: field:stock.stock_move_lot_cummulative,move_id:0
+msgid "Stock Move"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: model:ir.model,name:stock_move_lot_history.model_stock_stock_move_lot_cummulative
+msgid "Stock Move Lot Cummulative"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: model:ir.model,name:stock_move_lot_history.model_stock_stock_move_lot_history
+msgid "Stock Move Lot History"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: model:ir.model,name:stock_move_lot_history.model_stock_stock_move_lot_in
+msgid "Stock Move Lot In"
+msgstr ""
+
+#. module: stock_move_lot_history
+#: model:ir.model,name:stock_move_lot_history.model_stock_stock_move_lot_out
+msgid "Stock Move Lot Out"
+msgstr ""
+
