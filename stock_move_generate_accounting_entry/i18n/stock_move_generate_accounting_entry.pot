@@ -1,0 +1,108 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_move_generate_accounting_entry
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_move_generate_accounting_entry
+#: view:stock.move:stock_move_generate_accounting_entry.stock_move_view_search
+msgid "Accounting Entry Doesn't Exist"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: view:stock.move:stock_move_generate_accounting_entry.stock_move_view_search
+msgid "Accounting Entry Exists"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: field:stock.generate_stock_move_account_entry,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: field:stock.generate_stock_move_account_entry,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: field:stock.generate_stock_move_account_entry,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: view:stock.generate_stock_move_account_entry:stock_move_generate_accounting_entry.stock_generate_stock_move_account_entry_view_form
+msgid "Generate"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: view:stock.move:stock_move_generate_accounting_entry.stock_move_view_form
+msgid "Generate Accounting Entry"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: model:ir.actions.act_window,name:stock_move_generate_accounting_entry.stock_generate_stock_move_account_entry_action
+msgid "Generate Accounting Entry From Stock Move"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: model:ir.model,name:stock_move_generate_accounting_entry.model_stock_generate_stock_move_account_entry
+msgid "Generate Stock Move Accounting Entry"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: field:stock.generate_stock_move_account_entry,id:0
+msgid "ID"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: field:stock.generate_stock_move_account_entry,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: field:stock.generate_stock_move_account_entry,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: field:stock.generate_stock_move_account_entry,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: model:ir.actions.act_window,name:stock_move_generate_accounting_entry.stock_move_action
+#: model:ir.model,name:stock_move_generate_accounting_entry.model_stock_move
+#: model:ir.ui.menu,name:stock_move_generate_accounting_entry.stock_move_menu
+msgid "Stock Move"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: view:stock.generate_stock_move_account_entry:stock_move_generate_accounting_entry.stock_generate_stock_move_account_entry_view_form
+msgid "This will delete existing accounting entry (if there's any), and recreate it"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: view:stock.generate_stock_move_account_entry:stock_move_generate_accounting_entry.stock_generate_stock_move_account_entry_view_form
+msgid "Warning!"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: view:stock.generate_stock_move_account_entry:stock_move_generate_accounting_entry.stock_generate_stock_move_account_entry_view_form
+msgid "_Cancel"
+msgstr ""
+
+#. module: stock_move_generate_accounting_entry
+#: view:stock.move:stock_move_generate_accounting_entry.stock_move_view_form
+#: view:stock.move:stock_move_generate_accounting_entry.stock_move_view_tree
+msgid "false"
+msgstr ""
+
