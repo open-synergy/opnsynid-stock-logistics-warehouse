@@ -1,0 +1,35 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_inventory_uos
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_inventory_uos
+#: model:ir.model,name:stock_inventory_uos.model_stock_inventory_line
+msgid "Inventory Line"
+msgstr ""
+
+#. module: stock_inventory_uos
+#: field:stock.inventory.line,product_uos_id:0
+msgid "UoS"
+msgstr ""
+
+#. module: stock_inventory_uos
+#: field:stock.inventory.line,product_uos_qty:0
+msgid "UoS Qty."
+msgstr ""
+
+#. module: stock_inventory_uos
+#: field:stock.inventory.line,product_uos_theoretical_qty:0
+msgid "UoS Theoretical Qty."
+msgstr ""
+
