@@ -1,0 +1,48 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_stolen_operation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_stolen_operation
+#: view:stock.warehouse:stock_stolen_operation.stock_warehouse_view_form
+msgid "(create)"
+msgstr ""
+
+#. module: stock_stolen_operation
+#: code:addons/stock_stolen_operation/models/stock_warehouse.py:70
+#, python-format
+msgid "No stolen location"
+msgstr ""
+
+#. module: stock_stolen_operation
+#: code:addons/stock_stolen_operation/models/stock_warehouse.py:26
+#: code:addons/stock_stolen_operation/models/stock_warehouse.py:55
+#, python-format
+msgid "Stolen"
+msgstr ""
+
+#. module: stock_stolen_operation
+#: field:stock.warehouse,stolen_loc_id:0
+msgid "Stolen Location"
+msgstr ""
+
+#. module: stock_stolen_operation
+#: field:stock.warehouse,stolen_type_id:0
+msgid "Stolen Type"
+msgstr ""
+
+#. module: stock_stolen_operation
+#: model:ir.model,name:stock_stolen_operation.model_stock_warehouse
+msgid "Warehouse"
+msgstr ""
+
