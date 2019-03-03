@@ -1,0 +1,88 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_operation_subtype
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_operation_subtype
+#: field:stock.picking_subtype,active:0
+msgid "Active"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: field:stock.picking_subtype,code:0
+msgid "Code"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: field:stock.picking_subtype,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: field:stock.picking_subtype,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: field:stock.picking_subtype,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: field:stock.picking_subtype,id:0
+msgid "ID"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: field:stock.picking_subtype,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: field:stock.picking_subtype,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: field:stock.picking_subtype,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: view:stock.picking_subtype:stock_operation_subtype.stock_picking_subtype_view_form
+#: field:stock.picking_subtype,note:0
+msgid "Note"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: model:ir.actions.act_window,name:stock_operation_subtype.stock_picking_subtype_action
+#: model:ir.ui.menu,name:stock_operation_subtype.stock_picking_subtype_menu
+#: field:stock.picking_subtype,name:0
+msgid "Operation Subtype"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: model:ir.model,name:stock_operation_subtype.model_stock_picking_subtype
+msgid "Stock Operation Subtype"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: field:stock.picking.type,subtype_id:0
+msgid "Subtype"
+msgstr ""
+
+#. module: stock_operation_subtype
+#: model:ir.model,name:stock_operation_subtype.model_stock_picking_type
+msgid "The picking type determines the picking view"
+msgstr ""
+
