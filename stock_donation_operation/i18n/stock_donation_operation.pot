@@ -1,0 +1,75 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_donation_operation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_donation_operation
+#: view:stock.warehouse:stock_donation_operation.stock_warehouse_view_form
+#: view:stock.warehouse:stock_donation_operation.stock_warehouse_view_form_2
+msgid "(create)"
+msgstr ""
+
+#. module: stock_donation_operation
+#: code:addons/stock_donation_operation/models/stock_warehouse.py:127
+#: model:stock.location,name:stock_donation_operation.stock_location_donation_in
+#, python-format
+msgid "Donation In"
+msgstr ""
+
+#. module: stock_donation_operation
+#: field:res.partner,property_stock_donation_in_id:0
+msgid "Donation In Location"
+msgstr ""
+
+#. module: stock_donation_operation
+#: field:stock.warehouse,donation_in_route_id:0
+msgid "Donation In Route"
+msgstr ""
+
+#. module: stock_donation_operation
+#: field:stock.warehouse,donation_in_type_id:0
+msgid "Donation In Type"
+msgstr ""
+
+#. module: stock_donation_operation
+#: code:addons/stock_donation_operation/models/stock_warehouse.py:159
+#: model:stock.location,name:stock_donation_operation.stock_location_donation_out
+#, python-format
+msgid "Donation Out"
+msgstr ""
+
+#. module: stock_donation_operation
+#: field:res.partner,property_stock_donation_out_id:0
+msgid "Donation Out Location"
+msgstr ""
+
+#. module: stock_donation_operation
+#: field:stock.warehouse,donation_out_route_id:0
+msgid "Donation Out Route"
+msgstr ""
+
+#. module: stock_donation_operation
+#: field:stock.warehouse,donation_out_type_id:0
+msgid "Donation Out Type"
+msgstr ""
+
+#. module: stock_donation_operation
+#: model:ir.model,name:stock_donation_operation.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: stock_donation_operation
+#: model:ir.model,name:stock_donation_operation.model_stock_warehouse
+msgid "Warehouse"
+msgstr ""
+
