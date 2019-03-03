@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_other_delivery_operation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_other_delivery_operation
+#: view:stock.warehouse:stock_other_delivery_operation.stock_warehouse_view_form
+#: view:stock.warehouse:stock_other_delivery_operation.stock_warehouse_view_form_2
+msgid "(create)"
+msgstr ""
+
+#. module: stock_other_delivery_operation
+#: code:addons/stock_other_delivery_operation/models/stock_warehouse.py:80
+#, python-format
+msgid "Other Delivery"
+msgstr ""
+
+#. module: stock_other_delivery_operation
+#: field:stock.warehouse,other_delivery_route_id:0
+msgid "Other Delivery Route"
+msgstr ""
+
+#. module: stock_other_delivery_operation
+#: field:stock.warehouse,other_delivery_type_id:0
+msgid "Other Delivery Type"
+msgstr ""
+
+#. module: stock_other_delivery_operation
+#: model:ir.model,name:stock_other_delivery_operation.model_stock_warehouse
+msgid "Warehouse"
+msgstr ""
+
