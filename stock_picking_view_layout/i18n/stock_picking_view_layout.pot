@@ -1,0 +1,100 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_picking_view_layout
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_picking_view_layout
+#: view:stock.picking.type:stock_picking_view_layout.stock_picking_type_view_form
+msgid "Common View Layout"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,create_ok:0
+msgid "Create Ok"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,edit_ok:0
+msgid "Edit Ok"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: view:stock.picking.type:stock_picking_view_layout.stock_picking_type_view_form
+msgid "Form Layout"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: model:ir.model,name:stock_picking_view_layout.model_stock_picking
+msgid "Picking List"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,form_required_partner_id:0
+msgid "Required Partner on Form View"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,form_show_date:0
+msgid "Show Create Date on Form View"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,tree_show_date:0
+msgid "Show Create Date on Tree View"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,tree_show_invoice_state:0
+msgid "Show Invoice State on Tree View"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,tree_partner_ok:0
+msgid "Show Partner"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,form_show_partner_id:0
+msgid "Show Partner on Form View"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,tree_show_partner_id:0
+msgid "Show Partner on Tree View"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,form_show_min_date:0
+msgid "Show Schedulled Date on Form View"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,tree_show_min_date:0
+msgid "Show Schedulled Date on Tree View"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: model:ir.model,name:stock_picking_view_layout.model_stock_picking_type
+msgid "The picking type determines the picking view"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: view:stock.picking.type:stock_picking_view_layout.stock_picking_type_view_form
+msgid "Tree Layout"
+msgstr ""
+
+#. module: stock_picking_view_layout
+#: field:stock.picking.type,unlink_ok:0
+msgid "Unlink Ok"
+msgstr ""
+
