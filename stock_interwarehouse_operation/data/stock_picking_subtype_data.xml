@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="inter_warehouse_in_subtype" model="stock.picking_subtype">
+    <field name="name">Inter-Warehouse In</field>
+    <field name="code">IWI</field>
+</record>
+
+<record id="inter_warehouse_out_subtype" model="stock.picking_subtype">
+    <field name="name">Inter-Warehouse Out</field>
+    <field name="code">IWO</field>
+</record>
+</data>
+</openerp>
