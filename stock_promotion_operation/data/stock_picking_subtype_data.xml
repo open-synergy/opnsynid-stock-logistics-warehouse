@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="supplier_promotion_subtype" model="stock.picking_subtype">
+    <field name="name">Supplier Promotion</field>
+    <field name="code">SPR</field>
+</record>
+
+<record id="customer_promotion_subtype" model="stock.picking_subtype">
+  <field name="name">Customer Promotion</field>
+  <field name="code">CPR</field>
+</record>
+</data>
+</openerp>
