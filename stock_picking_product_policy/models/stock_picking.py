@@ -8,25 +8,31 @@ from openerp import models, fields, api
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
+    @api.multi
     @api.depends(
         "picking_type_id",
-        "picking_type_id.all_allowed_product_ids")
-    def _compute_all_allowed_product_ids(self):
+    )
+    def _compute_allowed_product(self):
         obj_product = self.env["product.product"]
-        for picking in self:
-            if picking.picking_type_id.limit_product_selection:
-                picking.all_allowed_product_ids = \
-                    picking.picking_type_id.all_allowed_product_ids
+        for document in self:
+            if document.picking_type_id.limit_product_selection:
+                document.allowed_product_ids = \
+                    document.picking_type_id.allowed_product_ids.ids
+                document.allowed_product_categ_ids = \
+                    document.picking_type_id.allowed_product_categ_ids.ids
             else:
-                criteria = [
-                    ("type", "!=", "service"),
-                ]
-                picking.all_allowed_product_ids = \
-                    obj_product.search(criteria)
+                document.allowed_product_ids = \
+                    obj_product.search([("type", "!=", "service")])
 
-    all_allowed_product_ids = fields.Many2many(
-        string="All Allowed Product",
+    allowed_product_ids = fields.Many2many(
+        string="Allowed Products",
         comodel_name="product.product",
-        compute="_compute_all_allowed_product_ids",
+        compute="_compute_allowed_product",
+        store=False,
+    )
+    allowed_product_categ_ids = fields.Many2many(
+        string="Allowed Product Categories",
+        comodel_name="product.category",
+        compute="_compute_allowed_product",
         store=False,
     )
