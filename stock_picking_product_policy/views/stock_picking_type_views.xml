@@ -13,8 +13,6 @@
                 <field name="allowed_product_categ_ids" nolabel="1" colspan="2"/>
                 <label for="allowed_product_ids"  colspan="2"/>
                 <field name="allowed_product_ids" nolabel="1" colspan="2"/>
-                <label for="all_allowed_product_ids" colspan="2"/>
-                <field name="all_allowed_product_ids" nolabel="1" colspan="2"/>
             </group>
         </xpath>
     </field>
