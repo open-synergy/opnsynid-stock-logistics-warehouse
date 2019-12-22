@@ -14,19 +14,19 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_picking_product_policy
-#: field:stock.picking,all_allowed_product_ids:0
-#: field:stock.picking.type,all_allowed_product_ids:0
-msgid "All Allowed Product"
-msgstr ""
-
-#. module: stock_picking_product_policy
 #: field:stock.picking.type,allowed_product_ids:0
 msgid "Allowed Product"
 msgstr ""
 
 #. module: stock_picking_product_policy
+#: field:stock.picking,allowed_product_categ_ids:0
 #: field:stock.picking.type,allowed_product_categ_ids:0
 msgid "Allowed Product Categories"
+msgstr ""
+
+#. module: stock_picking_product_policy
+#: field:stock.picking,allowed_product_ids:0
+msgid "Allowed Products"
 msgstr ""
 
 #. module: stock_picking_product_policy
@@ -50,13 +50,7 @@ msgid "The picking type determines the picking view"
 msgstr ""
 
 #. module: stock_picking_product_policy
-#: model:ir.actions.server,name:stock_picking_product_policy.action_server_1_data
-#: model:ir.actions.server,name:stock_picking_product_policy.action_server_2_data
-msgid "Update Stock Picking Product Policy"
-msgstr ""
-
-#. module: stock_picking_product_policy
 #: view:stock.move:stock_picking_product_policy.stock_move_view_form
-msgid "[('id', 'in', parent.all_allowed_product_ids[0][2])]"
+msgid "['|',('id','in',parent.allowed_product_ids[0][2]),('categ_id','in',parent.allowed_product_categ_ids[0][2])]"
 msgstr ""
 
