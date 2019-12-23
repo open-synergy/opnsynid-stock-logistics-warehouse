@@ -55,7 +55,7 @@ class StockInventory(models.Model):
                 product_ids.append(result["product_id"])
 
             if len(product_ids) == 0:
-                product_ids = "()"
+                product_ids = "(0)"
             elif len(product_ids) == 1:
                 product_ids = "(%s)" % product_ids[0]
             else:
