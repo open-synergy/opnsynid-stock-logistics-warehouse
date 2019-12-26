@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_inventory_by_moving_product
-#: code:addons/stock_inventory_by_moving_product/models/stock_inventory.py:17
+#: code:addons/stock_inventory_by_moving_product/models/stock_inventory.py:15
 #, python-format
 msgid "By Moving Products"
 msgstr ""
