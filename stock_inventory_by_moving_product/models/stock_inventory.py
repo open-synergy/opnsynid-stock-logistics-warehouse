@@ -2,8 +2,6 @@
 # Copyright 2019 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
 from openerp import models, fields, api
 from openerp.tools.translate import _
 
@@ -25,15 +23,22 @@ class StockInventory(models.Model):
     def _get_inventory_lines(self, inventory):
         if inventory.filter == "moving_product":
             obj_product = self.env["product.product"]
+            previous_inventory = False
 
             location = inventory.location_id
             product_ids = []
-            # TODO: timezone adjustment
-            dt_date_start = datetime.strptime(
-                inventory.date, "%Y-%m-%d %H:%M:%S"
-            )
-            dt_date_start += relativedelta(hour=0, minute=0, second=0)
-            date_start = dt_date_start.strftime("%Y-%m-%d %H:%M:%S")
+
+            criteria = [
+                ("location_id.id", "=", inventory.location_id.id),
+                ("date", "<", inventory.date),
+                ("state", "=", "done"),
+            ]
+
+            obj_inventory = self.env["stock.inventory"]
+            previous_inventories = obj_inventory.search(criteria)
+            if len(previous_inventories) > 0:
+                previous_inventory = previous_inventories[0]
+
             date_end = inventory.date
 
             sql1 = """
@@ -43,11 +48,15 @@ class StockInventory(models.Model):
                 (a.location_id = %s and a.location_dest_id <> %s) OR
                 (a.location_dest_id = %s and a.location_id <> %s)
                 ) AND
-                a.date > '%s' AND
                 a.date <= '%s' AND
                 a.state = 'done'
             """ % (location.id, location.id,
-                   location.id, location.id, date_start, date_end)
+                   location.id, location.id, date_end)
+
+            if previous_inventory:
+                sql1 += """
+                AND a.date > '%s'
+                """ % (previous_inventory.date)
 
             self.env.cr.execute(sql1)
 
