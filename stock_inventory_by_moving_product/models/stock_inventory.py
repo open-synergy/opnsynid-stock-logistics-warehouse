@@ -35,7 +35,8 @@ class StockInventory(models.Model):
             ]
 
             obj_inventory = self.env["stock.inventory"]
-            previous_inventories = obj_inventory.search(criteria)
+            previous_inventories = obj_inventory.search(criteria,
+                order="date desc")
             if len(previous_inventories) > 0:
                 previous_inventory = previous_inventories[0]
 
