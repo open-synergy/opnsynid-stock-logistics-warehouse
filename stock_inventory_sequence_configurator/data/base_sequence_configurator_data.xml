@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+<record id="base_sequence_stock_inventory" model="base.sequence_configurator">
+    <field name="model_id" ref="stock.model_stock_inventory"/>
+    <field name="sequence_field_id" search="[('model_id.model','=','stock.inventory'),('name','=','name')]"/>
+    <field name="fallback_sequence_id" ref="stock_inventory_sequence_configurator.sequence_stock_inventory"/>
+</record>
+
+<record id="base_sequence_stock_inventory_line" model="base.sequence_configurator_line">
+    <field name="generator_id" ref="base_sequence_stock_inventory"/>
+    <field name="sequence" eval="1"/>
+    <field name="sequence_computation_code">result = document.location_id.stock_inventory_sequence_id</field>
+</record>
+</data>
+</openerp>
