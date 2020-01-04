@@ -33,32 +33,37 @@ class StockInventory(models.Model):
         self.ensure_one()
         product_ids = []
         categ_ids = []
+        obj_product = self.env["product.product"]
         for product_set in self.product_set_ids:
             product_ids += product_set.product_ids.ids
             categ_ids += product_set.product_categ_ids.ids
 
-        if not product_ids and not categ_ids:
-            warning_msg = _("No product or product category defined")
+        if categ_ids:
+            criteria = [
+                ("categ_id", "in", categ_ids)
+            ]
+            product_ids += obj_product.search(criteria).ids
+
+        if not product_ids:
+            warning_msg = _("No product defined")
             raise UserError(warning_msg)
 
-        return product_ids, categ_ids
+        return product_ids
 
     @api.multi
     def _get_inventory_lines_values(self):
         self.ensure_one()
         obj_product = self.env["product.product"]
         if self.filter == "product_set":
-            product_ids, categ_ids = self._get_product_set_data()
+            product_ids = self._get_product_set_data()
+
+            products_to_filter = obj_product.browse(product_ids)
+            quant_products = self.env['product.product']
 
             if len(product_ids) == 1:
                 product_ids = "(%s)" % product_ids[0]
             else:
                 product_ids = tuple(product_ids)
-
-            if len(categ_ids) == 1:
-                categ_ids = "(%s)" % categ_ids[0]
-            else:
-                categ_ids = tuple(categ_ids)
 
             sql1 = """
             SELECT  product_id,
@@ -69,15 +74,14 @@ class StockInventory(models.Model):
                     owner_id AS partner_id
             FROM    stock_quant AS a
             JOIN    product_product AS b ON a.product_id = b.id
-            JOIN    product_template AS c ON b.product_tmpl_id = c.id
             WHERE   a.location_id = %s AND
-                    (a.product_id in %s OR c.categ_id in %s)
+                    a.product_id in %s
             GROUP BY    product_id,
                         location_id,
                         lot_id,
                         package_id,
                         partner_id
-            """ % (self.location_id.id, product_ids, categ_ids)
+            """ % (self.location_id.id, product_ids)
 
             self.env.cr.execute(sql1)
             vals = []
@@ -90,7 +94,14 @@ class StockInventory(models.Model):
                 if product_line["product_id"]:
                     product = obj_product.browse(product_line["product_id"])
                     product_line["product_uom_id"] = product.uom_id.id
+                    quant_products |= obj_product.browse(
+                        product_line['product_id'])
                 vals.append(product_line)
+
+            if self.exhausted:
+                exhausted_vals = self._get_exhausted_inventory_line(
+                    products_to_filter, quant_products)
+                vals.extend(exhausted_vals)
         else:
             return super(StockInventory, self)._get_inventory_lines_values()
         return vals
