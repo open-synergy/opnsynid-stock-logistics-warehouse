@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="stock_inventory_product_set_form_view" model="ir.ui.view">
+    <field name="name">stock.inventory_product_set.form</field>
+    <field name="model">stock.inventory_product_set</field>
+    <field name="arch" type="xml">
+        <form>
+            <header/>
+            <sheet>
+                <div class="oe_right oe_button_box" style="width: 300px;" name="buttons"/>
+                <group name="header_1" colspan="4" col="2">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="active"/>
+                </group>
+                <notebook>
+                    <page name="products" string="Product(s)">
+                        <group name="product_1" colspan="4" col="2">
+                            <field name="product_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                    <page name="product_categs" string="Product Categories">
+                        <group name="product_categs_1" colspan="4" col="2">
+                            <field name="product_categ_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                    <page name="note" string="Note">
+                        <field name="note"/>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="stock_inventory_product_set_tree_view" model="ir.ui.view">
+    <field name="name">stock.inventory_product_set.tree</field>
+    <field name="model">stock.inventory_product_set</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="code"/>
+        </tree>
+    </field>
+</record>
+
+<record id="stock_inventory_product_set_action" model="ir.actions.act_window">
+    <field name="name">Inventory Product Sets</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">stock.inventory_product_set</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<menuitem
+    id="stock_inventory_product_set_menu"
+    name="Inventory Product Set"
+    parent="stock.menu_warehouse_config"
+    action="stock_inventory_product_set_action"
+    sequence="11"/>
+
+</odoo>
