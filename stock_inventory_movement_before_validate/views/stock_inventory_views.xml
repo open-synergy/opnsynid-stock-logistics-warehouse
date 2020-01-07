@@ -13,12 +13,19 @@
             <xpath expr="//field[@name='filter']" position="before">
                 <field name="qty_diff_method"/>
             </xpath>
-            <xpath expr="//tree/field[@name='theoretical_qty']" position="after">
+            <xpath expr="//tree/field[@name='theoretical_qty']" position="before">
+                <field name="initial_theoretical_qty"/>
                 <field name="qty_diff_in"/>
                 <field name="qty_diff_out"/>
                 <field name="qty_recompute"/>
+            </xpath>
+            <xpath expr="//tree/field[@name='theoretical_qty']" position="after">
                 <field name="manual_qty"/>
                 <field name="qty_diff_method"/>
+                <field name="diff_product_qty" invisible="1"/>
+            </xpath>
+            <xpath expr="//tree/field[@name='theoretical_qty']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
         </data>
     </field>

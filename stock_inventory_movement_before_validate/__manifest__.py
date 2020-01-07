@@ -4,7 +4,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Detect Movement Before Validate Inventory Adjustment",
-    "version": "11.0.1.0.1",
+    "version": "11.0.1.1.0",
     "website": "https://opensynergy-indonesia.com",
     "author": "OpenSynergy Indonesia",
     "license": "AGPL-3",

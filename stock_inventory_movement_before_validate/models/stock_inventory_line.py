@@ -23,6 +23,16 @@ class StockInventoryLine(models.Model):
                 result = document.qty_recompute
             document.product_qty = result
 
+    @api.multi
+    @api.depends(
+        "product_qty",
+        "manual_qty",
+    )
+    def _compute_diff_product_qty(self):
+        for document in self:
+            document.diff_product_qty = document.product_qty - \
+                document.manual_qty
+
     qty_diff_in = fields.Float(
         string="Incoming Quantity Diff",
         readonly=True,
@@ -32,10 +42,20 @@ class StockInventoryLine(models.Model):
         readonly=True,
     )
     qty_recompute = fields.Float(
-        string="Recomputed Theoretical Qty"
+        string="Recomputed Theoretical Qty",
+        readonly=True,
+    )
+    initial_theoretical_qty = fields.Float(
+        string="Initial Theoretical Quantity",
+        readonly=True,
     )
     manual_qty = fields.Float(
         string="Manual Real Quantity"
+    )
+    diff_product_qty = fields.Float(
+        string="Diff Real Quantity",
+        compute="_compute_diff_product_qty",
+        store=True,
     )
     qty_diff_method = fields.Selection(
         string="Use Quantity From",
@@ -74,10 +94,12 @@ class StockInventoryLine(models.Model):
             if ml.location_dest_id.id == self.location_id.id:
                 qty_incoming += ml.qty_done
 
-        qty_recompute = self.theoretical_qty + qty_incoming - qty_outgoing
+        qty_recompute = self.initial_theoretical_qty + \
+            qty_incoming - qty_outgoing
 
         self.write({
             "qty_diff_in": qty_incoming,
             "qty_diff_out": qty_outgoing,
             "qty_recompute": qty_recompute,
+            "theoretical_qty": qty_recompute,
         })
