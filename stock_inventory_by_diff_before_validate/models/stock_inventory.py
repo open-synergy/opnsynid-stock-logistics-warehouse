@@ -51,8 +51,10 @@ class StockInventory(models.Model):
             ("inventory_id.filter", "!=", "diff"),
             ("inventory_id.state", "=", "done"),
             "|",
+            "|",
             ("qty_diff_in", "!=", 0.0),
             ("qty_diff_out", "!=", 0.0),
+            ("diff_product_qty", "!=", 0.0),
         ]
 
         for line in obj_line.search(criteria2):
@@ -105,6 +107,8 @@ class StockInventory(models.Model):
                         product_line[key] = False
                 product_line["inventory_id"] = self.id
                 product_line["theoretical_qty"] = product_line["product_qty"]
+                product_line["initial_theoretical_qty"] = \
+                    product_line["product_qty"]
                 product_line["manual_qty"] = product_line["product_qty"]
                 product_line["qty_diff_method"] = self.qty_diff_method
                 if product_line["product_id"]:
