@@ -13,7 +13,7 @@ class StockInventory(models.Model):
         string="Use Quantity From",
         selection=[
             ("manual", "Manual Real Quantity"),
-            ("recompute", "Recomputed Theorecical Quantity"),
+            ("recompute", "Recomputed Theoretical Quantity"),
         ],
         required=True,
         default="manual",
@@ -37,6 +37,7 @@ class StockInventory(models.Model):
         vals = _super._get_inventory_lines_values()
         for item in vals:
             manual_qty = item.get("theoretical_qty", 0.0)
+            item["initial_theoretical_qty"] = manual_qty
             item["manual_qty"] = manual_qty
             item["qty_diff_method"] = self.qty_diff_method
         return vals

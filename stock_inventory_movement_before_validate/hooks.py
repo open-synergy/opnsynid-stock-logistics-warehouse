@@ -7,7 +7,8 @@ def post_init_hook(cr, pool):
     sql1 = """
     UPDATE  stock_inventory_line AS target
     SET
-            manual_qty =  a.product_qty
+            manual_qty =  a.product_qty,
+            initial_theoretical_qty = a.theoretical_qty
     FROM    stock_inventory_line AS a
     WHERE   target.id = a.id
     """
