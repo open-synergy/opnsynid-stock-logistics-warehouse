@@ -50,15 +50,37 @@ class StockInventory(models.Model):
             ("inventory_id.location_id", "=", self.location_id.id),
             ("inventory_id.filter", "!=", "diff"),
             ("inventory_id.state", "=", "done"),
-            "|",
-            "|",
-            ("qty_diff_in", "!=", 0.0),
-            ("qty_diff_out", "!=", 0.0),
             ("diff_product_qty", "!=", 0.0),
         ]
 
         for line in obj_line.search(criteria2):
             product_ids.append(line.product_id.id)
+
+        product_ids = list(set(product_ids))
+
+        criteria3 = []
+
+        if latest_inventory:
+            criteria3 += [
+                ("date", ">", latest_inventory.date),
+            ]
+        criteria3 = [
+            ("location_id", "=", self.location_id.id),
+            ("filter", "!=", "diff"),
+            ("state", "=", "done"),
+        ]
+        for product_id in product_ids:
+            for inventory in obj_inventory.search(criteria3, order="date"):
+                mark = False
+                criteria4 = [
+                    ("inventory_id", "=", inventory.id),
+                    ("product_id", "=", product_id),
+                    ("diff_product_qty", "=", 0.0),
+                ]
+                if obj_line.search_count(criteria4) > 0:
+                    mark = True
+            if mark:
+                product_ids.remove(product_id)
 
         if not product_ids:
             warning_msg = _("No product need adjustment")
