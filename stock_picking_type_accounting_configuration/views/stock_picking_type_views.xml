@@ -9,8 +9,11 @@
         <xpath expr="//group[last()]" position="after">
             <group name="grp_accounting" colspan="4" col="2" string="Accounting Configuration">
                 <field name="acc_valuation"/>
+                <field name="acc_valuation_id" widget="selection" attrs="{'invisible':[('acc_valuation','=','default')], 'required':[('acc_valuation','=','custom')]}"/>
                 <field name="acc_source"/>
+                <field name="acc_source_id" widget="selection" attrs="{'invisible':[('acc_source','=','default')], 'required':[('acc_source','=','custom')]}"/>
                 <field name="acc_destination"/>
+                <field name="acc_destination_id" widget="selection" attrs="{'invisible':[('acc_destination','=','default')], 'required':[('acc_destination','=','custom')]}"/>
             </group>
         </xpath>
     </field>
