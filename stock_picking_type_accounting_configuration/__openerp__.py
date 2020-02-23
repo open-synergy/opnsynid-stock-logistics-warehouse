@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Stock Picking Type Accounting Configuration",
-    "version": "8.0.1.0.1",
+    "version": "8.0.1.1.0",
     "category": "Stock Management",
     "website": "https://opensynergy-indonesia.com",
     "author": "OpenSynergy Indonesia",
@@ -13,6 +12,9 @@
         "stock_account",
     ],
     "data": [
+        "security/ir.model.access.csv",
+        "data/stock_move_account_source_data.xml",
         "views/stock_picking_type_views.xml",
+        "views/stock_move_account_source_views.xml",
     ],
 }
