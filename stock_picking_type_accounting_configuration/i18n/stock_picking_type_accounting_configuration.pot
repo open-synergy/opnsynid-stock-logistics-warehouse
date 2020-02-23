@@ -14,136 +14,116 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_picking_type_accounting_configuration
+#: model:ir.actions.act_window,name:stock_picking_type_accounting_configuration.stock_move_account_source_action
+#: model:ir.ui.menu,name:stock_picking_type_accounting_configuration.stock_move_account_source_menu
+msgid "Account Sources"
+msgstr ""
+
+#. module: stock_picking_type_accounting_configuration
 #: view:stock.picking.type:stock_picking_type_accounting_configuration.stock_picking_type_view_form
 msgid "Accounting Configuration"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:9
+#: field:stock.move_account_source,active:0
+msgid "Active"
+msgstr ""
+
+#. module: stock_picking_type_accounting_configuration
+#: field:stock.move_account_source,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: stock_picking_type_accounting_configuration
+#: field:stock.move_account_source,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: stock_picking_type_accounting_configuration
 #: selection:stock.picking.type,acc_destination:0
 #: selection:stock.picking.type,acc_source:0
 #: selection:stock.picking.type,acc_valuation:0
-#, python-format
+msgid "Custom"
+msgstr ""
+
+#. module: stock_picking_type_accounting_configuration
+#: selection:stock.picking.type,acc_destination:0
+#: selection:stock.picking.type,acc_source:0
+#: selection:stock.picking.type,acc_valuation:0
 msgid "Default"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: field:stock.picking.type,acc_destination:0
+#: field:stock.picking.type,acc_destination_id:0
 msgid "Destination Account"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:18
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Expense Account on Product"
+#: field:stock.picking.type,acc_destination:0
+msgid "Destination Account Policy"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:14
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Expense Account on Product Category"
+#: field:stock.move_account_source,display_name:0
+msgid "Display Name"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:17
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Income Account on Product"
+#: field:stock.move_account_source,id:0
+msgid "ID"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:13
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Income Account on Product Category"
+#: field:stock.move_account_source,__last_update:0
+msgid "Last Modified on"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:21
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Input Account on Destination Location"
+#: field:stock.move_account_source,write_uid:0
+msgid "Last Updated by"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:15
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Input Account on Product"
+#: field:stock.move_account_source,write_date:0
+msgid "Last Updated on"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:11
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
+#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:44
 #, python-format
-msgid "Input Account on Product Category"
+msgid "No destination account configured"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:19
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
+#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:37
 #, python-format
-msgid "Input Account on Source Location"
+msgid "No source account configured"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:42
+#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:30
 #, python-format
-msgid "No account"
+msgid "No valuation account configured"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:22
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Output Account on Destination Location"
+#: field:stock.move_account_source,note:0
+msgid "Note"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:16
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Output Account on Product"
+#: view:stock.move_account_source:stock_picking_type_accounting_configuration.stock_move_account_source_view_form
+msgid "Notes"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:12
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Output Account on Product Category"
+#: view:stock.move_account_source:stock_picking_type_accounting_configuration.stock_move_account_source_view_form
+msgid "Python Code"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:20
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Output Account on Source Location"
+#: field:stock.move_account_source,python_code:0
+msgid "Python Code for Account Source"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
@@ -152,8 +132,23 @@ msgid "Quants"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: field:stock.picking.type,acc_source:0
+#: field:stock.picking.type,acc_source_id:0
 msgid "Source Account"
+msgstr ""
+
+#. module: stock_picking_type_accounting_configuration
+#: field:stock.picking.type,acc_source:0
+msgid "Source Account Policy"
+msgstr ""
+
+#. module: stock_picking_type_accounting_configuration
+#: field:stock.move_account_source,name:0
+msgid "Source Name"
+msgstr ""
+
+#. module: stock_picking_type_accounting_configuration
+#: model:ir.model,name:stock_picking_type_accounting_configuration.model_stock_move_account_source
+msgid "Stock Move Account Source"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
@@ -162,16 +157,12 @@ msgid "The picking type determines the picking view"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: field:stock.picking.type,acc_valuation:0
+#: field:stock.picking.type,acc_valuation_id:0
 msgid "Valuation Account"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_picking_type.py:10
-#: selection:stock.picking.type,acc_destination:0
-#: selection:stock.picking.type,acc_source:0
-#: selection:stock.picking.type,acc_valuation:0
-#, python-format
-msgid "Valuation Account on Product Category"
+#: field:stock.picking.type,acc_valuation:0
+msgid "Valuation Account Policy"
 msgstr ""
 
