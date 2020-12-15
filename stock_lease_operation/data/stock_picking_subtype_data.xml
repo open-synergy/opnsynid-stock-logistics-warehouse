@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="customer_in_lease_subtype" model="stock.picking_subtype">
+    <field name="name">Customer In Lease Type</field>
+    <field name="code">LEAS-CUST-IN</field>
+</record>
+<record id="customer_out_lease_subtype" model="stock.picking_subtype">
+    <field name="name">Customer Out Lease Type</field>
+    <field name="code">LEAS-CUST-OUT</field>
+</record>
+<record id="supplier_in_lease_subtype" model="stock.picking_subtype">
+    <field name="name">Supplier In Lease Type</field>
+    <field name="code">LEAS-SUPP-IN</field>
+</record>
+
+<record id="supplier_out_lease_subtype" model="stock.picking_subtype">
+    <field name="name">Supplier Out Lease Type</field>
+    <field name="code">LEAS-SUPP-OUT</field>
+</record>
+</data>
+</openerp>

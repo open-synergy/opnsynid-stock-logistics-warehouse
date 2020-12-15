@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+	 Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+	<data>
+		<record id="property_customer_lease_location_id" model="ir.property" forcecreate="True">
+		    <field name="name">customer_lease_location_id</field>
+		    <field name="fields_id" search="[('model','=','res.partner'),('name','=','customer_lease_location_id')]"/>
+		    <field eval="'stock.location,'+str(stock_customer_lease_location_id)" name="value"/>
+		</record>
+
+		<record id="property_supplier_lease_location_id" model="ir.property" forcecreate="True">
+		    <field name="name">supplier_lease_location_id</field>
+		    <field name="fields_id" search="[('model','=','res.partner'),('name','=','supplier_lease_location_id')]"/>
+		    <field eval="'stock.location,'+str(stock_supplier_lease_location_id)" name="value"/>
+		</record>
+	</data>
+</openerp>
