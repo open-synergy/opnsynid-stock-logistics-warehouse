@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="customer_in_rental_subtype" model="stock.picking_subtype">
+    <field name="name">Customer In Rental Type</field>
+    <field name="code">RENT-CUST-IN</field>
+</record>
+<record id="customer_out_rental_subtype" model="stock.picking_subtype">
+    <field name="name">Customer Out Rental Type</field>
+    <field name="code">RENT-CUST-OUT</field>
+</record>
+<record id="supplier_in_rental_subtype" model="stock.picking_subtype">
+    <field name="name">Supplier In Rental Type</field>
+    <field name="code">RENT-SUPP-IN</field>
+</record>
+
+<record id="supplier_out_rental_subtype" model="stock.picking_subtype">
+    <field name="name">Supplier Out Rental Type</field>
+    <field name="code">RENT-SUPP-OUT</field>
+</record>
+</data>
+</openerp>

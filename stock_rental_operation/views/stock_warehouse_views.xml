@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+<data>
+
+<record id="stock_warehouse_view_form" model="ir.ui.view">
+    <field name="name">stock.warehouse.rental.operation.type.form</field>
+    <field name="model">stock.warehouse</field>
+    <field name="inherit_id" ref="stock.view_warehouse"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='out_type_id']" position="after">
+            <label for="rental_customer_in_type_id"/>
+            <div>
+                <field name="rental_customer_in_type_id"/>
+                <button name="button_create_customer_in_rental_type"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('rental_customer_in_type_id', '!=', False)]}"
+                />
+            </div>
+            <label for="rental_customer_out_type_id"/>
+            <div>
+                <field name="rental_customer_out_type_id"/>
+                <button name="button_create_customer_out_rental_type"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('rental_customer_out_type_id', '!=', False)]}"
+                />
+            </div>
+            <label for="rental_supplier_in_type_id"/>
+            <div>
+                <field name="rental_supplier_in_type_id"/>
+                <button name="button_create_supplier_in_rental_type"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('rental_supplier_in_type_id', '!=', False)]}"
+                />
+            </div>
+            <label for="rental_supplier_out_type_id"/>
+            <div>
+                <field name="rental_supplier_out_type_id"/>
+                <button name="button_create_supplier_out_rental_type"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('rental_supplier_out_type_id', '!=', False)]}"
+                />
+            </div>
+        </xpath>
+    </field>
+</record>
+
+<record id="stock_warehouse_view_form_2" model="ir.ui.view">
+    <field name="name">stock.warehouse.rental.operation.route.form</field>
+    <field name="model">stock.warehouse</field>
+    <field name="inherit_id" ref="stock_warehouse_technical_information.stock_warehouse_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='grp_route']" position="inside">
+            <label for="rental_customer_in_route_id"/>
+            <div>
+                <field name="rental_customer_in_route_id"/>
+                <button name="button_create_rental_customer_in_route"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('rental_customer_in_route_id', '!=', False)]}"
+                />
+            </div>
+            <label for="rental_customer_out_route_id"/>
+            <div>
+                <field name="rental_customer_out_route_id"/>
+                <button name="button_create_rental_customer_out_route"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('rental_customer_out_route_id', '!=', False)]}"
+                />
+            </div>
+            <label for="rental_supplier_in_route_id"/>
+            <div>
+                <field name="rental_supplier_in_route_id"/>
+                <button name="button_create_rental_supplier_in_route"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('rental_supplier_in_route_id', '!=', False)]}"
+                />
+            </div>
+            <label for="rental_supplier_out_route_id"/>
+            <div>
+                <field name="rental_supplier_out_route_id"/>
+                <button name="button_create_rental_supplier_out_route"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('rental_supplier_out_route_id', '!=', False)]}"
+                />
+            </div>
+        </xpath>
+    </field>
+</record>
+
+</data>
+</openerp>
