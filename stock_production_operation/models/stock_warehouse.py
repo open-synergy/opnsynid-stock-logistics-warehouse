@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
-# Copyright 2018 OpenSynergy Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2021 OpenSynergy Indonesia
+# Copyright 2021 PT. Simetri Sinergi Indonesia
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
-from openerp.exceptions import Warning as UserError
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class StockWarehouse(models.Model):
