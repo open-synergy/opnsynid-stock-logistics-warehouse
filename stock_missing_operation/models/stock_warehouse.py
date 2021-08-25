@@ -51,6 +51,10 @@ class StockWarehouse(models.Model):
         sequence = obj_sequence.create(
             self._prepare_missing_sequence())
 
+        subtype = \
+            self.env.ref(
+                "stock_missing_operation.missing_subtype")
+
         data = {
             "name": _("Missing"),
             "warehouse_id": self.id,
@@ -60,6 +64,7 @@ class StockWarehouse(models.Model):
             "allowed_location_ids": [(6, 0, [location.id])],
             "default_location_dest_id": missing_loc.id,
             "allowed_dest_location_ids": [(6, 0, [missing_loc.id])],
+            "subtype_id": subtype.id,
         }
         return data
 
