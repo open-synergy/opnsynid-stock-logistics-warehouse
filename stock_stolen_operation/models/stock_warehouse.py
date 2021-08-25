@@ -51,6 +51,10 @@ class StockWarehouse(models.Model):
         sequence = obj_sequence.create(
             self._prepare_stolen_sequence())
 
+        subtype_id = \
+            self.env.ref(
+                "stock_stolen_operation.stolen_subtype")
+
         data = {
             "name": _("Stolen"),
             "warehouse_id": self.id,
@@ -60,6 +64,7 @@ class StockWarehouse(models.Model):
             "allowed_location_ids": [(6, 0, [location.id])],
             "default_location_dest_id": stolen_loc.id,
             "allowed_dest_location_ids": [(6, 0, [stolen_loc.id])],
+            "subtype_id": subtype_id.id,
         }
         return data
 
