@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Donation Operation",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.0.1",
     "author": "OpenSynergy Indonesia",
     "website": "https://opensynergy-indonesia.com",
     "category": "Stock Management",
@@ -15,6 +15,7 @@
         "stock_pull_rule_picking_type",
     ],
     "data": [
+        "data/stock_picking_subtype_data.xml",
         "data/stock_location_datas.xml",
         "data/ir_property_datas.xml",
         "views/res_partner_views.xml",

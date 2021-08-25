@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="donation_in_subtype" model="stock.picking_subtype">
+    <field name="name">Donation In Type</field>
+    <field name="code">DON-IN</field>
+</record>
+<record id="donation_out_subtype" model="stock.picking_subtype">
+    <field name="name">Donation Out Type</field>
+    <field name="code">DON-OUT</field>
+</record>
+</data>
+</openerp>

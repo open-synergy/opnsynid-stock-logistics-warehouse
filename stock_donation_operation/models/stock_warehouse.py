@@ -123,6 +123,10 @@ class StockWarehouse(models.Model):
         sequence = obj_sequence.create(
             self._prepare_donation_in_sequence())
 
+        subtype_id = \
+            self.env.ref(
+                "stock_donation_operation.donation_in_subtype")
+
         data = {
             "name": _("Donation In"),
             "warehouse_id": self.id,
@@ -132,6 +136,7 @@ class StockWarehouse(models.Model):
             "allowed_location_ids": [(6, 0, [src_loc.id])],
             "default_location_dest_id": dest_loc.id,
             "allowed_dest_location_ids": [(6, 0, [dest_loc.id])],
+            "subtype_id": subtype_id.id,
         }
         return data
 
@@ -155,6 +160,10 @@ class StockWarehouse(models.Model):
         sequence = obj_sequence.create(
             self._prepare_donation_out_sequence())
 
+        subtype_id = \
+            self.env.ref(
+                "stock_donation_operation.donation_out_subtype")
+
         data = {
             "name": _("Donation Out"),
             "warehouse_id": self.id,
@@ -164,6 +173,7 @@ class StockWarehouse(models.Model):
             "allowed_location_ids": [(6, 0, [src_loc.id])],
             "default_location_dest_id": dest_loc.id,
             "allowed_dest_location_ids": [(6, 0, [dest_loc.id])],
+            "subtype_id": subtype_id.id,            
         }
         return data
 
