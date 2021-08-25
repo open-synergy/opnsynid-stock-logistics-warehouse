@@ -5,7 +5,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Rental Operation",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.1.0",
     "category": "Stock Management",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
@@ -25,6 +25,11 @@
         "data/ir_property_datas.xml",
         "views/res_partner_views.xml",
         "views/stock_warehouse_views.xml"
+    ],
+    "demo": [
+        "demo/ir_sequence_demo.xml",
+        "demo/stock_picking_type_demo.xml",
+        "demo/stock_location_route_demo.xml"
     ],
     "images": [
         "static/description/banner.png",
