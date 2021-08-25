@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Missing Operation",
-    "version": "8.0.1.0.4",
+    "version": "8.0.1.1.0",
     "author": "OpenSynergy Indonesia",
     "website": "https://opensynergy-indonesia.com",
     "category": "Stock Management",
@@ -12,6 +12,7 @@
         "stock_operation_type_location",
     ],
     "data": [
+        "data/stock_picking_subtype_data.xml",
         "views/stock_warehouse_view.xml"
     ],
     "installable": True,
