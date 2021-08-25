@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<record id="stolen_subtype" model="stock.picking_subtype">
+    <field name="name">Stolen</field>
+    <field name="code">STOLEN</field>
+</record>
+</data>
+</openerp>
