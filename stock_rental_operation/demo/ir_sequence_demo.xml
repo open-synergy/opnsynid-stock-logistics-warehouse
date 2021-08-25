@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data noupdate="1">
+
+<record id="sequence_main_rent_cust_out" model="ir.sequence">
+    <field name="name">Main WH - Customer Rental Out</field>
+    <field name="padding">6</field>
+    <field name="prefix">RCO/%(year)s/</field>
+    <field eval="1" name="number_next"/>
+    <field eval="1" name="number_increment"/>
+</record>
+
+<record id="sequence_main_rent_cust_in" model="ir.sequence">
+    <field name="name">Main WH - Customer Rental In</field>
+    <field name="padding">6</field>
+    <field name="prefix">RCI/%(year)s/</field>
+    <field eval="1" name="number_next"/>
+    <field eval="1" name="number_increment"/>
+</record>
+
+<record id="sequence_main_rent_supp_out" model="ir.sequence">
+    <field name="name">Main WH - Supplier Rental Out</field>
+    <field name="padding">6</field>
+    <field name="prefix">RCO/%(year)s/</field>
+    <field eval="1" name="number_next"/>
+    <field eval="1" name="number_increment"/>
+</record>
+
+<record id="sequence_main_rent_supp_in" model="ir.sequence">
+    <field name="name">Main WH - Supplier Rental In</field>
+    <field name="padding">6</field>
+    <field name="prefix">RCI/%(year)s/</field>
+    <field eval="1" name="number_next"/>
+    <field eval="1" name="number_increment"/>
+</record>
+
+
+</data>
+</openerp>
