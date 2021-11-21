@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 PT. Simetri Sinergi Indonesia
+		 Copyright 2021 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+<data>
+
+<record id="stock_warehouse_view_form" model="ir.ui.view">
+    <field name="name">Donation Operation</field>
+    <field name="model">stock.warehouse</field>
+    <field name="inherit_id" ref="stock.view_warehouse"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='out_type_id']" position="after">
+            <label for="employee_in_type_id"/>
+            <div>
+                <field name="employee_in_type_id"/>
+                <button name="button_create_employee_in_type"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('employee_in_type_id', '!=', False)]}"
+                />
+            </div>
+            <label for="employee_out_type_id"/>
+            <div>
+                <field name="employee_out_type_id"/>
+                <button name="button_create_employee_out_type"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('employee_out_type_id', '!=', False)]}"
+                />
+            </div>
+        </xpath>
+    </field>
+</record>
+
+<record id="stock_warehouse_view_form_2" model="ir.ui.view">
+    <field name="name">Form 2 - Donation Operation</field>
+    <field name="model">stock.warehouse</field>
+    <field name="inherit_id" ref="stock_warehouse_technical_information.stock_warehouse_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='grp_route']" position="inside">
+            <label for="employee_in_route_id"/>
+            <div>
+                <field name="employee_in_route_id"/>
+                <button name="button_create_employee_in_route"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('employee_in_route_id', '!=', False)]}"
+                />
+            </div>
+            <label for="employee_out_route_id"/>
+            <div>
+                <field name="employee_out_route_id"/>
+                <button name="button_create_employee_out_route"
+                    type="object"
+                    string="(create)"
+                    class="oe_link"
+                    attrs="{'invisible': [('employee_out_route_id', '!=', False)]}"
+                />
+            </div>
+        </xpath>
+    </field>
+</record>
+
+</data>
+</openerp>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 PT. Simetri Sinergi Indonesia
+		 Copyright 2021 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+<data>
+<record id="property_stock_employee" model="ir.property" forcecreate="True">
+    <field name="name">property_stock_employee_id</field>
+    <field name="fields_id" search="[('model','=','res.partner'),('name','=','property_stock_employee_id')]"/>
+    <field eval="'stock.location,'+str(stock_location_employee)" name="value"/>
+</record>
+</data>
+</openerp>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 PT. Simetri Sinergi Indonesia
+		 Copyright 2021 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<openerp>
+<data>
+<record id="employee_in_subtype" model="stock.picking_subtype">
+    <field name="name">Employee Equipment In</field>
+    <field name="code">EMPIN</field>
+</record>
+
+<record id="employee_out_subtype" model="stock.picking_subtype">
+    <field name="name">Employee Equipment Out</field>
+    <field name="code">EMPOUT</field>
+</record>
+</data>
+</openerp>
