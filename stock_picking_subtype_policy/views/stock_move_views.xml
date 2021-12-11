@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+  <data>
+<!-- <record id="stock_move_view_form" model="ir.ui.view">
+    <field name="name">Stock Move Form</field>
+    <field name="model">stock.move</field>
+    <field name="inherit_id" ref="stock.view_move_form"/>
+    <field name="arch" type="xml">
+
+    </field>
+</record> -->
+
+<record id="stock_move_view_form_2" model="ir.ui.view">
+    <field name="name">Stock Move Form</field>
+    <field name="model">stock.move</field>
+    <field name="inherit_id" ref="stock.view_move_picking_form"/>
+    <field name="priority" eval="40"/>
+    <field name="arch" type="xml">
+      <xpath expr="//group[@name='quants_grp']" position="after">
+          <group name="subtype_move_policy" string="Subtype Move Policy" colspan="4" col="2">
+              <field name="show_location_on_move_form"/>
+              <field name="show_location_dest_on_move_form"/>
+              <field name="show_procure_method_on_move_form"/>
+              <field name="show_price_unit_on_move_form"/>
+          </group>
+      </xpath>
+      <xpath expr="//field[@name='location_id']" position="attributes">
+          <attribute name="attrs">{'invisible':[('show_location_on_move_form','=',False)]}</attribute>
+      </xpath>
+      <xpath expr="//field[@name='location_dest_id']" position="attributes">
+          <attribute name="attrs">{'invisible':[('show_location_dest_on_move_form','=',False)]}</attribute>
+      </xpath>
+      <xpath expr="//field[@name='procure_method']" position="attributes">
+          <attribute name="attrs">{'invisible':[('show_procure_method_on_move_form','=',False)]}</attribute>
+      </xpath>
+      <xpath expr="//field[@name='name']" position="before">
+          <field name="price_unit" attrs="{'invisible':[('show_price_unit_on_move_form','=',False)]}"/>
+      </xpath>
+    </field>
+</record>
+</data>
+</openerp>
