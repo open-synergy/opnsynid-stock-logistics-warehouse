@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0) -->
+<openerp>
+<data>
+<record id="stock_quant_qrcode_view_form" model="ir.ui.view">
+    <field name="name">stock.quant_qrcode form</field>
+    <field name="model">stock.quant</field>
+    <field name="inherit_id" ref="stock.view_stock_quant_form" />
+    <field eval="20" name="priority"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//group" position="after">
+                <notebook>
+                    <page name="qrcode" string="QR Code">
+                        <field name="qr_image" widget="image" />
+                    </page>
+                </notebook>
+            </xpath>
+        </data>
+    </field>
+</record>
+</data>
+</openerp>
