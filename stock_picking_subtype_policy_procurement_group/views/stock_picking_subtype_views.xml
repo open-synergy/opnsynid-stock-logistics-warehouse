@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+  <record id="stock_picking_subtype_view_form" model="ir.ui.view">
+      <field name="name">stock.picking_subtype form</field>
+      <field name="model">stock.picking_subtype</field>
+      <field name="inherit_id" ref="stock_picking_subtype_policy.stock_picking_subtype_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//group[@name='picking_policy_1']" position="inside">
+            <field name="show_create_procurement_group_on_picking_form" string="Create Procurement Group"/>
+        </xpath>
+          <xpath expr="//group[@name='picking_policy_2']" position="inside">
+              <field name="default_create_procurement_group" string="Create Procurement Group"/>
+          </xpath>
+      </field>
+  </record>
+
+</data>
+</openerp>
