@@ -9,12 +9,13 @@
     <field name="inherit_id" ref="stock.view_picking_form"/>
     <field name="arch" type="xml">
         <xpath expr="//notebook" position="inside">
-            <page name="subtype_policy" string="Subtype Policy">
+            <page name="subtype_policy" string="Subtype Policy" groups="base.group_system">
                 <group name="subtype_policy" colspan="4" col="2">
                     <field name="show_partner_on_picking_form" string="Partner"/>
                     <field name="show_min_date_on_picking_form" string="Scheduled Date"/>
                     <field name="show_max_date_on_picking_form" string="Max. Excepted Date"/>
                     <field name="show_date_done_on_picking_form" string="Date Done"/>
+                    <field name="show_move_type_on_picking_form" string="Delivery Method"/>
                 </group>
             </page>
         </xpath>
@@ -25,6 +26,10 @@
 
         <xpath expr="//form//field[@name='min_date']" position="attributes">
             <attribute name="attrs">{'invisible':[('show_min_date_on_picking_form','=',False)]}</attribute>
+        </xpath>
+
+        <xpath expr="//page[@string='Additional Info']" position="attributes">
+            <attribute name="groups">base.group_system</attribute>
         </xpath>
     </field>
 </record>

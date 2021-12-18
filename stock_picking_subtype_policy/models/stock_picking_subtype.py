@@ -9,6 +9,7 @@ class StockPickingSubtype(models.Model):
     _name = "stock.picking_subtype"
     _inherit = "stock.picking_subtype"
 
+    # stock.picking visibility
     show_partner_on_picking_form = fields.Boolean(
         string="Show Partner on Stock Picking Form",
         default=True,
@@ -25,8 +26,24 @@ class StockPickingSubtype(models.Model):
         string="Show Date Done on Stock Picking Form",
         default=True,
     )
+    show_move_type_on_picking_form = fields.Boolean(
+        string="Show Delivery Method on Stock Picking Form",
+        default=True,
+    )
 
-    # stock.move policy
+
+    # stock.picking default
+    default_move_type = fields.Selection(
+        string="Default Delivery Method",
+        selection=[
+            ("direct", "Partial"),
+            ("one", "All at once"),
+        ],
+        default="direct",
+        required=True,
+    )
+
+    # stock.move visibility
     show_procure_method_on_move_form = fields.Boolean(
         string="Show Procure Method on Stock Move Form",
         default=True,
@@ -42,4 +59,15 @@ class StockPickingSubtype(models.Model):
     show_price_unit_on_move_form = fields.Boolean(
         string="Show Price Unit on Stock Move Form",
         default=True,
+    )
+
+    # stock.picking default
+    default_procure_method = fields.Selection(
+        string="Default Procure Method",
+        selection=[
+            ("make_to_stock", "Default: Take From Stock"),
+            ("make_to_order", "Advance: Apply Procurement Rules"),
+        ],
+        default="make_to_stock",
+        required=True,
     )
