@@ -20,12 +20,15 @@
     <field name="priority" eval="40"/>
     <field name="arch" type="xml">
       <xpath expr="//group[@name='quants_grp']" position="after">
-          <group name="subtype_move_policy" string="Subtype Move Policy" colspan="4" col="2">
+          <group name="subtype_move_policy" string="Subtype Move Policy" colspan="4" col="2" groups="base.group_system">
               <field name="show_location_on_move_form"/>
               <field name="show_location_dest_on_move_form"/>
               <field name="show_procure_method_on_move_form"/>
               <field name="show_price_unit_on_move_form"/>
           </group>
+      </xpath>
+      <xpath expr="//group[@string='Locations']" position="attributes">
+          <attribute name="attrs">{'invisible':[('show_location_on_move_form','=',False),('show_location_dest_on_move_form','=',False)]}</attribute>
       </xpath>
       <xpath expr="//field[@name='location_id']" position="attributes">
           <attribute name="attrs">{'invisible':[('show_location_on_move_form','=',False)]}</attribute>

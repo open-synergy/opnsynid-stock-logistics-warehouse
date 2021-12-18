@@ -2,7 +2,7 @@
 # Copyright 2019 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields
+from openerp import models, fields, api
 
 
 class StockPicking(models.Model):
@@ -29,3 +29,17 @@ class StockPicking(models.Model):
         related="picking_type_id.subtype_id.show_date_done_on_picking_form",
         store=False,
     )
+    show_move_type_on_picking_form = fields.Boolean(
+        string="Show Delivery Method on Stock Picking Form",
+        related="picking_type_id.subtype_id.show_move_type_on_picking_form",
+        store=False,
+    )
+
+    @api.onchange(
+        "picking_type_id",
+    )
+    def onchange_move_type(self):
+        result = False
+        if self.picking_type_id and self.picking_type_id.subtype_id:
+            result = self.picking_type_id.subtype_id.default_move_type
+        self.move_type = result

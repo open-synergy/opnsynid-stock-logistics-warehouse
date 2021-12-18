@@ -5,7 +5,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Stock Picking/Move Policy Based on Subtype",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.1.0",
     "category": "Stock Management",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",

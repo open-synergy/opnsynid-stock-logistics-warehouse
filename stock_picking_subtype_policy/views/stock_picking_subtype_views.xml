@@ -18,6 +18,9 @@
                       <field name="show_max_date_on_picking_form" string="Max. Expected Date"/>
                       <field name="show_date_done_on_picking_form" string="Date Done"/>
                   </group>
+                  <group name="picking_policy_2" colspan="4" col="2" string="Default">
+                      <field name="default_move_type"/>
+                  </group>
               </page>
               <page name="move_policy" string="Stock Move Policy">
                   <group name="move_policy_1" colspan="4" col="2" string="Visibility">
@@ -25,6 +28,9 @@
                       <field name="show_location_dest_on_move_form" string="Destination Location"/>
                       <field name="show_procure_method_on_move_form" string="Procure Method"/>
                       <field name="show_price_unit_on_move_form" string="Price Unit"/>
+                  </group>
+                  <group name="move_policy_2" colspan="4" col="2" string="Visibility">
+                      <field name="default_procure_method"/>
                   </group>
               </page>
           </xpath>
