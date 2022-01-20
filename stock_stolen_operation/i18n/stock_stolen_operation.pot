@@ -19,14 +19,14 @@ msgid "(create)"
 msgstr ""
 
 #. module: stock_stolen_operation
-#: code:addons/stock_stolen_operation/models/stock_warehouse.py:70
+#: code:addons/stock_stolen_operation/models/stock_warehouse.py:69
 #, python-format
 msgid "No stolen location"
 msgstr ""
 
 #. module: stock_stolen_operation
-#: code:addons/stock_stolen_operation/models/stock_warehouse.py:26
-#: code:addons/stock_stolen_operation/models/stock_warehouse.py:55
+#: code:addons/stock_stolen_operation/models/stock_warehouse.py:24
+#: code:addons/stock_stolen_operation/models/stock_warehouse.py:53
 #, python-format
 msgid "Stolen"
 msgstr ""
