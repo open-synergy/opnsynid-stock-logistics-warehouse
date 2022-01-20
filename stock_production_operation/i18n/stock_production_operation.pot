@@ -19,20 +19,20 @@ msgid "(create)"
 msgstr ""
 
 #. module: stock_production_operation
-#: code:addons/stock_production_operation/models/stock_warehouse.py:123
+#: code:addons/stock_production_operation/models/stock_warehouse.py:115
 #, python-format
 msgid "No RM Consumption location"
 msgstr ""
 
 #. module: stock_production_operation
-#: code:addons/stock_production_operation/models/stock_warehouse.py:130
+#: code:addons/stock_production_operation/models/stock_warehouse.py:122
 #, python-format
 msgid "No production result location"
 msgstr ""
 
 #. module: stock_production_operation
-#: code:addons/stock_production_operation/models/stock_warehouse.py:47
-#: code:addons/stock_production_operation/models/stock_warehouse.py:108
+#: code:addons/stock_production_operation/models/stock_warehouse.py:42
+#: code:addons/stock_production_operation/models/stock_warehouse.py:100
 #, python-format
 msgid "Production Result"
 msgstr ""
@@ -48,8 +48,8 @@ msgid "Production Result Type"
 msgstr ""
 
 #. module: stock_production_operation
-#: code:addons/stock_production_operation/models/stock_warehouse.py:34
-#: code:addons/stock_production_operation/models/stock_warehouse.py:86
+#: code:addons/stock_production_operation/models/stock_warehouse.py:30
+#: code:addons/stock_production_operation/models/stock_warehouse.py:79
 #, python-format
 msgid "RM Consumption"
 msgstr ""
