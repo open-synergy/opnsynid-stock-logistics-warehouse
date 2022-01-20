@@ -2,7 +2,7 @@
 # Copyright 2018 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
+from openerp import _, api, fields, models
 from openerp.exceptions import Warning as UserError
 
 
@@ -10,12 +10,10 @@ class StockWarehouse(models.Model):
     _inherit = "stock.warehouse"
 
     missing_type_id = fields.Many2one(
-        string="Missing Type",
-        comodel_name="stock.picking.type"
+        string="Missing Type", comodel_name="stock.picking.type"
     )
     missing_loc_id = fields.Many2one(
-        string="Missing Location",
-        comodel_name="stock.location"
+        string="Missing Location", comodel_name="stock.location"
     )
 
     @api.multi
@@ -26,8 +24,7 @@ class StockWarehouse(models.Model):
             "name": _("Missing"),
             "location_id": parent_location.id,
             "usage": "inventory",
-            "active": True
-
+            "active": True,
         }
         return data
 
@@ -37,23 +34,20 @@ class StockWarehouse(models.Model):
         data = {
             "name": self.code + " - Missing",
             "prefix": self.code + "/MISS/",
-            "padding": 6
+            "padding": 6,
         }
         return data
 
     @api.multi
     def _prepare_missing_type(self):
         self.ensure_one()
-        obj_sequence = self.env['ir.sequence']
+        obj_sequence = self.env["ir.sequence"]
         location = self.lot_stock_id
         missing_loc = self._get_missing_location()
 
-        sequence = obj_sequence.create(
-            self._prepare_missing_sequence())
+        sequence = obj_sequence.create(self._prepare_missing_sequence())
 
-        subtype = \
-            self.env.ref(
-                "stock_missing_operation.missing_subtype")
+        subtype = self.env.ref("stock_missing_operation.missing_subtype")
 
         data = {
             "name": _("Missing"),
@@ -79,16 +73,14 @@ class StockWarehouse(models.Model):
     def _create_missing_loc(self):
         self.ensure_one()
         obj_loc = self.env["stock.location"]
-        missing_loc = obj_loc.create(
-            self._prepare_missing_location())
+        missing_loc = obj_loc.create(self._prepare_missing_location())
         return missing_loc
 
     @api.multi
     def _create_missing_type(self):
         self.ensure_one()
         obj_type = self.env["stock.picking.type"]
-        missing_type = obj_type.create(
-            self._prepare_missing_type())
+        missing_type = obj_type.create(self._prepare_missing_type())
         return missing_type
 
     @api.multi

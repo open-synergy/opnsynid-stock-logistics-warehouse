@@ -1,12 +1,12 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
-    
+
 ================================
 Inter-Warehouse Product Movement
 ================================
 
-This module adds: 
+This module adds:
 
 1. New picking type operation: (1) Inter-Warehouse In, and (2) Inter-Warehouse Out. Both
 type operations provide more control in managing movements between warehouse.
@@ -86,7 +86,7 @@ Usage
 
 **Create Pull Movement Manually From Destination Warehouse Into Source Warehouse**
 
-#. Create stock picking manually. Make sure it has: 
+#. Create stock picking manually. Make sure it has:
     * Destination warehouse's **Inter-Warehouse In** picking type
     * Source warehouse's **Transit Pull** location for source location
     * Any destination warehouse's internal location for destination location
@@ -129,8 +129,8 @@ Contributors
 Maintainer
 ----------
 
-.. image:: https://opensynergy-indonesia.com/logo.png
-   :alt: OpenSynergy Indonesia
-   :target: https://opensynergy-indonesia.com
+.. image:: https://simetri-sinergi.id/logo.png
+   :alt: PT. Simetri Sinergi Indonesia
+   :target: https://simetri-sinergi.id.com
 
-This module is maintained by the OpenSynergy Indonesia.
+This module is maintained by the PT. Simetri Sinergi Indonesia.

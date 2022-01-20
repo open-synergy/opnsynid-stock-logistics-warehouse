@@ -1,69 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <openerp>
 <data>
 <record id="acc_src_product_categ_val_acc" model="stock.move_account_source">
     <field name="name">Valuation Account on Product Category</field>
-    <field name="python_code">result = move.product_id.categ_id.property_stock_valuation_account_id.id</field>
+    <field
+                name="python_code"
+            >result = move.product_id.categ_id.property_stock_valuation_account_id.id</field>
 </record>
 
 <record id="acc_src_product_categ_input_acc" model="stock.move_account_source">
     <field name="name">Input Account on Product Category</field>
-    <field name="python_code">result = move.product_id.categ_id.property_stock_account_input_categ.id</field>
+    <field
+                name="python_code"
+            >result = move.product_id.categ_id.property_stock_account_input_categ.id</field>
 </record>
 
 <record id="acc_src_product_categ_output_acc" model="stock.move_account_source">
     <field name="name">Output Account on Product Category</field>
-    <field name="python_code">result = move.product_id.categ_id.property_stock_account_output_categ.id</field>
+    <field
+                name="python_code"
+            >result = move.product_id.categ_id.property_stock_account_output_categ.id</field>
 </record>
 
 <record id="acc_src_product_categ_income_acc" model="stock.move_account_source">
     <field name="name">Income Account on Product Category</field>
-    <field name="python_code">result = move.product_id.categ_id.property_account_income_categ.id</field>
+    <field
+                name="python_code"
+            >result = move.product_id.categ_id.property_account_income_categ.id</field>
 </record>
 
 <record id="acc_src_product_categ_expense_acc" model="stock.move_account_source">
     <field name="name">Expense Account on Product Category</field>
-    <field name="python_code">result = move.product_id.categ_id.property_account_expense_categ.id</field>
+    <field
+                name="python_code"
+            >result = move.product_id.categ_id.property_account_expense_categ.id</field>
 </record>
 
 <record id="acc_src_product_income_acc" model="stock.move_account_source">
     <field name="name">Income Account on Product</field>
-    <field name="python_code">result = move.product_id.property_account_income.id</field>
+    <field
+                name="python_code"
+            >result = move.product_id.property_account_income.id</field>
 </record>
 
 <record id="acc_src_product_expense_acc" model="stock.move_account_source">
     <field name="name">Expense Account on Product</field>
-    <field name="python_code">result = move.product_id.property_account_expense.id</field>
+    <field
+                name="python_code"
+            >result = move.product_id.property_account_expense.id</field>
 </record>
 
 <record id="acc_src_product_input_acc" model="stock.move_account_source">
     <field name="name">Input Account on Product</field>
-    <field name="python_code">result = move.product_id.property_stock_account_input.id</field>
+    <field
+                name="python_code"
+            >result = move.product_id.property_stock_account_input.id</field>
 </record>
 
 <record id="acc_src_product_output_acc" model="stock.move_account_source">
     <field name="name">Output Account on Product</field>
-    <field name="python_code">result = move.product_id.property_stock_account_output.id</field>
+    <field
+                name="python_code"
+            >result = move.product_id.property_stock_account_output.id</field>
 </record>
 
 <record id="acc_src_loc_src_incoming_acc" model="stock.move_account_source">
     <field name="name">Incoming Valuation Account on Source Location</field>
-    <field name="python_code">result = move.location_id.valuation_in_account_id.id</field>
+    <field
+                name="python_code"
+            >result = move.location_id.valuation_in_account_id.id</field>
 </record>
 
 <record id="acc_src_loc_src_outgoing_acc" model="stock.move_account_source">
     <field name="name">Outgoing Valuation Account on Source Location</field>
-    <field name="python_code">result = move.location_id.valuation_out_account_id.id</field>
+    <field
+                name="python_code"
+            >result = move.location_id.valuation_out_account_id.id</field>
 </record>
 
 <record id="acc_src_loc_dest_incoming_acc" model="stock.move_account_source">
     <field name="name">Incoming Valuation Account on Destination Location</field>
-    <field name="python_code">result = move.location_dest_id.valuation_in_account_id.id</field>
+    <field
+                name="python_code"
+            >result = move.location_dest_id.valuation_in_account_id.id</field>
 </record>
 
 <record id="acc_src_loc_dest_outgoing_acc" model="stock.move_account_source">
     <field name="name">Outgoing Valuation Account on Destination Location</field>
-    <field name="python_code">result = move.location_dest_id.valuation_out_account_id.id</field>
+    <field
+                name="python_code"
+            >result = move.location_dest_id.valuation_out_account_id.id</field>
 </record>
 </data>
 </openerp>

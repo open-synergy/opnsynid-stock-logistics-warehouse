@@ -19,8 +19,7 @@
         "views/stock_picking_subtype_views.xml",
         "views/stock_picking_views.xml",
     ],
-    "demo": [
-    ],
+    "demo": [],
     "images": [
         "static/description/banner.png",
     ],

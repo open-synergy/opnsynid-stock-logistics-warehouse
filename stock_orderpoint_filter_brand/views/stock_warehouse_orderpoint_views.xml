@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- 2017 OpenSynergy Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
-
 <openerp>
     <data>
         <record id="stock_warehouse_orderpoint_view_search" model="ir.ui.view">
             <field name="name">Stock Warehouse Orderpoint Search</field>
             <field name="model">stock.warehouse.orderpoint</field>
-            <field name="inherit_id" ref="stock.warehouse_orderpoint_search"/>
+            <field name="inherit_id" ref="stock.warehouse_orderpoint_search" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='product_id']" position="after">
                     <group name="grp_brand" string="Brand">
@@ -17,4 +16,3 @@
         </record>
     </data>
 </openerp>
-

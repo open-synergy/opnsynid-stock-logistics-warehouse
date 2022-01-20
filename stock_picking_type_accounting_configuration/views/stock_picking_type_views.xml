@@ -1,19 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <openerp>
 <data>
 <record id="stock_picking_type_view_form" model="ir.ui.view">
     <field name="name">Stock Picking Type Form</field>
     <field name="model">stock.picking.type</field>
-    <field name="inherit_id" ref="stock.view_picking_type_form"/>
+    <field name="inherit_id" ref="stock.view_picking_type_form" />
     <field name="arch" type="xml">
         <xpath expr="//group[last()]" position="after">
-            <group name="grp_accounting" colspan="4" col="2" string="Accounting Configuration">
-                <field name="acc_valuation"/>
-                <field name="acc_valuation_id" widget="selection" attrs="{'invisible':[('acc_valuation','=','default')], 'required':[('acc_valuation','=','custom')]}"/>
-                <field name="acc_source"/>
-                <field name="acc_source_id" widget="selection" attrs="{'invisible':[('acc_source','=','default')], 'required':[('acc_source','=','custom')]}"/>
-                <field name="acc_destination"/>
-                <field name="acc_destination_id" widget="selection" attrs="{'invisible':[('acc_destination','=','default')], 'required':[('acc_destination','=','custom')]}"/>
+            <group
+                        name="grp_accounting"
+                        colspan="4"
+                        col="2"
+                        string="Accounting Configuration"
+                    >
+                <field name="acc_valuation" />
+                <field
+                            name="acc_valuation_id"
+                            widget="selection"
+                            attrs="{'invisible':[('acc_valuation','=','default')], 'required':[('acc_valuation','=','custom')]}"
+                        />
+                <field name="acc_source" />
+                <field
+                            name="acc_source_id"
+                            widget="selection"
+                            attrs="{'invisible':[('acc_source','=','default')], 'required':[('acc_source','=','custom')]}"
+                        />
+                <field name="acc_destination" />
+                <field
+                            name="acc_destination_id"
+                            widget="selection"
+                            attrs="{'invisible':[('acc_destination','=','default')], 'required':[('acc_destination','=','custom')]}"
+                        />
             </group>
         </xpath>
     </field>

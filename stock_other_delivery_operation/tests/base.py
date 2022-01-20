@@ -6,7 +6,6 @@ from openerp.tests.common import TransactionCase
 
 
 class BaseOtherDeliveryOperation(TransactionCase):
-
     def setUp(self):
         super(BaseOtherDeliveryOperation, self).setUp()
         self.obj_wh = self.env["stock.warehouse"]
@@ -26,29 +25,25 @@ class BaseOtherDeliveryOperation(TransactionCase):
         return wh
 
     def _check_wh_routes(self, wh):
-        self.assertIn(
-            wh.other_delivery_route_id.id,
-            wh.route_ids.ids)
+        self.assertIn(wh.other_delivery_route_id.id, wh.route_ids.ids)
 
     def _check_type_other_delivery(self, wh):
-        cust_loc = self.env["ir.property"].get(
-            "property_stock_customer",
-            "res.partner")
+        cust_loc = self.env["ir.property"].get("property_stock_customer", "res.partner")
         if wh.delivery_steps in ["ship_only", "ship_transit"]:
             src1 = wh.other_delivery_type_id.default_location_src_id
             src2 = wh.lot_stock_id
-            self.assertEqual(
-                src1,
-                src2)
+            self.assertEqual(src1, src2)
         else:
             self.assertEqual(
                 wh.other_delivery_type_id.default_location_src_id,
-                wh.wh_output_stock_loc_id)
+                wh.wh_output_stock_loc_id,
+            )
         if wh.delivery_steps in ["ship_only", "pick_ship", "pick_pack_ship"]:
             self.assertEqual(
-                wh.other_delivery_type_id.default_location_dest_id,
-                cust_loc)
+                wh.other_delivery_type_id.default_location_dest_id, cust_loc
+            )
         else:
             self.assertEqual(
                 wh.other_delivery_type_id.default_location_dest_id,
-                wh.wh_transit_out_loc_id)
+                wh.wh_transit_out_loc_id,
+            )

@@ -18,5 +18,8 @@
         "data/base_qr_content_policy_data.xml",
         "views/stock_quant_views.xml",
     ],
+    "images": [
+        "static/description/banner.png",
+    ],
     "installable": True,
 }

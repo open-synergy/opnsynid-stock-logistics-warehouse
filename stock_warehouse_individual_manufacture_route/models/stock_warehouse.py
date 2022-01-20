@@ -2,7 +2,7 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, api, fields
+from openerp import api, fields, models
 
 
 class StockWarehouse(models.Model):
@@ -15,8 +15,7 @@ class StockWarehouse(models.Model):
 
     @api.model
     def _get_manufacture_pull_rule(self, warehouse):
-        result = super(
-            StockWarehouse, self)._get_manufacture_pull_rule(warehouse)
+        result = super(StockWarehouse, self)._get_manufacture_pull_rule(warehouse)
         obj_route = self.env["stock.location.route"]
         if warehouse.manufacture_route_id:
             result["route_id"] = warehouse.manufacture_route_id.id

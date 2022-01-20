@@ -9,11 +9,8 @@ class TestBaseTypeCreateMenu(TransactionCase):
     def setUp(self):
         super(TestBaseTypeCreateMenu, self).setUp()
         # Object
-        self.wiz =\
-            self.env['stock.operation_type_create_menu']
-        self.obj_picking_type =\
-            self.env['stock.picking.type']
+        self.wiz = self.env["stock.operation_type_create_menu"]
+        self.obj_picking_type = self.env["stock.picking.type"]
 
         # Data
-        self.picking_type =\
-            self.env.ref('stock.picking_type_in')
+        self.picking_type = self.env.ref("stock.picking_type_in")

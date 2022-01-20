@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2020 OpenSynergy Indonesia
-# Copyright 2020 PT. Simetri Sinergi Indonesia
+# Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 # pylint: disable=locally-disabled, manifest-required-author
 {
@@ -24,12 +24,12 @@
         "data/stock_location_datas.xml",
         "data/ir_property_datas.xml",
         "views/res_partner_views.xml",
-        "views/stock_warehouse_views.xml"
+        "views/stock_warehouse_views.xml",
     ],
     "demo": [
         "demo/ir_sequence_demo.xml",
         "demo/stock_picking_type_demo.xml",
-        "demo/stock_location_route_demo.xml"
+        "demo/stock_location_route_demo.xml",
     ],
     "images": [
         "static/description/banner.png",

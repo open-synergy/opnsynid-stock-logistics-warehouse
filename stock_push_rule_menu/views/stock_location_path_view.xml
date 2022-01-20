@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- © 2016 OpenSynergy Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
-
 <openerp>
     <data>
 
@@ -10,18 +9,43 @@
             <field name="model">stock.location.path</field>
             <field name="arch" type="xml">
                 <search string="Push Rules">
-                    <field name="name"/>
+                    <field name="name" />
                     <field name="location_from_id" />
                     <field name="location_dest_id" />
-                    <field name="picking_type_id"/>
-                    <field name="route_id"/>
-                    <field name="warehouse_id"/>
+                    <field name="picking_type_id" />
+                    <field name="route_id" />
+                    <field name="warehouse_id" />
                     <group expand="0" string="Group By...">
-                        <filter string="Source Location" icon="terp-personal" domain="[]" context="{'group_by':'location_from_id'}"/>
-                        <filter string="Destination Location" icon="terp-personal+" domain="[]" context="{'group_by':'location_dest_id'}"/>
-                        <filter string="Type of the new Operation" icon="terp-personal+" domain="[]" context="{'group_by':'picking_type_id'}"/>
-                        <filter string="Route" icon="terp-personal+" domain="[]" context="{'group_by':'route_id'}"/>
-                        <filter string="Warehouse" icon="terp-personal+" domain="[]" context="{'group_by':'warehouse_id'}"/>
+                        <filter
+                            string="Source Location"
+                            icon="terp-personal"
+                            domain="[]"
+                            context="{'group_by':'location_from_id'}"
+                        />
+                        <filter
+                            string="Destination Location"
+                            icon="terp-personal+"
+                            domain="[]"
+                            context="{'group_by':'location_dest_id'}"
+                        />
+                        <filter
+                            string="Type of the new Operation"
+                            icon="terp-personal+"
+                            domain="[]"
+                            context="{'group_by':'picking_type_id'}"
+                        />
+                        <filter
+                            string="Route"
+                            icon="terp-personal+"
+                            domain="[]"
+                            context="{'group_by':'route_id'}"
+                        />
+                        <filter
+                            string="Warehouse"
+                            icon="terp-personal+"
+                            domain="[]"
+                            context="{'group_by':'warehouse_id'}"
+                        />
                     </group>
                 </search>
             </field>
@@ -30,11 +54,11 @@
         <record id="stock_location_path_view_tree" model="ir.ui.view">
             <field name="name">Stock Location Path Tree</field>
             <field name="model">stock.location.path</field>
-            <field name="inherit_id" ref="stock.stock_location_path_tree"/>
+            <field name="inherit_id" ref="stock.stock_location_path_tree" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">
-                    <field name="route_id"/>
-                    <field name="active"/>
+                    <field name="route_id" />
+                    <field name="active" />
                 </xpath>
             </field>
         </record>
@@ -42,11 +66,11 @@
         <record id="stock_location_path_view_form" model="ir.ui.view">
             <field name="name">Stock Location Path Form</field>
             <field name="model">stock.location.path</field>
-            <field name="inherit_id" ref="stock.stock_location_path_form"/>
+            <field name="inherit_id" ref="stock.stock_location_path_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='location_dest_id']" position="after">
-                    <field name="route_id"/>
-                    <field name="active"/>
+                    <field name="route_id" />
+                    <field name="active" />
                 </xpath>
             </field>
         </record>
@@ -56,32 +80,32 @@
             <field name="res_model">stock.location.path</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" eval="False"/>
+            <field name="view_id" eval="False" />
             <field name="context">{}</field>
-            <field name="search_view_id" ref="stock_location_path_search_form"/>
+            <field name="search_view_id" ref="stock_location_path_search_form" />
         </record>
 
         <record id="stock_location_path_tree_action" model="ir.actions.act_window.view">
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="1" />
             <field name="view_mode">tree</field>
-            <field name="view_id" ref="stock.stock_location_path_tree"/>
-            <field name="act_window_id" ref="stock_location_path_action"/>
+            <field name="view_id" ref="stock.stock_location_path_tree" />
+            <field name="act_window_id" ref="stock_location_path_action" />
         </record>
 
         <record id="stock_location_path_form_action" model="ir.actions.act_window.view">
-            <field name="sequence" eval="2"/>
+            <field name="sequence" eval="2" />
             <field name="view_mode">form</field>
-            <field name="view_id" ref="stock.stock_location_path_form"/>
-        <field name="act_window_id" ref="stock_location_path_action"/>
+            <field name="view_id" ref="stock.stock_location_path_form" />
+        <field name="act_window_id" ref="stock_location_path_action" />
         </record>
 
-        <menuitem 
-            id="stock_location_path_menu" 
-            name="Push Rules" 
-            parent="stock.menu_stock_configuration" 
+        <menuitem
+            id="stock_location_path_menu"
+            name="Push Rules"
+            parent="stock.menu_stock_configuration"
             action="stock_location_path_action"
-            sequence="100" />
-   
+            sequence="100"
+        />
+
     </data>
 </openerp>
-

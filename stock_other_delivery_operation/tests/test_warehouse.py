@@ -2,12 +2,12 @@
 # © 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from .base import BaseOtherDeliveryOperation
 import itertools
+
+from .base import BaseOtherDeliveryOperation
 
 
 class TestButtonAutoCreate(BaseOtherDeliveryOperation):
-
     def test_warehouse_create(self):
         reception_steps = [
             "one_step",
@@ -27,12 +27,14 @@ class TestButtonAutoCreate(BaseOtherDeliveryOperation):
         ]
         num = 1
         for combination in itertools.product(reception_steps, delivery_steps):
-            self.create_wh({
-                "name": "X WH %s" % str(num),
-                "code": "X%s" % str(num),
-                "reception_steps": combination[0],
-                "delivery_steps": combination[1],
-            })
+            self.create_wh(
+                {
+                    "name": "X WH %s" % str(num),
+                    "code": "X%s" % str(num),
+                    "reception_steps": combination[0],
+                    "delivery_steps": combination[1],
+                }
+            )
             num += 1
 
     def test_warehouse_edit(self):
@@ -55,15 +57,20 @@ class TestButtonAutoCreate(BaseOtherDeliveryOperation):
         num = 1
         for combination in itertools.product(reception_steps, delivery_steps):
             if num == 1:
-                wh = self.create_wh({
-                    "name": "X WH %s" % str(num),
-                    "code": "X%s" % str(num),
-                    "reception_steps": combination[0],
-                    "delivery_steps": combination[1],
-                })
+                wh = self.create_wh(
+                    {
+                        "name": "X WH %s" % str(num),
+                        "code": "X%s" % str(num),
+                        "reception_steps": combination[0],
+                        "delivery_steps": combination[1],
+                    }
+                )
             else:
-                self.edit_wh(wh, {
-                    "reception_steps": combination[0],
-                    "delivery_steps": combination[1],
-                })
+                self.edit_wh(
+                    wh,
+                    {
+                        "reception_steps": combination[0],
+                        "delivery_steps": combination[1],
+                    },
+                )
             num += 1

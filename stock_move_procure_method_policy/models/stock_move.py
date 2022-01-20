@@ -2,21 +2,18 @@
 # Copyright 2018 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, api, fields
+from openerp import api, fields, models
 
 
 class StockMove(models.Model):
     _inherit = "stock.move"
 
-    @api.depends(
-        "picking_type_id"
-    )
+    @api.depends("picking_type_id")
     @api.multi
     def _compute_show_procure_method(self):
         for move in self:
             move.show_procure_method = False
-            if move.picking_type_id and \
-                    move.picking_type_id.show_procure_method:
+            if move.picking_type_id and move.picking_type_id.show_procure_method:
                 move.show_procure_method = True
 
     show_procure_method = fields.Boolean(

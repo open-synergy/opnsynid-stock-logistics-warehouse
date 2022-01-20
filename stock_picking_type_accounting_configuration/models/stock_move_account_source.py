@@ -1,8 +1,8 @@
 # 2020 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, api, fields
-from openerp.tools.safe_eval import safe_eval as eval
+from openerp import api, fields, models
+from openerp.tools.safe_eval import safe_eval as eval  # noqa W0622
 
 
 class StockMoveAccountSource(models.Model):
@@ -38,8 +38,7 @@ class StockMoveAccountSource(models.Model):
         self.ensure_one()
         localdict = self._get_localdict(move)
         try:
-            eval(self.python_code,
-                 localdict, mode="exec", nocopy=True)
+            eval(self.python_code, localdict, mode="exec", nocopy=True)
             result = localdict["result"]
         except:  # noqa: E722
             result = False

@@ -2,25 +2,20 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
+from openerp import _, api, fields, models
 
 
 class ResCompany(models.Model):
     _inherit = "res.company"
 
     adjustment_type_id = fields.Many2one(
-        string="Adjustment Type",
-        comodel_name="stock.picking.type"
+        string="Adjustment Type", comodel_name="stock.picking.type"
     )
 
     @api.multi
     def _prepare_adjustment_sequence(self):
         self.ensure_one()
-        data = {
-            "name": _("Adjustment"),
-            "prefix": "ADJ/%(y)s/",
-            "padding": 6
-        }
+        data = {"name": _("Adjustment"), "prefix": "ADJ/%(y)s/", "padding": 6}
         return data
 
     @api.multi
@@ -28,8 +23,7 @@ class ResCompany(models.Model):
         self.ensure_one()
         obj_sequence = self.env["ir.sequence"]
 
-        sequence = obj_sequence.create(
-            self._prepare_adjustment_sequence())
+        sequence = obj_sequence.create(self._prepare_adjustment_sequence())
 
         data = {
             "name": _("Adjustment"),
@@ -43,8 +37,7 @@ class ResCompany(models.Model):
     def _create_adjustment_type(self):
         self.ensure_one()
         obj_type = self.env["stock.picking.type"]
-        adjustment_type = obj_type.create(
-            self._prepare_adjustment_type())
+        adjustment_type = obj_type.create(self._prepare_adjustment_type())
         return adjustment_type
 
     @api.multi

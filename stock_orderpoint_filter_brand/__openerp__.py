@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 # Copyright 2017 OpenSynergy Indonesia
+# Copyright 2022 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Stock Orderpoint Brand Filter",
     "version": "8.0.1.0.0",
     "category": "Stock Management",
-    "website": "https://opensynergy-indonesia.com",
-    "author": "OpenSynergy Indonesia",
+    "website": "https://simetri-sinergi.id",
+    "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "AGPL-3",
     "installable": True,
     "depends": [
@@ -16,5 +17,8 @@
     "data": [
         "views/product_brand_views.xml",
         "views/stock_warehouse_orderpoint_views.xml",
+    ],
+    "images": [
+        "static/description/banner.png",
     ],
 }

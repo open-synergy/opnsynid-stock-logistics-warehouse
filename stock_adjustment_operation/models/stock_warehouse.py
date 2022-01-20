@@ -2,7 +2,7 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
+from openerp import _, api, fields, models
 from openerp.exceptions import Warning as UserError
 
 
@@ -10,16 +10,13 @@ class StockWarehouse(models.Model):
     _inherit = "stock.warehouse"
 
     adjustment_in_type_id = fields.Many2one(
-        string="Adjustment In Type",
-        comodel_name="stock.picking.type"
+        string="Adjustment In Type", comodel_name="stock.picking.type"
     )
     adjustment_out_type_id = fields.Many2one(
-        string="Adjustment Out Type",
-        comodel_name="stock.picking.type"
+        string="Adjustment Out Type", comodel_name="stock.picking.type"
     )
     adjustment_loc_id = fields.Many2one(
-        string="Adjustment Location",
-        comodel_name="stock.location"
+        string="Adjustment Location", comodel_name="stock.location"
     )
 
     @api.multi
@@ -30,8 +27,7 @@ class StockWarehouse(models.Model):
             "name": _("Adjustment"),
             "location_id": parent_location.id,
             "usage": "inventory",
-            "active": True
-
+            "active": True,
         }
         return data
 
@@ -41,7 +37,7 @@ class StockWarehouse(models.Model):
         data = {
             "name": self.code + " - Adjustment In",
             "prefix": self.code + "/ADJ-IN/",
-            "padding": 6
+            "padding": 6,
         }
         return data
 
@@ -51,7 +47,7 @@ class StockWarehouse(models.Model):
         data = {
             "name": self.code + " - Adjustment Out",
             "prefix": self.code + "/ADJ-OUT/",
-            "padding": 6
+            "padding": 6,
         }
         return data
 
@@ -62,8 +58,7 @@ class StockWarehouse(models.Model):
         location = self.lot_stock_id
         adjustment_loc = self._get_adjustment_location()
 
-        sequence = obj_sequence.create(
-            self._prepare_adjustment_in_sequence())
+        sequence = obj_sequence.create(self._prepare_adjustment_in_sequence())
 
         data = {
             "name": _("Adjustment In"),
@@ -84,8 +79,7 @@ class StockWarehouse(models.Model):
         location = self.lot_stock_id
         adjustment_loc = self._get_adjustment_location()
 
-        sequence = obj_sequence.create(
-            self._prepare_adjustment_out_sequence())
+        sequence = obj_sequence.create(self._prepare_adjustment_out_sequence())
 
         data = {
             "name": _("Adjustment Out"),
@@ -110,24 +104,21 @@ class StockWarehouse(models.Model):
     def _create_adjustment_loc(self):
         self.ensure_one()
         obj_loc = self.env["stock.location"]
-        adjustment_loc = obj_loc.create(
-            self._prepare_adjustment_location())
+        adjustment_loc = obj_loc.create(self._prepare_adjustment_location())
         return adjustment_loc
 
     @api.multi
     def _create_adjustment_in_type(self):
         self.ensure_one()
         obj_type = self.env["stock.picking.type"]
-        adjustment_in_type = obj_type.create(
-            self._prepare_adjustment_in_type())
+        adjustment_in_type = obj_type.create(self._prepare_adjustment_in_type())
         return adjustment_in_type
 
     @api.multi
     def _create_adjustment_out_type(self):
         self.ensure_one()
         obj_type = self.env["stock.picking.type"]
-        adjustment_out_type = obj_type.create(
-            self._prepare_adjustment_out_type())
+        adjustment_out_type = obj_type.create(self._prepare_adjustment_out_type())
         return adjustment_out_type
 
     @api.multi

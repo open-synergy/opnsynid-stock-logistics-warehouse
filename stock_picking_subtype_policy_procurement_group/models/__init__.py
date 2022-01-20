@@ -7,4 +7,4 @@
 from . import (
     stock_picking_subtype,
     stock_picking,
-    )
+)

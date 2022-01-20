@@ -2,25 +2,25 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, api
-from openerp.osv.orm import setup_modifiers
 from lxml import etree
+from openerp import api, models
+from openerp.osv.orm import setup_modifiers
 
 
 class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     @api.model
-    def fields_view_get(self, view_id=None, view_type=False,
-                        toolbar=False, submenu=False):
+    def fields_view_get(
+        self, view_id=None, view_type=False, toolbar=False, submenu=False
+    ):
         res = super(StockPicking, self).fields_view_get(
-            view_id=view_id, view_type=view_type,
-            toolbar=toolbar, submenu=submenu)
+            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
+        )
 
         doc = etree.XML(res["arch"])
 
-        picking_type_id = self.env.context.get(
-            "default_picking_type_id", False)
+        picking_type_id = self.env.context.get("default_picking_type_id", False)
 
         if view_type == "tree":
             view_element = doc.xpath("/tree")[0]
@@ -33,15 +33,15 @@ class StockPicking(models.Model):
                 view_element.attrib["edit"] = "false"
                 view_element.attrib["delete"] = "false"
         else:
-            pick_type = self.env["stock.picking.type"].\
-                browse(picking_type_id)[0]
+            pick_type = self.env["stock.picking.type"].browse(picking_type_id)[0]
             if view_type in ["tree", "form"]:
-                view_element.attrib[
-                    "create"] = pick_type.create_ok and "true" or "false"
-                view_element.attrib[
-                    "edit"] = pick_type.edit_ok and "true" or "false"
-                view_element.attrib[
-                    "delete"] = pick_type.unlink_ok and "true" or "false"
+                view_element.attrib["create"] = (
+                    pick_type.create_ok and "true" or "false"
+                )
+                view_element.attrib["edit"] = pick_type.edit_ok and "true" or "false"
+                view_element.attrib["delete"] = (
+                    pick_type.unlink_ok and "true" or "false"
+                )
             if view_type == "tree":
                 obj_field = self.env["ir.model.fields"]
                 criteria = [
@@ -56,8 +56,7 @@ class StockPicking(models.Model):
                         el.set("invisible", "1")
                     else:
                         el.set("invisible", "0")
-                    setup_modifiers(el, res["fields"][
-                                    field_name], in_tree_view=True)
+                    setup_modifiers(el, res["fields"][field_name], in_tree_view=True)
             elif view_type == "form":
                 obj_field = self.env["ir.model.fields"]
                 criteria = [

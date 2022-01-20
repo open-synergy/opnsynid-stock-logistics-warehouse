@@ -2,7 +2,7 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 from openerp.tools.translate import _
 
 
@@ -10,13 +10,11 @@ class StockWarehouse(models.Model):
     _inherit = "stock.warehouse"
 
     other_delivery_type_id = fields.Many2one(
-        string="Other Delivery Type",
-        comodel_name="stock.picking.type"
+        string="Other Delivery Type", comodel_name="stock.picking.type"
     )
 
     other_delivery_route_id = fields.Many2one(
-        string="Other Delivery Route",
-        comodel_name="stock.location.route"
+        string="Other Delivery Route", comodel_name="stock.location.route"
     )
 
     @api.multi
@@ -25,7 +23,7 @@ class StockWarehouse(models.Model):
         data = {
             "name": self.code + " - Other Delivery",
             "prefix": self.code + "/ODO/",
-            "padding": 6
+            "padding": 6,
         }
         return data
 
@@ -44,9 +42,7 @@ class StockWarehouse(models.Model):
     @api.multi
     def _get_other_delivery_dest_location(self):
         self.ensure_one()
-        cust_loc = self.env["ir.property"].get(
-            "property_stock_customer",
-            "res.partner")
+        cust_loc = self.env["ir.property"].get("property_stock_customer", "res.partner")
         return {
             "ship_only": cust_loc,
             "pick_ship": cust_loc,
@@ -59,22 +55,19 @@ class StockWarehouse(models.Model):
     @api.multi
     def _prepare_other_delivery_type(self):
         self.ensure_one()
-        obj_sequence = self.env['ir.sequence']
-        if self.delivery_steps in [
-                "ship_only", "ship_transit"]:
+        obj_sequence = self.env["ir.sequence"]
+        if self.delivery_steps in ["ship_only", "ship_transit"]:
             src_loc = self.lot_stock_id
         else:
             src_loc = self.wh_output_stock_loc_id
-        if self.delivery_steps in [
-                "ship_only", "pick_ship", "pick_pack_ship"]:
+        if self.delivery_steps in ["ship_only", "pick_ship", "pick_pack_ship"]:
             dest_loc = self.env["ir.property"].get(
-                "property_stock_customer",
-                "res.partner")
+                "property_stock_customer", "res.partner"
+            )
         else:
             dest_loc = self.wh_transit_out_loc_id
 
-        sequence = obj_sequence.create(
-            self._prepare_other_delivery_sequence())
+        sequence = obj_sequence.create(self._prepare_other_delivery_sequence())
 
         data = {
             "name": _("Other Delivery"),
@@ -92,8 +85,7 @@ class StockWarehouse(models.Model):
     def _create_other_delivery_type(self):
         self.ensure_one()
         obj_type = self.env["stock.picking.type"]
-        pick_type = obj_type.create(
-            self._prepare_other_delivery_type())
+        pick_type = obj_type.create(self._prepare_other_delivery_type())
         return pick_type
 
     @api.multi
@@ -106,28 +98,32 @@ class StockWarehouse(models.Model):
     def create(self, values):
         new_wh = super(StockWarehouse, self).create(values)
         other_delivery_type = new_wh._create_other_delivery_type()
-        new_wh.write({
-            "other_delivery_type_id": other_delivery_type.id,
-        })
+        new_wh.write(
+            {
+                "other_delivery_type_id": other_delivery_type.id,
+            }
+        )
         cust_route = new_wh._create_route_other_delivery()
-        new_wh.write({
-            "other_delivery_route_id": cust_route.id,
-            "route_ids": [(4, cust_route.id)],
-        })
+        new_wh.write(
+            {
+                "other_delivery_route_id": cust_route.id,
+                "route_ids": [(4, cust_route.id)],
+            }
+        )
         return new_wh
 
     @api.multi
     def change_route(
-            self, warehouse, new_reception_step=False,
-            new_delivery_step=False):
+        self, warehouse, new_reception_step=False, new_delivery_step=False
+    ):
         super(StockWarehouse, self).change_route(
-            warehouse, new_reception_step=new_reception_step,
-            new_delivery_step=new_delivery_step)
+            warehouse,
+            new_reception_step=new_reception_step,
+            new_delivery_step=new_delivery_step,
+        )
         if new_delivery_step:
-            src_loc = self._get_other_delivery_src_location()[
-                new_delivery_step]
-            dest_loc = self._get_other_delivery_dest_location()[
-                new_delivery_step]
+            src_loc = self._get_other_delivery_src_location()[new_delivery_step]
+            dest_loc = self._get_other_delivery_dest_location()[new_delivery_step]
             res_cust = {
                 "default_location_src_id": src_loc.id,
                 "allowed_location_ids": [(6, 0, [src_loc.id])],
@@ -137,9 +133,13 @@ class StockWarehouse(models.Model):
             warehouse.other_delivery_type_id.write(res_cust)
             # Adjust Other Delivery Route
             warehouse.other_delivery_route_id.push_ids.unlink()
-            warehouse.other_delivery_route_id.write({
-                "push_ids": warehouse._prepare_other_delivery_push_rule(
-                    new_delivery_step)})
+            warehouse.other_delivery_route_id.write(
+                {
+                    "push_ids": warehouse._prepare_other_delivery_push_rule(
+                        new_delivery_step
+                    )
+                }
+            )
         return True
 
     @api.multi
@@ -149,24 +149,29 @@ class StockWarehouse(models.Model):
         if not step:
             step = self.delivery_steps
 
-        if step in [
-                "ship_only", "pick_ship", "pick_pack_ship"]:
+        if step in ["ship_only", "pick_ship", "pick_pack_ship"]:
             return result
         else:
             src_loc = self.wh_transit_out_loc_id
             dest_loc = self.env["ir.property"].get(
-                "property_stock_customer",
-                "res.partner")
+                "property_stock_customer", "res.partner"
+            )
             pick_type1 = self.other_delivery_type_id
             pick_type2 = self.transit_out_type_id
-            result.append((0, 0, {
-                "name": self.code + ":  Other Receipt 1",  # TODO
-                "location_from_id": src_loc.id,
-                "location_dest_id": dest_loc.id,
-                "picking_type_id": pick_type2.id,
-                "auto": "manual",
-                "picking_type_ids": [(6, 0, [pick_type1.id])],
-            }))
+            result.append(
+                (
+                    0,
+                    0,
+                    {
+                        "name": self.code + ":  Other Receipt 1",  # TODO
+                        "location_from_id": src_loc.id,
+                        "location_dest_id": dest_loc.id,
+                        "picking_type_id": pick_type2.id,
+                        "auto": "manual",
+                        "picking_type_ids": [(6, 0, [pick_type1.id])],
+                    },
+                )
+            )
         return result
 
     @api.multi
@@ -185,13 +190,14 @@ class StockWarehouse(models.Model):
     def _create_route_other_delivery(self):
         self.ensure_one()
         obj_route = self.env["stock.location.route"]
-        return obj_route.create(
-            self._prepare_route_other_delivery())
+        return obj_route.create(self._prepare_route_other_delivery())
 
     @api.multi
     def button_create_other_delivery(self):
         for wh in self:
             route = self._create_route_other_delivery()
-            wh.write({
-                "other_delivery_route_id": route.id,
-            })
+            wh.write(
+                {
+                    "other_delivery_route_id": route.id,
+                }
+            )

@@ -1,9 +1,9 @@
 # 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, api
-from openerp.tools.translate import _
+from openerp import api, models
 from openerp.exceptions import Warning as UserError
+from openerp.tools.translate import _
 
 
 class StockQuant(models.Model):
@@ -11,8 +11,9 @@ class StockQuant(models.Model):
 
     @api.model
     def _get_accounting_data_for_valuation(self, move):
-        journal_id, acc_src, acc_dest, acc_valuation = \
-            super(StockQuant, self)._get_accounting_data_for_valuation(move)
+        journal_id, acc_src, acc_dest, acc_valuation = super(
+            StockQuant, self
+        )._get_accounting_data_for_valuation(move)
 
         # raise UserError("a")
 

@@ -2,7 +2,7 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
+from openerp import _, api, fields, models
 from openerp.exceptions import Warning as UserError
 
 
@@ -10,12 +10,10 @@ class StockWarehouse(models.Model):
     _inherit = "stock.warehouse"
 
     consume_type_id = fields.Many2one(
-        string="Consume Type",
-        comodel_name="stock.picking.type"
+        string="Consume Type", comodel_name="stock.picking.type"
     )
     consume_loc_id = fields.Many2one(
-        string="Consume Location",
-        comodel_name="stock.location"
+        string="Consume Location", comodel_name="stock.location"
     )
 
     @api.multi
@@ -26,8 +24,7 @@ class StockWarehouse(models.Model):
             "name": _("Consume"),
             "location_id": parent_location.id,
             "usage": "inventory",
-            "active": True
-
+            "active": True,
         }
         return data
 
@@ -37,19 +34,18 @@ class StockWarehouse(models.Model):
         data = {
             "name": self.code + " - Consume",
             "prefix": self.code + "/CON/",
-            "padding": 6
+            "padding": 6,
         }
         return data
 
     @api.multi
     def _prepare_consume_type(self):
         self.ensure_one()
-        obj_sequence = self.env['ir.sequence']
+        obj_sequence = self.env["ir.sequence"]
         location = self.lot_stock_id
         consume_loc = self._get_consume_location()
 
-        sequence = obj_sequence.create(
-            self._prepare_consume_sequence())
+        sequence = obj_sequence.create(self._prepare_consume_sequence())
 
         data = {
             "name": _("Consume"),
@@ -74,16 +70,14 @@ class StockWarehouse(models.Model):
     def _create_consume_loc(self):
         self.ensure_one()
         obj_loc = self.env["stock.location"]
-        consume_loc = obj_loc.create(
-            self._prepare_consume_location())
+        consume_loc = obj_loc.create(self._prepare_consume_location())
         return consume_loc
 
     @api.multi
     def _create_consume_type(self):
         self.ensure_one()
         obj_type = self.env["stock.picking.type"]
-        consume_type = obj_type.create(
-            self._prepare_consume_type())
+        consume_type = obj_type.create(self._prepare_consume_type())
         return consume_type
 
     @api.multi
