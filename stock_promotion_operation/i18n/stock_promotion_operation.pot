@@ -20,7 +20,7 @@ msgid "(create)"
 msgstr ""
 
 #. module: stock_promotion_operation
-#: code:addons/stock_promotion_operation/models/stock_warehouse.py:127
+#: code:addons/stock_promotion_operation/models/stock_warehouse.py:120
 #: model:stock.location,name:stock_promotion_operation.stock_location_customer_promotion
 #, python-format
 msgid "Customer Promotion"
@@ -47,7 +47,7 @@ msgid "Partner"
 msgstr ""
 
 #. module: stock_promotion_operation
-#: code:addons/stock_promotion_operation/models/stock_warehouse.py:159
+#: code:addons/stock_promotion_operation/models/stock_warehouse.py:149
 #: model:stock.location,name:stock_promotion_operation.stock_location_supplier_promotion
 #, python-format
 msgid "Supplier Promotion"
