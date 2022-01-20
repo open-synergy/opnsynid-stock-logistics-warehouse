@@ -20,7 +20,7 @@ msgid "(create)"
 msgstr ""
 
 #. module: stock_other_delivery_operation
-#: code:addons/stock_other_delivery_operation/models/stock_warehouse.py:80
+#: code:addons/stock_other_delivery_operation/models/stock_warehouse.py:73
 #, python-format
 msgid "Other Delivery"
 msgstr ""
