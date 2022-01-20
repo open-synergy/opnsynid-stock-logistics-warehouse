@@ -20,7 +20,7 @@ msgid "(create)"
 msgstr ""
 
 #. module: stock_donation_operation
-#: code:addons/stock_donation_operation/models/stock_warehouse.py:127
+#: code:addons/stock_donation_operation/models/stock_warehouse.py:122
 #: model:stock.location,name:stock_donation_operation.stock_location_donation_in
 #, python-format
 msgid "Donation In"
@@ -42,7 +42,7 @@ msgid "Donation In Type"
 msgstr ""
 
 #. module: stock_donation_operation
-#: code:addons/stock_donation_operation/models/stock_warehouse.py:159
+#: code:addons/stock_donation_operation/models/stock_warehouse.py:154
 #: model:stock.location,name:stock_donation_operation.stock_location_donation_out
 #, python-format
 msgid "Donation Out"
