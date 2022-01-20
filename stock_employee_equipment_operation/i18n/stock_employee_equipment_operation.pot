@@ -1,0 +1,73 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_employee_equipment_operation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_employee_equipment_operation
+#: view:stock.warehouse:stock_employee_equipment_operation.stock_warehouse_view_form
+#: view:stock.warehouse:stock_employee_equipment_operation.stock_warehouse_view_form_2
+msgid "(create)"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: model:stock.location,name:stock_employee_equipment_operation.stock_location_employee
+msgid "Employee"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: code:addons/stock_employee_equipment_operation/models/stock_warehouse.py:126
+#, python-format
+msgid "Employee Equipment In"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: field:stock.warehouse,employee_in_route_id:0
+msgid "Employee Equipment In Route"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: field:stock.warehouse,employee_in_type_id:0
+msgid "Employee Equipment In Type"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: field:res.partner,property_stock_employee_id:0
+msgid "Employee Equipment Location"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: code:addons/stock_employee_equipment_operation/models/stock_warehouse.py:160
+#, python-format
+msgid "Employee Equipment Out"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: field:stock.warehouse,employee_out_route_id:0
+msgid "Employee Equipment Out Route"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: field:stock.warehouse,employee_out_type_id:0
+msgid "Employee Equipment Out Type"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: model:ir.model,name:stock_employee_equipment_operation.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: stock_employee_equipment_operation
+#: model:ir.model,name:stock_employee_equipment_operation.model_stock_warehouse
+msgid "Warehouse"
+msgstr ""
+
