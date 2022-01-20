@@ -20,7 +20,7 @@ msgid "(create)"
 msgstr ""
 
 #. module: stock_other_receipt_operation
-#: code:addons/stock_other_receipt_operation/models/stock_warehouse.py:80
+#: code:addons/stock_other_receipt_operation/models/stock_warehouse.py:75
 #, python-format
 msgid "Other Receipt"
 msgstr ""
