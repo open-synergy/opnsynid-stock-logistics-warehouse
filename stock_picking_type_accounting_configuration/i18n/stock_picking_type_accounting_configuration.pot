@@ -89,19 +89,19 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:44
+#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:45
 #, python-format
 msgid "No destination account configured"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:37
+#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:38
 #, python-format
 msgid "No source account configured"
 msgstr ""
 
 #. module: stock_picking_type_accounting_configuration
-#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:30
+#: code:addons/stock_picking_type_accounting_configuration/models/stock_quant.py:31
 #, python-format
 msgid "No valuation account configured"
 msgstr ""
