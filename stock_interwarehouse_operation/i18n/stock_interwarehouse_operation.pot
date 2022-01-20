@@ -40,8 +40,8 @@ msgid "Inter-Warehouse Push Route"
 msgstr ""
 
 #. module: stock_interwarehouse_operation
-#: code:addons/stock_interwarehouse_operation/models/stock_warehouse.py:175
-#: code:addons/stock_interwarehouse_operation/models/stock_warehouse.py:231
+#: code:addons/stock_interwarehouse_operation/models/stock_warehouse.py:162
+#: code:addons/stock_interwarehouse_operation/models/stock_warehouse.py:229
 #, python-format
 msgid "No location"
 msgstr ""
