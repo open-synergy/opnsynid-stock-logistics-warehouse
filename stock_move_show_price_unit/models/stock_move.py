@@ -2,15 +2,13 @@
 # Copyright 2018 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, api, fields
+from openerp import api, fields, models
 
 
 class StockMove(models.Model):
     _inherit = "stock.move"
 
-    @api.depends(
-        "picking_type_id"
-    )
+    @api.depends("picking_type_id")
     @api.multi
     def _compute_show_price_unit(self):
         for move in self:

@@ -24,7 +24,7 @@
         "data/stock_location_datas.xml",
         "data/ir_property_datas.xml",
         "views/res_partner_views.xml",
-        "views/stock_warehouse_views.xml"
+        "views/stock_warehouse_views.xml",
     ],
     "images": [
         "static/description/banner.png",

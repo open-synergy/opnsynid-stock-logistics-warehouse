@@ -20,8 +20,7 @@
         "views/stock_picking_views.xml",
         "views/stock_move_views.xml",
     ],
-    "demo": [
-    ],
+    "demo": [],
     "images": [
         "static/description/banner.png",
     ],

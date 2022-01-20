@@ -2,13 +2,10 @@
 # Copyright 2016 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields
+from openerp import fields, models
 
 
 class StockWarehouse(models.Model):
     _inherit = "stock.warehouse"
 
-    menu_id = fields.Many2one(
-        string="Menu",
-        comodel_name="ir.ui.menu"
-    )
+    menu_id = fields.Many2one(string="Menu", comodel_name="ir.ui.menu")

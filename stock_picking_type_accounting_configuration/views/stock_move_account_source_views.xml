@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2020 OpenSynergy Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 <record id="stock_move_account_source_view_tree" model="ir.ui.view">
@@ -9,7 +8,7 @@
     <field name="model">stock.move_account_source</field>
     <field name="arch" type="xml">
         <tree>
-            <field name="name"/>
+            <field name="name" />
         </tree>
     </field>
 </record>
@@ -19,19 +18,23 @@
     <field name="model">stock.move_account_source</field>
     <field name="arch" type="xml">
         <form>
-            <header/>
+            <header />
             <sheet>
-                <div class="oe_right oe_button_box" style="width: 300px;" name="buttons"/>
+                <div
+                            class="oe_right oe_button_box"
+                            style="width: 300px;"
+                            name="buttons"
+                        />
                 <group name="group_1" colspan="4" col="2">
-                    <field name="name"/>
-                    <field name="active"/>
+                    <field name="name" />
+                    <field name="active" />
                 </group>
                 <notebook>
                     <page name="python_code" string="Python Code">
-                        <field name="python_code"/>
+                        <field name="python_code" />
                     </page>
                     <page name="note" string="Notes">
-                        <field name="note"/>
+                        <field name="note" />
                     </page>
                 </notebook>
             </sheet>
@@ -47,10 +50,11 @@
 </record>
 
 <menuitem
-    id="stock_move_account_source_menu"
-    name="Account Sources"
-    parent="stock.menu_stock_configuration"
-    action="stock_move_account_source_action"
-    sequence="2" />
+            id="stock_move_account_source_menu"
+            name="Account Sources"
+            parent="stock.menu_stock_configuration"
+            action="stock_move_account_source_action"
+            sequence="2"
+        />
 </data>
 </openerp>

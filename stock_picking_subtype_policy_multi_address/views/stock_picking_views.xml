@@ -1,18 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-
+<?xml version="1.0" encoding="utf-8" ?>
 <openerp>
 <data>
 <record id="stock_picking_view_form" model="ir.ui.view">
     <field name="name">Stock Picking</field>
     <field name="model">stock.picking</field>
-    <field name="inherit_id" ref="stock_picking_subtype_policy.stock_picking_view_form"/>
-    <field name="priority" eval="49"/>
+    <field
+                name="inherit_id"
+                ref="stock_picking_subtype_policy.stock_picking_view_form"
+            />
+    <field name="priority" eval="49" />
     <field name="arch" type="xml">
         <xpath expr="//group[@name='subtype_policy']" position="inside">
-            <field name="show_consignee_on_picking_form" string="Consignee"/>
-            <field name="show_origin_address_on_picking_form" string="Origin Address"/>
-            <field name="show_delivery_address_on_picking_form" string="Delivery Address"/>
+            <field name="show_consignee_on_picking_form" string="Consignee" />
+            <field name="show_origin_address_on_picking_form" string="Origin Address" />
+            <field
+                        name="show_delivery_address_on_picking_form"
+                        string="Delivery Address"
+                    />
         </xpath>
     </field>
 </record>
@@ -20,16 +24,22 @@
 <record id="stock_picking_view_form_1" model="ir.ui.view">
     <field name="name">Stock Picking</field>
     <field name="model">stock.picking</field>
-    <field name="inherit_id" ref="stock_transport_multi_address.view_picking_form"/>
+    <field name="inherit_id" ref="stock_transport_multi_address.view_picking_form" />
     <field name="arch" type="xml">
         <xpath expr="//form//field[@name='consignee_id']" position="attributes">
-            <attribute name="attrs">{'invisible':[('show_consignee_on_picking_form','=',False)]}</attribute>
+            <attribute
+                        name="attrs"
+                    >{'invisible':[('show_consignee_on_picking_form','=',False)]}</attribute>
         </xpath>
         <xpath expr="//form//field[@name='origin_address_id']" position="attributes">
-            <attribute name="attrs">{'invisible':[('show_origin_address_on_picking_form','=',False)]}</attribute>
+            <attribute
+                        name="attrs"
+                    >{'invisible':[('show_origin_address_on_picking_form','=',False)]}</attribute>
         </xpath>
         <xpath expr="//form//field[@name='delivery_address_id']" position="attributes">
-            <attribute name="attrs">{'invisible':[('show_delivery_address_on_picking_form','=',False)]}</attribute>
+            <attribute
+                        name="attrs"
+                    >{'invisible':[('show_delivery_address_on_picking_form','=',False)]}</attribute>
         </xpath>
     </field>
 </record>

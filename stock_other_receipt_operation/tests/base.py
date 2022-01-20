@@ -6,7 +6,6 @@ from openerp.tests.common import TransactionCase
 
 
 class BaseOtherReceiptOperation(TransactionCase):
-
     def setUp(self):
         super(BaseOtherReceiptOperation, self).setUp()
         self.obj_wh = self.env["stock.warehouse"]
@@ -26,27 +25,23 @@ class BaseOtherReceiptOperation(TransactionCase):
         return wh
 
     def _check_wh_routes(self, wh):
-        self.assertIn(
-            wh.other_receipt_route_id.id,
-            wh.route_ids.ids)
+        self.assertIn(wh.other_receipt_route_id.id, wh.route_ids.ids)
 
     def _check_type_other_receipt(self, wh):
-        supp_loc = self.env["ir.property"].get(
-            "property_stock_supplier",
-            "res.partner")
+        supp_loc = self.env["ir.property"].get("property_stock_supplier", "res.partner")
         if wh.reception_steps in ["one_step", "two_steps", "three_steps"]:
-            self.assertEqual(
-                wh.other_receipt_type_id.default_location_src_id,
-                supp_loc)
+            self.assertEqual(wh.other_receipt_type_id.default_location_src_id, supp_loc)
         else:
             self.assertEqual(
                 wh.other_receipt_type_id.default_location_src_id,
-                wh.wh_transit_in_loc_id)
+                wh.wh_transit_in_loc_id,
+            )
         if wh.reception_steps in ["one_step", "transit_one_step"]:
             self.assertEqual(
-                wh.other_receipt_type_id.default_location_dest_id,
-                wh.lot_stock_id)
+                wh.other_receipt_type_id.default_location_dest_id, wh.lot_stock_id
+            )
         else:
             self.assertEqual(
                 wh.other_receipt_type_id.default_location_dest_id,
-                wh.wh_input_stock_loc_id)
+                wh.wh_input_stock_loc_id,
+            )

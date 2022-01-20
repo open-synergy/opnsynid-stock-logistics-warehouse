@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <openerp>
 <data>
 <record id="inter_warehouse_in_subtype" model="stock.picking_subtype">

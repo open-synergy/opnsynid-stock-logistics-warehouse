@@ -2,7 +2,7 @@
 # Copyright 2019 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 from openerp.tools.translate import _
 
 
@@ -15,9 +15,7 @@ class StockInventory(models.Model):
         res.append(("moving_product", _("By Moving Products")))
         return res
 
-    filter = fields.Selection(
-        selection=_get_available_filters
-    )
+    filter = fields.Selection(selection=_get_available_filters)
 
     @api.model
     def _get_inventory_lines(self, inventory):
@@ -35,8 +33,7 @@ class StockInventory(models.Model):
             ]
 
             obj_inventory = self.env["stock.inventory"]
-            previous_inventories = obj_inventory.search(criteria,
-                                                        order="date desc")
+            previous_inventories = obj_inventory.search(criteria, order="date desc")
             if len(previous_inventories) > 0:
                 previous_inventory = previous_inventories[0]
 
@@ -46,19 +43,26 @@ class StockInventory(models.Model):
             SELECT DISTINCT product_id
             FROM stock_move AS a
             WHERE   (
-                (a.location_id = %s and a.location_dest_id <> %s) OR
-                (a.location_dest_id = %s and a.location_id <> %s)
+                (a.location_id = {} and a.location_dest_id <> {}) OR
+                (a.location_dest_id = {} and a.location_id <> {})
                 ) AND
-                a.date <= '%s' AND
+                a.date <= '{}' AND
                 a.state = 'done'
-            """ % (location.id, location.id,
-                   location.id, location.id, date_end)
+            """.format(
+                location.id,
+                location.id,
+                location.id,
+                location.id,
+                date_end,
+            )
 
             if previous_inventory:
                 sql1 += """
                 AND a.date > '%s'
-                """ % (previous_inventory.date)
-
+                """ % (
+                    previous_inventory.date
+                )
+            # pylint: disable=E8103
             self.env.cr.execute(sql1)
 
             for result in self.env.cr.dictfetchall():
@@ -79,15 +83,18 @@ class StockInventory(models.Model):
                     package_id,
                     owner_id AS partner_id
             FROM    stock_quant AS a
-            WHERE   location_id = %s AND
-                    product_id in %s
+            WHERE   location_id = {} AND
+                    product_id in {}
             GROUP BY    product_id,
                         location_id,
                         lot_id,
                         package_id,
                         partner_id
-            """ % (location.id, product_ids)
-
+            """.format(
+                location.id,
+                product_ids,
+            )
+            # pylint: disable=E8103
             self.env.cr.execute(sql2)
             vals = []
             for product_line in self.env.cr.dictfetchall():

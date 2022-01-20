@@ -2,7 +2,7 @@
 # Copyright 2019 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields
+from openerp import fields, models
 
 
 class StockPickingSubtype(models.Model):
@@ -30,7 +30,6 @@ class StockPickingSubtype(models.Model):
         string="Show Delivery Method on Stock Picking Form",
         default=True,
     )
-
 
     # stock.picking default
     default_move_type = fields.Selection(

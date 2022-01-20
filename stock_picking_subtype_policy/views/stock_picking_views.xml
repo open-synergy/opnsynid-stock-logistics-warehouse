@@ -1,31 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-
+<?xml version="1.0" encoding="utf-8" ?>
 <openerp>
 <data>
 <record id="stock_picking_view_form" model="ir.ui.view">
     <field name="name">Stock Picking</field>
     <field name="model">stock.picking</field>
-    <field name="inherit_id" ref="stock.view_picking_form"/>
+    <field name="inherit_id" ref="stock.view_picking_form" />
     <field name="arch" type="xml">
         <xpath expr="//notebook" position="inside">
-            <page name="subtype_policy" string="Subtype Policy" groups="base.group_system">
+            <page
+                        name="subtype_policy"
+                        string="Subtype Policy"
+                        groups="base.group_system"
+                    >
                 <group name="subtype_policy" colspan="4" col="2">
-                    <field name="show_partner_on_picking_form" string="Partner"/>
-                    <field name="show_min_date_on_picking_form" string="Scheduled Date"/>
-                    <field name="show_max_date_on_picking_form" string="Max. Excepted Date"/>
-                    <field name="show_date_done_on_picking_form" string="Date Done"/>
-                    <field name="show_move_type_on_picking_form" string="Delivery Method"/>
+                    <field name="show_partner_on_picking_form" string="Partner" />
+                    <field
+                                name="show_min_date_on_picking_form"
+                                string="Scheduled Date"
+                            />
+                    <field
+                                name="show_max_date_on_picking_form"
+                                string="Max. Excepted Date"
+                            />
+                    <field name="show_date_done_on_picking_form" string="Date Done" />
+                    <field
+                                name="show_move_type_on_picking_form"
+                                string="Delivery Method"
+                            />
                 </group>
             </page>
         </xpath>
 
         <xpath expr="//form//field[@name='partner_id']" position="attributes">
-            <attribute name="attrs">{'invisible':[('show_partner_on_picking_form','=',False)]}</attribute>
+            <attribute
+                        name="attrs"
+                    >{'invisible':[('show_partner_on_picking_form','=',False)]}</attribute>
         </xpath>
 
         <xpath expr="//form//field[@name='min_date']" position="attributes">
-            <attribute name="attrs">{'invisible':[('show_min_date_on_picking_form','=',False)]}</attribute>
+            <attribute
+                        name="attrs"
+                    >{'invisible':[('show_min_date_on_picking_form','=',False)]}</attribute>
         </xpath>
 
         <xpath expr="//page[@string='Additional Info']" position="attributes">
@@ -37,14 +52,18 @@
 <record id="stock_picking_view_form_1" model="ir.ui.view">
     <field name="name">Stock Picking</field>
     <field name="model">stock.picking</field>
-    <field name="inherit_id" ref="stock_picking_extend.stock_picking_view_form"/>
+    <field name="inherit_id" ref="stock_picking_extend.stock_picking_view_form" />
     <field name="arch" type="xml">
         <xpath expr="//field[@name='max_date']" position="attributes">
-            <attribute name="attrs">{'invisible':[('show_max_date_on_picking_form','=',False)]}</attribute>
+            <attribute
+                        name="attrs"
+                    >{'invisible':[('show_max_date_on_picking_form','=',False)]}</attribute>
         </xpath>
 
         <xpath expr="//form//field[@name='date_done']" position="attributes">
-            <attribute name="attrs">{'invisible':[('show_date_done_on_picking_form','=',False)]}</attribute>
+            <attribute
+                        name="attrs"
+                    >{'invisible':[('show_date_done_on_picking_form','=',False)]}</attribute>
         </xpath>
     </field>
 </record>

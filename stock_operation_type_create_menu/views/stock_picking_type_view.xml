@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <openerp>
     <data>
        <record id="stock_picking_type_view_form" model="ir.ui.view">
@@ -8,24 +8,23 @@
             <field name="arch" type="xml">
                 <xpath expr="//form/sheet/group[2]" position="after">
                     <group string="Custom Menu" groups="base.group_erp_manager">
-                        <button 
+                        <button
                             name="%(stock_operation_type_create_menu_action)d"
-                            type="action" 
+                            type="action"
                             string="Create Menu"
                             attrs="{'invisible': [('window_action_id', '!=', False), ('menu_id', '!=', False)]}"
-                        /> 
-                        <button 
+                        />
+                        <button
                             name="button_reset_menu"
                             type="object"
                             string="Reset Menu"
                             attrs="{'invisible': [('window_action_id', '=', False), ('menu_id', '=', False)]}"
                         />
-                        <field name="window_action_id"/>
-                        <field name="menu_id"/>
+                        <field name="window_action_id" />
+                        <field name="menu_id" />
                     </group>
                 </xpath>
             </field>
        </record>
     </data>
 </openerp>
-

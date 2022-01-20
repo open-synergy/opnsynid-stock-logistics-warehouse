@@ -2,9 +2,10 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, api
-from openerp.addons.stock_inventory_revaluation.models.\
-    stock_inventory_revaluation import StockInventoryRevaluation
+from openerp import api, models
+from openerp.addons.stock_inventory_revaluation.models.stock_inventory_revaluation import (
+    StockInventoryRevaluation,
+)
 
 
 @api.multi

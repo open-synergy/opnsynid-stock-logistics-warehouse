@@ -2,7 +2,7 @@
 # Copyright 2021 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class StockMove(models.Model):
@@ -16,9 +16,7 @@ class StockMove(models.Model):
 
         if picking_type_id:
             obj_picking_type = self.env["stock.picking.type"]
-            criteria = [
-                ("id", "=", picking_type_id)
-            ]
+            criteria = [("id", "=", picking_type_id)]
             picking_type = obj_picking_type.search(criteria)
 
             if picking_type:
@@ -26,11 +24,9 @@ class StockMove(models.Model):
                     product_ids = []
                     product_categ_ids = []
                     if picking_type.allowed_product_ids:
-                        product_ids = \
-                            picking_type.allowed_product_ids.ids
+                        product_ids = picking_type.allowed_product_ids.ids
                     if picking_type.allowed_product_categ_ids:
-                        product_categ_ids = \
-                            picking_type.allowed_product_categ_ids.ids
+                        product_categ_ids = picking_type.allowed_product_categ_ids.ids
                     if product_ids and product_categ_ids:
                         domain = [
                             "|",

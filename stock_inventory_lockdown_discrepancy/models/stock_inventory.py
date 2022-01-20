@@ -2,7 +2,7 @@
 # Copyright 2018 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, api
+from openerp import api, models
 
 
 class StockInventory(models.Model):
@@ -14,20 +14,29 @@ class StockInventory(models.Model):
         result = _super._get_locations_open_inventories()
         if len(result) == 0:
             result = self.env["stock.location"]
-        inventories = self.search([
-            ("state", "=", "pending"),
-        ])
+        inventories = self.search(
+            [
+                ("state", "=", "pending"),
+            ]
+        )
         if not inventories:
             # Early exit if no match found
             return result
         location_ids = inventories.mapped("location_id")
 
         # Extend to the children Locations
-        return self.env["stock.location"].search(
-            [("location_id", "child_of", location_ids.ids),
-             ("usage", "in", ["internal", "transit"])]) + result
+        return (
+            self.env["stock.location"].search(
+                [
+                    ("location_id", "child_of", location_ids.ids),
+                    ("usage", "in", ["internal", "transit"]),
+                ]
+            )
+            + result
+        )
 
     @api.multi
     def action_force_done(self):
-        return super(StockInventory,
-                     self.with_context(bypass_lockdown=True)).action_done()
+        return super(
+            StockInventory, self.with_context(bypass_lockdown=True)
+        ).action_done()

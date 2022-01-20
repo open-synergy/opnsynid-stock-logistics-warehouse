@@ -7,7 +7,7 @@ Stock Operation Type Create Menu
 ================================
 
 This module adds a button to create menu according to Operation Type.
-Format menu will be: 
+Format menu will be:
 
 --<warehouse_name>
 -----<operation_type_name>
@@ -44,8 +44,8 @@ Contributors
 Maintainer
 ----------
 
-.. image:: https://opensynergy-indonesia.com/logo.png
-   :alt: OpenSynergy Indonesia
-   :target: https://opensynergy-indonesia.com
+.. image:: https://simetri-sinergi.id/logo.png
+   :alt: PT. Simetri Sinergi Indonesia
+   :target: https://simetri-sinergi.id.com
 
-This module is maintained by the OpenSynergy Indonesia.
+This module is maintained by the PT. Simetri Sinergi Indonesia.

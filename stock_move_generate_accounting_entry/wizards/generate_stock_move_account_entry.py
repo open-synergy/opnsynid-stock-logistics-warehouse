@@ -2,7 +2,7 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, api
+from openerp import api, models
 
 
 class GenerateStockMoveAccountEntry(models.TransientModel):
@@ -12,7 +12,7 @@ class GenerateStockMoveAccountEntry(models.TransientModel):
     @api.multi
     def action_generate(self):
         self.ensure_one()
-        record_ids = self.env.context['active_ids']
+        record_ids = self.env.context["active_ids"]
         obj_move = self.env["stock.move"]
 
         for move in obj_move.browse(record_ids):

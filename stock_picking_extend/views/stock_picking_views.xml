@@ -1,21 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2020 OpenSynergy Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
-
 <openerp>
 <data>
 <record id="stock_picking_view_form" model="ir.ui.view">
     <field name="name">stock.picking form</field>
     <field name="model">stock.picking</field>
-    <field name="inherit_id" ref="stock.view_picking_form"/>
+    <field name="priority">100</field>
+    <field name="inherit_id" ref="stock.view_picking_form" />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//group/field[@name='min_date']" position="after">
-                <field name="max_date"/>
-                <field name="date_done"/>
+                <field name="max_date" />
+                <field name="date_done" />
             </xpath>
 
-            <xpath expr="//page/group/group/field[@name='date_done']" position="replace"/>
+            <xpath
+                        expr="//page/group/group/field[@name='date_done']"
+                        position="replace"
+                    />
         </data>
     </field>
 </record>
@@ -23,15 +26,15 @@
 <record id="stock_picking_view_tree" model="ir.ui.view">
     <field name="name">stock.picking tree</field>
     <field name="model">stock.picking</field>
-    <field name="inherit_id" ref="stock.vpicktree"/>
+    <field name="inherit_id" ref="stock.vpicktree" />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='min_date']" position="attributes">
                 <attribute name="invisible">0</attribute>
             </xpath>
             <xpath expr="//field[@name='min_date']" position="after">
-                <field name="max_date"/>
-                <field name="date_done"/>
+                <field name="max_date" />
+                <field name="date_done" />
             </xpath>
         </data>
     </field>
@@ -40,22 +43,70 @@
 <record id="stock_picking_view_search" model="ir.ui.view">
     <field name="name">stock.picking search</field>
     <field name="model">stock.picking</field>
-    <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+    <field name="inherit_id" ref="stock.view_picking_internal_search" />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//filter[@string='Order Date']" position="after">
-                <filter name="grp_date_year" string="Order Date by Year" context="{'group_by':'date:year'}"/>
-                <filter name="grp_date_month" string="Order Date by Month" context="{'group_by':'date:month'}"/>
-                <filter name="grp_date_week" string="Order Date by Week" context="{'group_by':'date:week'}"/>
-                <filter name="grp_date_day" string="Order Date by Day" context="{'group_by':'date:day'}"/>
-                <filter name="grp_min_date_year" string="Scheduled Date by Year" context="{'group_by':'min_date:year'}"/>
-                <filter name="grp_min_date_month" string="Scheduled Date by Month" context="{'group_by':'min_date:month'}"/>
-                <filter name="grp_min_date_week" string="Scheduled Date by Week" context="{'group_by':'min_date:week'}"/>
-                <filter name="grp_min_date_day" string="Scheduled Date by Day" context="{'group_by':'min_date:day'}"/>
-                <filter name="grp_date_done_year" string="Date Done by Year" context="{'group_by':'date_done:year'}"/>
-                <filter name="grp_date_done_month" string="Date Done by Month" context="{'group_by':'date_done:month'}"/>
-                <filter name="grp_date_done_week" string="Date Done by Week" context="{'group_by':'date_done:week'}"/>
-                <filter name="grp_date_done_day" string="Date Done by Day" context="{'group_by':'date_done:day'}"/>
+                <filter
+                            name="grp_date_year"
+                            string="Order Date by Year"
+                            context="{'group_by':'date:year'}"
+                        />
+                <filter
+                            name="grp_date_month"
+                            string="Order Date by Month"
+                            context="{'group_by':'date:month'}"
+                        />
+                <filter
+                            name="grp_date_week"
+                            string="Order Date by Week"
+                            context="{'group_by':'date:week'}"
+                        />
+                <filter
+                            name="grp_date_day"
+                            string="Order Date by Day"
+                            context="{'group_by':'date:day'}"
+                        />
+                <filter
+                            name="grp_min_date_year"
+                            string="Scheduled Date by Year"
+                            context="{'group_by':'min_date:year'}"
+                        />
+                <filter
+                            name="grp_min_date_month"
+                            string="Scheduled Date by Month"
+                            context="{'group_by':'min_date:month'}"
+                        />
+                <filter
+                            name="grp_min_date_week"
+                            string="Scheduled Date by Week"
+                            context="{'group_by':'min_date:week'}"
+                        />
+                <filter
+                            name="grp_min_date_day"
+                            string="Scheduled Date by Day"
+                            context="{'group_by':'min_date:day'}"
+                        />
+                <filter
+                            name="grp_date_done_year"
+                            string="Date Done by Year"
+                            context="{'group_by':'date_done:year'}"
+                        />
+                <filter
+                            name="grp_date_done_month"
+                            string="Date Done by Month"
+                            context="{'group_by':'date_done:month'}"
+                        />
+                <filter
+                            name="grp_date_done_week"
+                            string="Date Done by Week"
+                            context="{'group_by':'date_done:week'}"
+                        />
+                <filter
+                            name="grp_date_done_day"
+                            string="Date Done by Day"
+                            context="{'group_by':'date_done:day'}"
+                        />
             </xpath>
 
             <xpath expr="//filter[@string='Order Date']" position="attributes">

@@ -1,35 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2017 OpenSynergy Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
-
 <openerp>
 <data>
 
 <record id="stock_warehouse_view_form" model="ir.ui.view">
     <field name="name">Scrap Operation</field>
     <field name="model">stock.warehouse</field>
-    <field name="inherit_id" ref="stock.view_warehouse"/>
+    <field name="inherit_id" ref="stock.view_warehouse" />
     <field name="arch" type="xml">
         <xpath expr="//field[@name='out_type_id']" position="after">
-            <label for="customer_promotion_type_id"/>
+            <label for="customer_promotion_type_id" />
             <div>
-                <field name="customer_promotion_type_id"/>
-                <button name="button_create_customer_promotion_type"
-                    type="object"
-                    string="(create)"
-                    class="oe_link"
-                    attrs="{'invisible': [('customer_promotion_type_id', '!=', False)]}"
-                />
+                <field name="customer_promotion_type_id" />
+                <button
+                            name="button_create_customer_promotion_type"
+                            type="object"
+                            string="(create)"
+                            class="oe_link"
+                            attrs="{'invisible': [('customer_promotion_type_id', '!=', False)]}"
+                        />
             </div>
-            <label for="supplier_promotion_type_id"/>
+            <label for="supplier_promotion_type_id" />
             <div>
-                <field name="supplier_promotion_type_id"/>
-                <button name="button_create_supplier_promotion_type"
-                    type="object"
-                    string="(create)"
-                    class="oe_link"
-                    attrs="{'invisible': [('supplier_promotion_type_id', '!=', False)]}"
-                />
+                <field name="supplier_promotion_type_id" />
+                <button
+                            name="button_create_supplier_promotion_type"
+                            type="object"
+                            string="(create)"
+                            class="oe_link"
+                            attrs="{'invisible': [('supplier_promotion_type_id', '!=', False)]}"
+                        />
             </div>
         </xpath>
     </field>
@@ -38,32 +39,37 @@
 <record id="stock_warehouse_view_form_2" model="ir.ui.view">
     <field name="name">Form - Stock Warehouse Interwarehouse</field>
     <field name="model">stock.warehouse</field>
-    <field name="inherit_id" ref="stock_warehouse_technical_information.stock_warehouse_view_form"/>
+    <field
+                name="inherit_id"
+                ref="stock_warehouse_technical_information.stock_warehouse_view_form"
+            />
     <field name="arch" type="xml">
         <xpath expr="//group[@name='grp_route']" position="inside">
-            <label for="customer_promotion_route_id"/>
+            <label for="customer_promotion_route_id" />
             <div>
-                <field name="customer_promotion_route_id"/>
-                <button name="button_create_customer_promotion"
-                    type="object"
-                    string="(create)"
-                    class="oe_link"
-                    attrs="{'invisible': [('customer_promotion_route_id', '!=', False)]}"
-                />
+                <field name="customer_promotion_route_id" />
+                <button
+                            name="button_create_customer_promotion"
+                            type="object"
+                            string="(create)"
+                            class="oe_link"
+                            attrs="{'invisible': [('customer_promotion_route_id', '!=', False)]}"
+                        />
             </div>
-            <label for="supplier_promotion_route_id"/>
+            <label for="supplier_promotion_route_id" />
             <div>
-                <field name="supplier_promotion_route_id"/>
-                <button name="button_create_supplier_promotion"
-                    type="object"
-                    string="(create)"
-                    class="oe_link"
-                    attrs="{'invisible': [('supplier_promotion_route_id', '!=', False)]}"
-                />
+                <field name="supplier_promotion_route_id" />
+                <button
+                            name="button_create_supplier_promotion"
+                            type="object"
+                            string="(create)"
+                            class="oe_link"
+                            attrs="{'invisible': [('supplier_promotion_route_id', '!=', False)]}"
+                        />
             </div>
         </xpath>
     </field>
 </record>
-   
+
 </data>
 </openerp>

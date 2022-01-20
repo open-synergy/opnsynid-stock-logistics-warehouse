@@ -2,7 +2,7 @@
 # Copyright 2018 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
+from openerp import _, api, fields, models
 from openerp.exceptions import Warning as UserError
 
 
@@ -10,20 +10,16 @@ class StockWarehouse(models.Model):
     _inherit = "stock.warehouse"
 
     production_rm_type_id = fields.Many2one(
-        string="Raw Material Consumption Type",
-        comodel_name="stock.picking.type"
+        string="Raw Material Consumption Type", comodel_name="stock.picking.type"
     )
     production_rm_loc_id = fields.Many2one(
-        string="Raw Material Consumption Location",
-        comodel_name="stock.location"
+        string="Raw Material Consumption Location", comodel_name="stock.location"
     )
     production_fg_type_id = fields.Many2one(
-        string="Production Result Type",
-        comodel_name="stock.picking.type"
+        string="Production Result Type", comodel_name="stock.picking.type"
     )
     production_fg_loc_id = fields.Many2one(
-        string="Production Result Location",
-        comodel_name="stock.location"
+        string="Production Result Location", comodel_name="stock.location"
     )
 
     @api.multi
@@ -34,8 +30,7 @@ class StockWarehouse(models.Model):
             "name": _("RM Consumption"),
             "location_id": parent_location.id,
             "usage": "production",
-            "active": True
-
+            "active": True,
         }
         return data
 
@@ -47,8 +42,7 @@ class StockWarehouse(models.Model):
             "name": _("Production Result"),
             "location_id": parent_location.id,
             "usage": "production",
-            "active": True
-
+            "active": True,
         }
         return data
 
@@ -58,7 +52,7 @@ class StockWarehouse(models.Model):
         data = {
             "name": self.code + " - RM Consumption",
             "prefix": self.code + "/RM/",
-            "padding": 6
+            "padding": 6,
         }
         return data
 
@@ -68,19 +62,18 @@ class StockWarehouse(models.Model):
         data = {
             "name": self.code + " - Production Result",
             "prefix": self.code + "/FG/",
-            "padding": 6
+            "padding": 6,
         }
         return data
 
     @api.multi
     def _prepare_production_rm_type(self):
         self.ensure_one()
-        obj_sequence = self.env['ir.sequence']
+        obj_sequence = self.env["ir.sequence"]
         src_location = self.lot_stock_id
         dest_location = self._get_production_rm_location()
 
-        sequence = obj_sequence.create(
-            self._prepare_production_rm_sequence())
+        sequence = obj_sequence.create(self._prepare_production_rm_sequence())
 
         data = {
             "name": _("RM Consumption"),
@@ -97,12 +90,11 @@ class StockWarehouse(models.Model):
     @api.multi
     def _prepare_production_fg_type(self):
         self.ensure_one()
-        obj_sequence = self.env['ir.sequence']
+        obj_sequence = self.env["ir.sequence"]
         dest_location = self.lot_stock_id
         src_location = self._get_production_fg_location()
 
-        sequence = obj_sequence.create(
-            self._prepare_production_fg_sequence())
+        sequence = obj_sequence.create(self._prepare_production_fg_sequence())
 
         data = {
             "name": _("Production Result"),
@@ -134,32 +126,28 @@ class StockWarehouse(models.Model):
     def _create_production_rm_loc(self):
         self.ensure_one()
         obj_loc = self.env["stock.location"]
-        production_rm_loc = obj_loc.create(
-            self._prepare_production_rm_location())
+        production_rm_loc = obj_loc.create(self._prepare_production_rm_location())
         return production_rm_loc
 
     @api.multi
     def _create_production_fg_loc(self):
         self.ensure_one()
         obj_loc = self.env["stock.location"]
-        production_fg_loc = obj_loc.create(
-            self._prepare_production_fg_location())
+        production_fg_loc = obj_loc.create(self._prepare_production_fg_location())
         return production_fg_loc
 
     @api.multi
     def _create_production_rm_type(self):
         self.ensure_one()
         obj_type = self.env["stock.picking.type"]
-        production_rm_type = obj_type.create(
-            self._prepare_production_rm_type())
+        production_rm_type = obj_type.create(self._prepare_production_rm_type())
         return production_rm_type
 
     @api.multi
     def _create_production_fg_type(self):
         self.ensure_one()
         obj_type = self.env["stock.picking.type"]
-        production_fg_type = obj_type.create(
-            self._prepare_production_fg_type())
+        production_fg_type = obj_type.create(self._prepare_production_fg_type())
         return production_fg_type
 
     @api.multi
