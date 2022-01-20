@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_inventory_revaluation_extend
-#: code:addons/stock_inventory_revaluation_extend/models/stock_inventory_revaluation.py:68
+#: code:addons/stock_inventory_revaluation_extend/models/stock_inventory_revaluation.py:73
 #, python-format
 msgid "Cannot do an inventory value change if the quantity available for product %s is 0 or negative"
 msgstr ""
@@ -65,13 +65,13 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: stock_inventory_revaluation_extend
-#: code:addons/stock_inventory_revaluation_extend/models/stock_inventory_revaluation.py:110
+#: code:addons/stock_inventory_revaluation_extend/models/stock_inventory_revaluation.py:120
 #, python-format
 msgid "Please add an Increase Account and a Decrease Account."
 msgstr ""
 
 #. module: stock_inventory_revaluation_extend
-#: code:addons/stock_inventory_revaluation_extend/models/stock_inventory_revaluation.py:82
+#: code:addons/stock_inventory_revaluation_extend/models/stock_inventory_revaluation.py:89
 #, python-format
 msgid "The new value for product %s cannot be negative"
 msgstr ""
