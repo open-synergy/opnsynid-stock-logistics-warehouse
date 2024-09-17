@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+    <data>
+
+        <record id="stock.action_routes_form" model="ir.actions.act_window">
+            <field name="context">{'active_test': False}</field>
+        </record>
+   
+    </data>
+</openerp>
+
